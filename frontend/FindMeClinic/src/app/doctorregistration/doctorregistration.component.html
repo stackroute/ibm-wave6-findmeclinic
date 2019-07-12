@@ -1,326 +1,382 @@
 <app-navbar></app-navbar>
-<body >
-  <div class="container">
+<body>
+<div class="container">
 <section fxLayout="row wrap" fxLayoutAlign="center center">
-       
-    
-    <mat-horizontal-stepper  labelPosition="top" #stepper>
-    
-    <mat-step >
-      <div class="bgimage">
-    
-        
-        
-        <form #doctorForm="ngForm"     (ngSubmit)="saveDoctor(doctorForm)"  class="form-horizontal" fxLayout fxLayout="column"  fxLayoutAlign="center center" fxLayoutGap="10px" >
+
+    <mat-horizontal-stepper labelPosition="top" #stepper>
+  
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <div class="bgimage">
             <ng-template matStepLabel>
-                <mat-icon>account_circle</mat-icon> Fill the details
-              </ng-template> 
-          
-                
-                          <table>    
-                            
-            <tr>
+              <mat-icon>account_circle</mat-icon> Doctor details
+            </ng-template>
+            <table>
+              <tr>
                 <td>
-            <label >Name </label></td>
-            <mat-form-field>
-              <td>  <input class="form-control"  type="text" name="name" ngModel matInput placeholder="Name"  required minlength="4" #name>
-                
-              </td>
-            </mat-form-field></tr>
-           
-                <tr><td>
-                                <label >Mobile</label></td>
+                  <label class="align">Name </label></td>
                 <mat-form-field>
-                       <td> <input class="form-control"  type="number" name="mobile" ngModel matInput placeholder="Mobile"  required  #mobile></td>
-                    </mat-form-field></tr>
-                               <tr><td><label>Gender</label></td>
-                             
-                                <td><mat-radio-group>
-<td><div class="form-check">
-  <input class="form-check-input"  type="radio" name="gender" ngModel value="male" #gender required>
-  <label class="form-check-label">Male</label>
-</div></td>
-<td>
-<div class="form-check">
-  <input class="form-check-input"  type="radio" name="gender" ngModel value="female" #gender required>
-  <label class="form-check-label">Female</label>
-</div></td>
-</mat-radio-group></td>
-
-                              </tr>
-                   <tr><td> <label>Medical License</label></td>
-                    <mat-form-field>
-                       <td><input class="form-control"  type="text" name="medicalLicense" ngModel matInput placeholder="Medical License"  required #medicalLicense></td>
-                    </mat-form-field></tr>
-                    <tr><td><label>Practise Started Date</label></td>
-                    <mat-form-field>
-                          <td>  <input class="form-control" name="practiseStartedDate" ngModel type="text"  matInput [matDatepicker]="picker" placeholder="Choose a date" required #practiseStartedDate>
-                           <td><mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle></td>
-                           <mat-datepicker #picker></mat-datepicker>
-                          </mat-form-field></tr>
-                         <tr><td> <label>Email</label></td>
-                          <mat-form-field>
-                               <td> <input class="form-control"  type="text" name="email" ngModel matInput placeholder="Enter email"  required #email></td>
-                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-                              </mat-form-field>
-                            </tr>
-                                   <tr><td> <label>Password</label>     </td>
-                                    <mat-form-field>
-                                          <td>  <input  name="password" class="form-control" ngModel type="text"  matInput placeholder="Enter password" [type]="hide ? 'password' : 'text'" required #password></td>
-                                            <td><button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                            </button></td>
-                                          </mat-form-field>
-                                         </tr>
-                                        
-                                         <tr><td> <mat-label>Profile phtoto</mat-label></td>
-            
-                                          <td> <input name="profilePhoto" ngModel type="file" accept="image/*" #profilePhoto></td>
-                                        
-                                       </tr>
-                                   
-
-                                    </table>
-                
-                    
-                                         
-                <button mat-stroked-button matStepperNext  >Next</button>
-             
-            
+                  <td> <input class="form-control" type="text" formControlName="NameCtrl" matInput placeholder="Name"
+                      required minlength="4">
+                  </td>
+                </mat-form-field>
+              </tr>
+  
+              <tr>
+                <td><label class="align">Gender</label></td>
+                <td>
+                  <mat-radio-group>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" value="male" [(ngModel)]="gender"
+                      formControlName="GenderCtrl" required>
+                    <label class="form-check-label">Male</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" value="female" [(ngModel)]="gender"
+                      formControlName="GenderCtrl" required>
+                    <label class="form-check-label">Female</label>
+                  </div>
+                </td>
+                </mat-radio-group>
+                </td>
+              </tr>
+  
+              <tr>
+                <td> <label class="alignment">Medical License</label></td>
+                <mat-form-field>
+                  <td><input class="form-control" type="text" matInput [(ngModel)]="medicalLicense"
+                      formControlName="MedicalLicenseCtrl" placeholder="Medical License" required></td>
+                </mat-form-field>
+              </tr>
+  
+              <tr>
+                <td><label class="alignments">Practice Started Date</label></td>
+                <mat-form-field>
+                  <td> <input class="form-control" [(ngModel)]="practiceStartedDate"
+                      formControlName="PracticeStartedDateCtrl" type="text" matInput [matDatepicker]="picker"
+                      placeholder="Choose a date" required>
+                  <td>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  </td>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </tr>
+  
+              <tr>
+                <td> <label class="align">Email</label></td>
+                <mat-form-field>
+                  <td> <input class="form-control" type="text" matInput placeholder="Enter Email" [(ngModel)]="email"
+                      formControlName="EmailCtrl" required>
+                  </td>
+                </mat-form-field>
+              </tr>
+  
+              <tr>
+                <td> <label class="align">Password</label> </td>
+                <mat-form-field>
+                  <td> <input class="form-control" type="text" matInput placeholder="Enter password"
+                      [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="PasswordCtrl" required>
+                  </td>
+                  <td><button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button></td>
+                </mat-form-field>
+              </tr>
+  
+              <tr>
+                <td>
+                  <mat-label class="alignmentt">Profile phtoto</mat-label>
+                </td>
+                <td> <input class="aligns" type="file" [(ngModel)]="profilePhoto" formControlName="ProfilePhotoCtrl"
+                    accept="image/*"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="next">
+            <button mat-raised-button matStepperNext (click)="saveDoctor()" color="primary">Next</button><br><br>
+          </div>
         </form>
-    </div>
-    </mat-step>
-    <mat-step  >
-      
-       
-            
+      </mat-step>
+      <!-- first form close -->
+  
+      <!-- <second step start -->
+      <mat-step>
         <div class="bgimage">
-            <ng-template matStepLabel>
-                <mat-icon>add_photo_alternate</mat-icon> Specialization
-              </ng-template>
-             
-             <mat-button-toggle-group class="example-card" #toggleGroup="matButtonToggleGroup" multiple>
-           <table>
-           
-                   
-               <tr>
-                
-                       <div class="row">
-                         <td>
-                        <div class="column">
-                          <mat-card>
-                          <div class="cards ">
-                              <mat-button-toggle>
-                            <img mat-card-image src="/assets/images/den.jpg" alt="Dentist" value="dentist"></mat-button-toggle>
-                              <p>Dentist</p>
-                            
-                          </div>
-                          </mat-card>
-                        </div></td>
-                       <td> <div class="column">
-                         <mat-card>
-                            <div class="cards">
-                                <mat-button-toggle>
-                                <img  mat-card-image src="/assets/images/neur.jpg" alt="Neurologist" value="neurologist"></mat-button-toggle>
-                                <p>Neurologist</p>
-                            </div></mat-card>
-                          </div>
-                      
-                        </td>
-                    
-                    <td>
-                        <div class="column">
-                          <mat-card>
-                            <div class="cards">
-                                <mat-button-toggle><img  mat-card-image src="/assets/images/phy.jpg" alt="Physiotherapist" value="physiotherapist"></mat-button-toggle>
-                                <p>Physiotherapist</p>
-                            </div>
-                            </mat-card>
-                          </div>
-                          </td>
-                          <td>
-                              <div class="column">
-                                <mat-card>
-                                  <div class="cards">
-                                      <mat-button-toggle><img  mat-card-image src="/assets/images/physi.jpg" alt="Physician" value="physician"></mat-button-toggle>
-                                      <p>Physician</p>
-                                  </div></mat-card>
-                                </div></td>
-                    </div></tr>
-                   
-                   <tr> <div class="row">
-                     <td>
-                            <div class="column">
-                              <mat-card>
-                                <div class="cards">
-                                    <mat-button-toggle>  <img  mat-card-image src="/assets/images/car.jpg" alt="Cardiologist" value="cardiologist"></mat-button-toggle>
-                                    <p>Cardiologist</p>
-                                </div>
-                                </mat-card>
-                              </div></td>
-                              <td>
-                              <div class="column">
-                                <mat-card>
-                                  <div class="cards">
-                                      <mat-button-toggle><img mat-card-image src="/assets/images/diet.jpg" alt="Dietician" value="dietician"></mat-button-toggle>
-                                      <p>Dietician</p>
-                                  </div></mat-card>
-                                </div>
-                    </td>
-                    <td>
-                                <div class="column">
-                                  <mat-card>
-                                    <div class="cards">
-                                        <mat-button-toggle><img  mat-card-image src="/assets/images/derm.jpg" alt="Dermatologist" value="dermatologist"></mat-button-toggle>
-                                        <p>Dermatologist</p>
-                                    </div>
-                                    </mat-card>
-                                  </div>
-                                  </td>
-                                  <td>
-                                      <div class="column">
-                                        <mat-card>
-                                          <div class="cards">
-                                              <mat-button-toggle><img  mat-card-image src="/assets/images/psyc.jpg" alt="Psychiatrist" value="psychiatrist"></mat-button-toggle>
-                                              <p>Psychiatrist</p>
-                                          </div></mat-card>
-                                        </div></td>
-                                  
-                    </div></tr>
-                   
-                    <tr> <div class="row">
-                        <td>
-                               <div class="column">
-                                 <mat-card>
-                                   <div class="cards">
-                                       <mat-button-toggle>  <img mat-card-image src="/assets/images/car.jpg" alt="Cardiologist" value="cardiologist"></mat-button-toggle>
-                                       <p>Cardiologist</p>
-                                   </div>
-                                   </mat-card>
-                                 </div></td>
-                                 <td>
-                                 <div class="column">
-                                   <mat-card>
-                                     <div class="cards">
-                                         <mat-button-toggle><img mat-card-image src="/assets/images/diet.jpg" alt="Dietician" value="dietician"></mat-button-toggle>
-                                         <p>Dietician</p>
-                                     </div></mat-card>
-                                   </div>
-                       </td>
-                       <td>
-                                   <div class="column">
-                                     <mat-card>
-                                       <div class="cards">
-                                           <mat-button-toggle><img mat-card-image src="/assets/images/derm.jpg" alt="Dermatologist" value="dermatologist"></mat-button-toggle>
-                                           <p>Dermatologist</p>
-                                       </div>
-                                       </mat-card>
-                                     </div>
-                                     </td>
-                                     <td>
-                                         <div class="column">
-                                           <mat-card>
-                                             <div class="cards">
-                                                 <mat-button-toggle><img mat-card-image src="/assets/images/psyc.jpg" alt="Psychiatrist" value="psychiatrist"></mat-button-toggle>
-                                                 <p>Psychiatrist</p>
-                                             </div></mat-card>
-                                           </div></td>
-                                     
-                       </div></tr>
-                      
-                                               
-                  
-                     
-           
-             <div align="center"> 
+          <ng-template matStepLabel>
+            <mat-icon>add_photo_alternate</mat-icon> Specialization
+          </ng-template>
+          <mat-button-toggle-group class="example-card">
+            <table>
+              <tr>
+                <div class="row">
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards ">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="dentist">
+                            <img mat-card-image src="/assets/images/den.jpg" alt="Dentist">
+                          </mat-button-toggle>
+                          <p>Dentist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="neurologist">
+                            <img mat-card-image src="/assets/images/neur.jpg" alt="Neurologist">
+                          </mat-button-toggle>
+                          <p>Neurologist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+  
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="physiotherapist">
+                            <img mat-card-image src="/assets/images/phy.jpg" alt="Physiotherapist"></mat-button-toggle>
+                          <p>Physiotherapist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+  
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="physician"><img mat-card-image
+                              src="/assets/images/physi.jpg" alt="Physician"></mat-button-toggle>
+                          <p>Physician</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                </div>
+              </tr>
+  
+              <tr>
+                <div class="row">
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="cardiologist">
+                            <img mat-card-image src="/assets/images/car.jpg" alt="Cardiologist"></mat-button-toggle>
+                          <p>Cardiologist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="dietician"><img mat-card-image
+                              src="/assets/images/diet.jpg" alt="Dietician"></mat-button-toggle>
+                          <p>Dietician</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="dermatologist">
+                            <img mat-card-image src="/assets/images/derm.jpg" alt="Dermatologist">
+                          </mat-button-toggle>
+                          <p>Dermatologist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="psychiatrist">
+                            <img mat-card-image src="/assets/images/psyc.jpg" alt="Psychiatrist">
+                          </mat-button-toggle>
+                          <p>Psychiatrist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                </div>
+              </tr>
+  
+              <tr>
+                <div class="row">
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="cardiologist">
+                            <img mat-card-image src="/assets/images/car.jpg" alt="Cardiologist">
+                          </mat-button-toggle>
+                          <p>Cardiologist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="dietician">
+                            <img mat-card-image src="/assets/images/diet.jpg" alt="Dietician">
+                          </mat-button-toggle>
+                          <p>Dietician</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="dermatologist">
+                            <img mat-card-image src="/assets/images/derm.jpg" alt="Dermatologist">
+                          </mat-button-toggle>
+                          <p>Dermatologist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column">
+                      <mat-card>
+                        <div class="cards">
+                          <mat-button-toggle (change)="onValChange($event.value)" value="psychiatrist">
+                            <img mat-card-image src="/assets/images/psyc.jpg" alt="Psychiatrist">
+                          </mat-button-toggle>
+                          <p>Psychiatrist</p>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </td>
+  
+                </div>
+              </tr>
+              <div align="center">
                 <button mat-stroked-button matStepperPrevious>Back</button>
-                <button mat-stroked-button matStepperNext [disabled]="doctorForm.invalid">Next</button>
-            </div>
-           </table> 
+                <button mat-stroked-button matStepperNext>Next</button>
+              </div>
+            </table>
           </mat-button-toggle-group>
-          {{toggleGroup.value}}
-      
-       </div>
-    </mat-step>
-    <mat-step  >
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
         <div class="bgimage">
-       
-            <form #doctorForm="ngForm"     (ngSubmit)="onSubmit(doctorForm.value)"  class="form-horizontal" fxLayout fxLayout="column"  fxLayoutAlign="center center" fxLayoutGap="10px" >
-     
-                <ng-template matStepLabel>
-                    <mat-icon>home</mat-icon> Fill the details
-                  </ng-template>
-              
-                              <table> 
-           
-                <tr><td><label >Clinic Name </label></td>
-            <mat-form-field>
-               <td> <input name="clinicName"  matInput placeholder="Clinic name"  ngModel required minlength="4" #clinicName></td>
-            </mat-form-field></tr>
-            
-            <tr><td><mat-label>State</mat-label></td>
-           <td><mat-form-field>
-                    <select matNativeControl ngModel name="state" #state required>
-                            <option value="choose">Choose</option>
+  
+          <form [formGroup]="thirdFormGroup">
+  
+            <ng-template matStepLabel>
+              <mat-icon>home</mat-icon> Clinic details
+            </ng-template>
+  
+            <table>
+              <tr>
+                <td><label>Clinic Name </label></td>
+                <mat-form-field>
+                  <td> <input class="form-control" [(ngModel)]="clinicName" formControlName="ClinicNameCtrl" matInput
+                      placeholder="Clinic name" required minlength="4"></td>
+                </mat-form-field>
+              </tr>
+  
+              <tr>
+                <td>
+                  <mat-label class="align">State</mat-label>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <select matNativeControl formControlName="StateCtrl" class="form-control">
+                      <option>Choose</option>
                       <option value="andhra Pradesh">Andhra Pradesh</option>
                       <option value="telangana">Telangana</option>
                       <option value="uttar pradesh">Uttar Pradesh</option>
                       <option value="madhya Pradesh">Madhya Pradesh</option>
                     </select>
-                  </mat-form-field></td></tr>
-                 <tr><td> <mat-label>City</mat-label></td>
-                <mat-form-field>
-                    <td><input #city name="city" ngModel matInput placeholder="City" required></td>
-                </mat-form-field></tr>
-                <tr> <td><mat-label>Address</mat-label></td>
-                  <mat-form-field>
-                    <td>  <input #address name="address" ngModel matInput placeholder="Address"  required maxlength="50"></td>
-                  </mat-form-field></tr>
-               <tr> <td><mat-label>Area</mat-label></td>
-              <mat-form-field>
-                <td>  <input #area name="area" ngModel matInput placeholder="Area"  required maxlength="50"></td>
-              </mat-form-field></tr>
-                 <tr><td><mat-label>Pincode</mat-label></td>
-                <mat-form-field>
-                  <td>  <input #pincode name="pincode" ngModel type="number" matInput placeholder="Pincode"  required maxlength="6"></td>
-                </mat-form-field></tr>
-            
-            <tr><td> <mat-label>Clinic Photo</mat-label></td>
-            
-                 <td> <input #clinicPhoto name="clinicPhoto" ngModel type="file" accept="image/*" required></td>
-               
+                  </mat-form-field>
+                </td>
               </tr>
-          
+  
+              <tr>
+                <td>
+                  <mat-label class="align">City</mat-label>
+                </td>
+                <mat-form-field>
+                  <td><input class="form-control" [(ngModel)]="city" formControlName="CityCtrl" matInput
+                      placeholder="City" required></td>
+                </mat-form-field>
+              </tr>
+  
+              <tr>
+                <td>
+                  <mat-label class="align">Flat No</mat-label>
+                </td>
+                <mat-form-field>
+                  <td>
+                    <input class="form-control" [(ngModel)]="flatNo" formControlName="FlatNoCtrl" matInput
+                      placeholder="Flat No" required maxlength="50">
+                  </td>
+                </mat-form-field>
+              </tr>
+  
+              <tr>
+                <td>
+                  <mat-label class="align">Area</mat-label>
+                </td>
+                <mat-form-field>
+                  <td> <input class="form-control" [(ngModel)]="area" formControlName="AreaCtrl" matInput
+                      placeholder="Area" required maxlength="50"></td>
+                </mat-form-field>
+              </tr>
+              <tr>
+                <td>
+                  <mat-label class="align">Pincode</mat-label>
+                </td>
+                <mat-form-field>
+                  <td> <input class="form-control" [(ngModel)]="pincode" formControlName="PincodeCtrl" type="number"
+                      matInput placeholder="Pincode" required maxlength="6"></td>
+                </mat-form-field>
+              </tr>
             </table>
-          <br/>
-                <div >
-                    <button mat-stroked-button matStepperPrevious>Back</button>
-                    <button mat-stroked-button matStepperNext [disabled]="doctorForm.invalid">Submit</button>
-                </div>
-            
-            
-         </form>
-            
+            <br />
+            <div>
+              <button mat-stroked-button matStepperPrevious>Back</button>
+              <button mat-stroked-button matStepperNext (click)="saveClinic()">Submit</button>
             </div>
-        </mat-step>
-   
-    <mat-step>
-      <div class="Done">
+          </form>
+        </div>
+      </mat-step>
+  
+      <mat-step>
+        <div class="Done">
           <ng-template matStepLabel>
-              <strong>Done!</strong>
+            <strong>Done!</strong>
           </ng-template>
           <img src="https://img.icons8.com/color/96/000000/ok.png" width=100 height=100>
-
           <h1>
-              Thank you!!!
+            Thank you!!!
           </h1>
-          <h3>Your space details has been successfully added!!! We will get back to you soon...</h3>
-      </div>
-  </mat-step>
-</mat-horizontal-stepper>       
+          <h2>Registered Successfully...</h2>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
   
-
-</section>
-</div>
-</body>
-<app-footer></app-footer>
+  
+  </section>
+  </div>
+  </body>
+  <app-footer></app-footer>

@@ -22,7 +22,7 @@ public class Doctor {
     private String gender;
     private String phone;
     private String medicalLicense;
-    private byte[] profileImage;
+    private String profileImage;
     private String qualification;
     private String specialization;
     private Date practiceStartedDate;

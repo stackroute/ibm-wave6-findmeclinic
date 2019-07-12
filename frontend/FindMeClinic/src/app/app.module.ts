@@ -56,7 +56,8 @@ const dashboardRoutes: Routes = [
     DoctorregistrationComponent,
     SearchDoctorComponent,
     ViewDoctorComponent,
-    MyDialogComponent
+    MyDialogComponent,
+   
   
   ],
   imports: [

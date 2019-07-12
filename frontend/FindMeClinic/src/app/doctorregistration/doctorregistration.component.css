@@ -5,18 +5,15 @@ body{
 .container{margin-top:100px; 
   margin-bottom: 20px;
   background-color:#eff5f8;}
-
-
-.example-card {
-    
+  .example-card {    
     width: 60%;
     margin: auto;
-         }
-      .card-container {
+   }
+   
+   .card-container {
            display: flex;
            flex-flow: row wrap;
-           
-         }
+   }
    .mat-form-field-infix {
        top: -0.25em;
      }
@@ -80,21 +77,30 @@ body{
        width:400px;
      } 
      
-   
-   
-     .user-profile{
-       width: 50%;
-       margin-left: 24px;
-       margin-top: 10px;
-     }
-       .person-icon{
-           width: 200px;
-           height: 200px;
-       }
-   
-      
+   .form-control{
+     padding-left: 10%;
      
+   }
+   .align{
+     padding-right: 77%;
+   }
+     .alignment{
+       padding-right: 24%;
+     }
+     .alignments{
+       padding-right: -15%;
+     }
+   
+   .alignmentt{
+     padding-right: 34%;
+   }
+   .aligns{
+     padding-left: 10%;
+   }
+   
+   
        /* style="opacity: 0.0; position: absolute;  
        top:120px; left: 30px; bottom: 0; right:0; width: 200px; 
        height:200px;" */
       
+
