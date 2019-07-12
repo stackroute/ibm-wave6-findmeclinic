@@ -1,32 +1,95 @@
-version: '2'
-
+version: "2"
 services:
-  eureka-server:
-    build: eureka-server/
-    restart: always
+
+  zookeeper:
+    container_name: zookeeper
+    image: wurstmeister/zookeeper:latest
+
+    ports:
+      - 2181:2181
+    expose:
+      - 2181
     network_mode: "host"
     hostname: localhost
-    image: eureka-server
-    ports:
-      - 8761:8761
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000000000
 
-  config-service:
-    build: config-server/
-    restart: always
+  kafka:
+    container_name: kafka
+    image: wurstmeister/kafka:latest
+
+    ports:
+      - 9092:9092
+    expose:
+      - 9092
     network_mode: "host"
-    image: config-service
     hostname: localhost
-    ports:
-      - 8888:8888
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: localhost:2181
+      KAFKA_MESSAGE_MAX_BYTES: 1000000000
 
-  zuul-api:
-    build: zuul-api/
+  patientservice:
+    build: PatientService/
+    image: patientservice
+    network_mode: host
     depends_on:
-      - config-service
-      - eureka-server
-    restart: always
-    network_mode: "host"
-    image: zuul-api
-    hostname: localhost
+      [mongo]
     ports:
       - 8080:8080
+    expose:
+      - 8080
+
+  authenticationservice:
+    build: AuthenticationService/
+    image: authenticationservice
+    network_mode: host
+    depends_on:
+      [mysqldb]
+    ports:
+      - 8081:8081
+    expose:
+      - 8081
+
+  mongo:
+    image: mongo:3.4-xenial
+    restart: always
+    network_mode: host
+    environment:
+      MONGO_INITDB_DATABASE: patientdb
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    hostname: localhost
+    volumes:
+      ['$HOME/data:/data/db']
+
+  mysqldb:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: logindb
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "YES"
+    volumes:
+      - $HOME/data/datasql:/var/lib/mysql
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+
+  doctorservice:
+    build: DoctorService/
+    image: doctorservice
+    network_mode: host
+    depends_on:
+      [mongo]
+    ports:
+      - 8082:8082
+    expose:
+      - 8082

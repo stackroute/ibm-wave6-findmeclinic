@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar color="blue">Menu</mat-toolbar>
+      <mat-nav-list style="margin-top:40px;">
+        <a mat-list-item routerLink="/myAppointments">My Appointments</a>
+        <a mat-list-item href="/patientProfile">My Profile</a>
+        <a mat-list-item href="#">My Tests</a>
+        <a mat-list-item href="#">My Medicine Orders</a>
+        <a mat-list-item href="#">My Medical Records</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      
+    <router-outlet></router-outlet>
+    <div class="container"></div>
+      <!-- Add Content Here -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  

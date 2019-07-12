@@ -1,0 +1,54 @@
+{
+    "patientAppointmentDetails": [
+      {
+        "doctorName":"arjun reddy",
+        "clinicName":"apollo",
+        "dateAndTime":" Jul 18, 2019, 9:44:12 PM",
+        "address":"vizag"
+      },
+      {
+        "doctorName":"santhu",
+        "clinicName":"apollo",
+        "dateAndTime":"May 6, 2019, 9:44:12 PM",
+        "address":"vizag"
+      },
+      {
+        "doctorName":"vijay",
+        "clinicName":"apollo",
+        "dateAndTime":"Jul 16, 2019, 9:44:12 PM",
+        "address":"vizag"
+      },
+      {
+        "doctorName":"varma",
+        "clinicName":"apollo",
+        "dateAndTime":"Jul 15, 2019, 9:44:12 PM",
+        "address":"vizag"
+      },
+      {
+        "doctorName":"sunitha",
+        "clinicName":"apollo",
+        "dateAndTime":"Jan 15, 2019, 9:44:12 PM",
+        "address":"vizag"
+      }
+    ],
+    "patientProfile":[
+      { 
+        "name":"sunitha",
+        "emailId":"sunithaVarma@gmail.com",
+        "dateOfBirth":"1/10/1996",
+        "gender":"female",
+        "mobile":"9988998899"
+      }
+    ],
+    "comments": [
+      {
+        "id": 1,
+        "body": "some comment",
+        "postId": 1
+      }
+    ],
+    "profile": {
+      "name": "typicode"
+    }
+  }
+  

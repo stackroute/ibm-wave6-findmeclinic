@@ -1,0 +1,100 @@
+body{
+  
+  background-color:#eff5f8;
+}
+.container{margin-top:100px; 
+  margin-bottom: 20px;
+  background-color:#eff5f8;}
+
+
+.example-card {
+    
+    width: 60%;
+    margin: auto;
+         }
+      .card-container {
+           display: flex;
+           flex-flow: row wrap;
+           
+         }
+   .mat-form-field-infix {
+       top: -0.25em;
+     }
+   .step3{
+     margin-right: auto;
+   }
+   
+     /* .example-header-image {
+       background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+       background-size: cover;
+     } */
+     
+   .bgimage{
+     background-image: url('/assets/images/ef.jpg');
+   
+   }
+     .form-group{
+         text-align: center;
+     }
+    .image-card{
+        width: 70%;
+        height: 20%;
+        
+        
+    }
+   
+    .column {
+     
+       text-align: center;
+       width: 90%;
+      margin-left: 5%;
+       /* padding: 0 65px; */
+       
+     }
+     
+     /* Remove extra left and right margins, due to padding */
+     .row {margin: 8 -5px;}
+     
+     /* Clear floats after the columns */
+     .row:after {
+       content: "";
+       display: table;
+       clear: both;
+     }
+     
+     /* Responsive columns */
+     @media screen and (max-width: 600px) {
+       .column {
+         width: 100%;
+         display: block;
+         margin-bottom: 20px;
+       }
+     }
+     
+     /* Style the counter cards */
+      .card {
+       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+       padding: 10px; 
+       text-align: center;
+       background-color:white;
+       width:400px;
+     } 
+     
+   
+   
+     .user-profile{
+       width: 50%;
+       margin-left: 24px;
+       margin-top: 10px;
+     }
+       .person-icon{
+           width: 200px;
+           height: 200px;
+       }
+   
+      
+     
+       /* style="opacity: 0.0; position: absolute;  
+       top:120px; left: 30px; bottom: 0; right:0; width: 200px; 
+       height:200px;" */
+      
