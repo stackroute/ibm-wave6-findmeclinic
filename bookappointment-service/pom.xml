@@ -12,7 +12,7 @@
 
 	<artifactId>BookAppointmentService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>BookAppointmentService</name>
+	<name>bookappointment-service</name>
 	<description>project for BookAppointment</description>
 	<properties>
 		<java.version>11</java.version>

@@ -24,6 +24,7 @@
         <module>eureka-server</module>
         <module>bookappointment-service</module>
         <module>scheduler-service</module>
+        <module>recommendation-service</module>
     </modules>
 
     <dependencies>

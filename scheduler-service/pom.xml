@@ -9,9 +9,9 @@
 		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
 
-	<artifactId>SchedulerService</artifactId>
+	<artifactId>scheduler-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SchedulerService</name>
+	<name>scheduler-service</name>
 	<description>project for SchedulerService</description>
 
 	<properties>

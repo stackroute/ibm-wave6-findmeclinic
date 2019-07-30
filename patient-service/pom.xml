@@ -8,10 +8,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.stackroute</groupId>
 	<artifactId>PatientService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PatientService</name>
+	<name>patient-service</name>
 	<description>project for PatientService</description>
 
 	<properties>
