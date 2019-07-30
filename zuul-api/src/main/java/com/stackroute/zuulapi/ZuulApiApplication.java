@@ -1,6 +1,9 @@
 package com.stackroute.zuulapi;
 
-import com.stackroute.zuulapi.pre.SimpleFilter;
+import com.stackroute.zuulapi.filters.ErrorFilter;
+import com.stackroute.zuulapi.filters.PostFilter;
+import com.stackroute.zuulapi.filters.PreFilter;
+import com.stackroute.zuulapi.filters.RouteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -18,7 +21,20 @@ public class ZuulApiApplication {
 	}
 
 	@Bean
-	public SimpleFilter simpleFilter(){
-		return new SimpleFilter();
+	public PreFilter preFilter() {
+		return new PreFilter();
 	}
+	@Bean
+	public PostFilter postFilter() {
+		return new PostFilter();
+	}
+	@Bean
+	public ErrorFilter errorFilter() {
+		return new ErrorFilter();
+	}
+	@Bean
+	public RouteFilter routeFilter() {
+		return new RouteFilter();
+	}
+
 }

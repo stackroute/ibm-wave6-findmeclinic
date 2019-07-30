@@ -1,32 +1,193 @@
-version: '2'
-
+version: "2"
 services:
-  eureka-server:
+
+  eurekaserver:
+    image: eureka-servcie:1.0.0
     build: eureka-server/
     restart: always
-    network_mode: "host"
-    hostname: localhost
-    image: eureka-server
+    network_mode: host
     ports:
-      - 8761:8761
+      - 8084:8084
+    expose:
+      - 8084
 
-  config-service:
+
+  zuulgateway:
+    image: zuul-service:1.0.0
+    build: zuul-api/
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaserver
+    ports:
+      - 8083:8083
+    expose:
+      - 8083
+
+
+  configserver:
+    image: config-server:1.0.0
     build: config-server/
     restart: always
-    network_mode: "host"
-    image: config-service
-    hostname: localhost
-    ports:
-      - 8888:8888
-
-  zuul-api:
-    build: zuul-api/
+    network_mode: host
     depends_on:
-      - config-service
-      - eureka-server
-    restart: always
+      - eurekaserver
+    ports:
+      - 8085:8085
+    expose:
+      - 8085
+
+  zookeeper:
+    container_name: zookeeper
+    image: wurstmeister/zookeeper:latest
+
+    ports:
+      - 2181:2181
+    expose:
+      - 2181
     network_mode: "host"
-    image: zuul-api
     hostname: localhost
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000000000
+
+  kafka:
+    container_name: kafka
+    image: wurstmeister/kafka:latest
+
+    ports:
+      - 9092:9092
+    expose:
+      - 9092
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: localhost:2181
+      KAFKA_MESSAGE_MAX_BYTES: 1000000000
+
+  patientservice:
+    build: patient-service/
+    image: patientservice
+    network_mode: host
+    depends_on:
+      [mongo,kafka,eurekaserver,zuulgateway]
     ports:
       - 8080:8080
+    expose:
+      - 8080
+
+  schedulerservice:
+    build: scheduler-service/
+    image: schedulerservice
+    network_mode: host
+    ports:
+      - 8086:8086
+    depends_on:
+      [redis,eurekaserver,zuulgateway]
+    expose:
+      - 8086
+
+  authenticationservice:
+    build: authentication-service/
+    image: authenticationservice
+    network_mode: host
+    depends_on:
+      [mysqldb,kafka,eurekaserver,zuulgateway]
+    ports:
+      - 8081:8081
+    expose:
+      - 8081
+
+
+  bookappointmentservice:
+    build: bookappointment-service/
+    image: bookappointmentservice
+    network_mode: host
+    depends_on:
+      [mongo,kafka,eurekaserver,zuulgateway]
+    ports:
+      - 8084:8084
+    expose:
+      - 8084
+
+
+  mongo:
+    image: mongo:3.4-xenial
+    restart: always
+    network_mode: host
+    environment:
+      MONGO_INITDB_DATABASE: patientdb
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    hostname: localhost
+    volumes:
+      ['$HOME/data:/data/db']
+
+  mysqldb:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: logindb
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "YES"
+
+    volumes:
+      - $HOME/data/datasql:/var/lib/mysql
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+
+  doctorservice:
+    build: doctor-service/
+    image: doctorservice
+    network_mode: host
+    depends_on:
+      [mongo,kafka,eurekaserver,zuulgateway]
+    ports:
+      - 8082:8082
+    expose:
+      - 8082
+  recommendationservice:
+    build: recommendation-service/
+    image: recommendationservice
+    restart: always
+    network_mode: host
+    ports:
+      - 8088:8088
+    depends_on:
+      [neo4j,kafka,eurekaserver,zuulgateway]
+    expose:
+      - 8088
+
+  neo4j:
+    image: neo4j:latest
+    restart: always
+    network_mode: host
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    expose:
+      - 7474
+    volumes:
+      - $PWD/neo4j-data:/data
+      - $PWD/neo4j-plugins:/plugins
+      - $PWD/neo4j-ext:/var/lib/neo4j/extension
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ../data/redis:/data
+    entrypoint: redis-server --appendonly yes
+    restart: always

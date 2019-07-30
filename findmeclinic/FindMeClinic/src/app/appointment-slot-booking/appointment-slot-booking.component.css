@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #17a2b8;
+  height: 100vh;
+}
+#login .container #login-row #login-column #login-box {
+  margin-top: 10px;
+  width: 2000px;
+  height: 420px;
+  background-color:white;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 10px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+.fullscreen_bg {
+position: fixed;
+padding: 150px;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background-size: cover;
+background-position: 50% 50%;
+background: url("../../assets/images/36.jpg") repeat center top / cover;
+background-repeat:repeat;
+}
+.section-tours{
+padding-top: 7px;
+}
+h4 {
+letter-spacing: 3px;
+}
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+background:#2fd5f8;
+font-size: 26px;
+}
+.mat-tab-labels, .mat-tab-label, .mat-tab-link {
+font-size: 26px;
+/* background-color: #2fd5f8;; */
+}
+.row{
+padding: 19px;
+}
+.btn{
+background-color:#2fd5f8;
+color: white;
+}
+-primary{
+text-align: center;
+}
+.heading-secondary{
+color: #2fd5f8;
+}
+.outset{
+padding:20px;
+} 

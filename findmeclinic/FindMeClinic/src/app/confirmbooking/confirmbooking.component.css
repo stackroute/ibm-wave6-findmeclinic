@@ -1,0 +1,42 @@
+
+.container
+{
+    margin-top: 80px;
+   margin-bottom: 65px;
+}
+
+h4{
+  color: #2fd5f8;
+}
+
+.btn{
+
+    background-color:#2fd5f8;
+    color: white;
+}
+
+h3{
+    margin-top: 15px;
+    text-align: center;
+    color:#2fd5f8;
+
+}
+
+btn-primary{
+    text-align: center;
+}
+
+.field{
+    width:90%;
+    padding-left:10%;
+}
+
+.fields{
+    width:90%;
+    padding-left:5%;
+}
+
+.jumbotron{
+    background: url("../../assets/images/36.jpg") repeat center top / cover;
+
+}
