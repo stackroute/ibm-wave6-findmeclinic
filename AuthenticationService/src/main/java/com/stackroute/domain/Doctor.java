@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -27,4 +28,5 @@ public class Doctor {
     private String clinicName;
     private Address address;
     private String password;
+    private List<DoctorAppointment> doctorAppointmentList;
 }

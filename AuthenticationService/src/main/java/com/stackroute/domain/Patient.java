@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +20,7 @@ public class Patient {
         private String emailId;
         private String password;
         private String role;
+        private List<PatientAppointment> patientAppointmentList;
 
     }
 

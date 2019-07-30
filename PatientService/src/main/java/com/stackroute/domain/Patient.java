@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
 @Document
 @NoArgsConstructor
@@ -25,5 +26,8 @@ public class Patient {
     private String password;
     @Transient
     private String role;
+    private List<PatientAppointment> patientAppointmentList;
+
+
 
 }

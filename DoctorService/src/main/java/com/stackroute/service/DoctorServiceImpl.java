@@ -1,11 +1,13 @@
 package com.stackroute.service;
 
-import com.stackroute.domain.Doctor;
-import com.stackroute.domain.Slot;
+import com.stackroute.domain.*;
 import com.stackroute.exception.DoctorAlreadyExistsException;
 import com.stackroute.exception.DoctorNotFoundException;
 import com.stackroute.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,8 +24,16 @@ public class DoctorServiceImpl implements DoctorService {
         this.doctorRepository = doctorRepository;
     }
 
+    @Autowired
+    KafkaTemplate<String,Doctor > kafkaTemplate1;
+
+    private static String topic1= "doctorcredentials";
+
+
+
+
     @Override
-    public String save(Doctor doctor) {
+    public Doctor save(Doctor doctor) {
 
         Optional optional=doctorRepository.findById(doctor.getEmailId());
 
@@ -34,10 +44,13 @@ public class DoctorServiceImpl implements DoctorService {
             String[] slots={"morning","afternoon","evening"};
             Slot slot=new Slot(slots);
             doctor.setSlot(slot);
-            doctorRepository.save(doctor);
-            return "Doctor Saved Successfully";
+            List<DoctorAppointment> doctorAppointmentList=new ArrayList<>();
+            doctor.setDoctorAppointmentList(doctorAppointmentList);
+            sendJson1(doctor);
+           Doctor doctor1= doctorRepository.save(doctor);
+            return doctor1;
         } catch (DoctorAlreadyExistsException e) {
-            return "Doctor Already Exists";
+            return null;
         }
     }
 
@@ -62,6 +75,7 @@ public class DoctorServiceImpl implements DoctorService {
 
         try {
             if (optional.isPresent()){
+                sendJson1(doctor);
                 doctorRepository.save(doctor);
 
                 return "Updated Successfully";
@@ -70,6 +84,13 @@ public class DoctorServiceImpl implements DoctorService {
         } catch (DoctorNotFoundException e) {
             return "Doctor doesn't exists";
         }    }
+
+    @Override
+    public Doctor getDoctorByEmailId(String emailId) {
+        return doctorRepository.findById(emailId).get();
+    }
+
+
 
     @Override
     public List<Doctor> getAll() {
@@ -111,5 +132,60 @@ public class DoctorServiceImpl implements DoctorService {
             }
         });
         return doctorList;
+    }
+
+    @Override
+    public List<Doctor> findDoctorByLocation(String area) {
+        List<Doctor> doctors=doctorRepository.findAll();
+        List<Doctor> doctorList=new ArrayList<>();
+        doctors.forEach(doctor -> {
+            if (doctor.getAddress().getArea().equalsIgnoreCase(area)){
+                doctorList.add(doctor);
+            }
+        });
+        return doctorList;    }
+
+    @Override
+    public void updateDoctorAppointments(DoctorAppointment doctorAppointment,String emailId) {
+        Optional optional=doctorRepository.findById(emailId);
+        if (optional.isPresent())
+        {
+            System.out.println(doctorAppointment.toString());
+            Doctor doctor=doctorRepository.findById(emailId).get();
+            List<DoctorAppointment> doctorAppointments=doctor.getDoctorAppointmentList();
+            doctorAppointments.add(doctorAppointment);
+            doctor.setDoctorAppointmentList(doctorAppointments);
+            doctorRepository.save(doctor);
+            System.out.println("Doctor Service Impl: "+doctor);
+
+        }
+          }
+
+
+    @Override
+    public List<DoctorAppointment> getAllAppointments(String emailId)
+    {
+        Doctor doctor=doctorRepository.findById(emailId).get();
+        List<DoctorAppointment> doctorAppointmentList=doctor.getDoctorAppointmentList();
+        return  doctorAppointmentList;
+    }
+
+
+    @Override
+    public String sendJson1(Doctor doctor) {
+
+        kafkaTemplate1.send(topic1,doctor);
+
+        return "returned json successfully";
+    }
+
+    @KafkaListener(topics = "appointmentDetails",groupId = "Group_Json3")
+    public void consumeJson(@Payload BookAppointment bookAppointment)
+    {
+        System.out.println("Consumed appointment"  +bookAppointment.toString());
+        DoctorAppointment doctorAppointment=new DoctorAppointment(bookAppointment.getAppointmentId(),bookAppointment.getPatient(),bookAppointment.getAppointmentDate(),bookAppointment.getSlot(),bookAppointment.getKey(),bookAppointment.getAppointmentTime());
+        String emailId=bookAppointment.getDoctor().getEmailId();
+        updateDoctorAppointments(doctorAppointment,emailId);
+
     }
 }

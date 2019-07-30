@@ -1,52 +1,84 @@
-<!-- <div class="jumbotron">
-  <h1 class="text">Search Nearby Doctors</h1> 
-</div> -->
 <app-navbar></app-navbar>
 <body>
-<div class="container" >
-      
+<div class="container" >    
   <div  *ngFor="let doctor of doctors" >
    
    <mat-card class="cards">   <!--material card inserted-->
      <div class="row">
-         <div class="col">
-             <img class="imageClass" [src]="doctor.photoPath" />
+         <div class="col-3">
+             <img class="imageClass" src="../../assets/images/{{doctor.profileImage}}" />
          </div>
          <div class="col">
-             <p>Name :</p>
-             <p>Specialization :</p>
-             <p>Clinic Name :</p>
-             <p>Email Id :</p>
-             <p>Address :</p>
+          <h5>Dr. {{doctor.name}}</h5> 
+           <br>
+             <!-- <p>Name   &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{doctor.name}}</p> -->
+             <!-- <table>
+               <tr>
+                 <td>Qualification</td>
+                 <td>{{doctor.qualification}}</td>
+               </tr>
+               <tr>
+                <td>Specialization</td>
+                <td>{{doctor.specialization}}</td>
+              </tr>
+              <tr>
+                <td>Qualification</td>
+                <td>{{doctor.qualification}}</td>
+              </tr>
+              <tr>
+                <td>Qualification</td>
+                <td>{{doctor.qualification}}</td>
+              </tr>
+             </table> -->
+             <div class="details">
+             <p>Qualification &nbsp;&nbsp;&nbsp;: &nbsp; &nbsp; &nbsp; {{doctor.qualification}}</p>
+             <p>Specialization : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{doctor.specialization}}</p>
+             <p>Clinic Name &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{doctor.clinicName}}</p>
+             <p>Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{doctor.emailId}}</p>
+             </div>
+             <!-- <p>{{doctor.emailId}}</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ilId}}</p>
+             <p>{{doctor.address.area}}, {{doctor.address.city}}</p> -->
+            
              <!-- <mat-list>
                <mat-list-item> Pepper </mat-list-item>
                <mat-list-item> Salt </mat-list-item>
                <mat-list-item> Paprika </mat-list-item>
               </mat-list> -->
+
+             
          </div>
-         <div class="col">
-           <p>{{doctor.name}}</p>
-           <p>{{doctor.specialization}}</p>
-           <p>{{doctor.clinicName}}</p>
-           <p>{{doctor.emailId}}</p>
-           <p>{{doctor.address.area}}, {{doctor.address.city}}</p>
+          <div id="end-col" class="col-4">
+          
+           <p > <i class="material-icons">
+              location_on
+              </i>{{doctor.address.area}}, {{doctor.address.city}}
+            </p> 
+              <p> <i class="material-icons">
+                  mobile_screen_share
+                  </i>{{doctor.phone}}
+                </p>
+            
+              <hr width="220 px" align="centre">
+              <br> 
            <p class="buttons">
                
-               <mat-card-actions  class="button"  >
-                   <button mat-raised-button  (click) = "passDetails(doctor)"  >View Profile</button>
-                   <button mat-raised-button >Quick Book</button>
-                 </mat-card-actions>
-               
-           </p>
-         </div>
+              <mat-card-actions  class="button"  >
+                  <button mat-raised-button (click)="routingto(doctor.emailId)" >Quick Book</button>
+                  <button mat-raised-button  (click) = "passDetails(doctor)"  >View Profile</button>
+                
+                </mat-card-actions>
+              
+          </p>
+           
+          </div>  
          
-     </div>
+     </div> <!--class row ends here-->
     
    </mat-card>
-   <br>
- </div>
+   <!-- <br> -->
+   <hr class="hrCards">
+ </div>  <!--ng for ends here-->
 
-
-</div>
+</div> <!--container div-->
 </body>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

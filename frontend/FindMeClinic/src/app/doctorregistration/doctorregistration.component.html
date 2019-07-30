@@ -1,382 +1,270 @@
-<app-navbar></app-navbar>
 <body>
-<div class="container">
-<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <section class="section" fxLayout="row wrap" fxLayoutAlign="center center">
+      <mat-horizontal-stepper labelPosition="top" linear #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <mat-card class="example-card">
+          <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>
+                 Doctor details
+              </ng-template>
+              <div class="form-row">
+              <div class="col" style="padding-left: 20%">
+                   <div class="container">
+                      <div class="picture-container">
+                          <div class="picture">
+                              <img src="/assets/images/pp4.jpg" class="picture-src" id="profilePicturePreview" title="">
+                              <input class="upload" id="profile-picture" type="file"  (change)="selectVideo($event)"  [(ngModel)]="profilePhoto" formControlName="ProfilePhotoCtrl"
+                   accept=".jpg,.jpeg,.gif,.png/*">
+                          </div>
+                      </div>
+                  </div> 
+                  </div>
+                  <div class="col" style="padding-right: 20%">
+                  <p>
+                      <mat-form-field style="width:400px;" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input  type="text" formControlName="NameCtrl" matInput placeholder="Name" required minlength="4">       
+                      </mat-form-field>
+                    <!-- </p>
+                    <mat-chip-list matNativeControl formControlName="GenderCtrl">
+                        <mat-chip style="margin-left: 31%" value="male">Male</mat-chip>
+                        <mat-chip value="female">Female</mat-chip>
+                      </mat-chip-list>
+                      <br/> -->
+                   <p>
+                        <mat-form-field style="width:400px" appearance="outline">
+                          <mat-label>Gender</mat-label>
+                          <select matNativeControl formControlName="GenderCtrl">
+                              <option label="--choose--"></option>
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                            </select>
+                        </mat-form-field>
+                      </p>
+                     <!-- <p>
+                          <mat-radio-group>
+                                <div class="form-check" style="padding-right: 30%">
+                                  <input  type="radio" value="male" [(ngModel)]="gender"   formControlName="GenderCtrl" required>
+                                  <mat-label class="form-check-label">Male</mat-label>
+                                  <input type="radio" value="female" [(ngModel)]="gender" formControlName="GenderCtrl" required>
+                                  <mat-label class="form-check-label">Female</mat-label>
+                                </div>
+                              </mat-radio-group>              
+                             </p><br/> -->
+                             <p>
+                                <mat-form-field style="width:400px" appearance="outline">
+                                  <mat-label>Email</mat-label>
+                                  <input formControlName="email" type="email" matInput placeholder="Email" formControlName="EmailCtrl" [(ngModel)]="email" required> 
+                                </mat-form-field>     
+                                </p>
+                               <p>
+                                  <mat-form-field style="width:400px" appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input pw-show-hide  type="text" matInput placeholder="Enter password"
+                        [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="PasswordCtrl" required minlength="6">
+                      </mat-form-field>      
+                      </p>
+                      <hr style="margin-top: 0%">
+                     <p>
+                          <mat-form-field style="width:400px" appearance="outline">
+                            <mat-label>Qualification</mat-label>
+                            <input type="text" matInput [(ngModel)]="qualification" formControlName="QualificationCtrl" placeholder="Qualification" required>    
+                          </mat-form-field>   
+                        </p>
+                       <p>
+                            <mat-form-field style="width:400px" appearance="outline">
+                              <mat-label>Medical license</mat-label>
+                              <input  type="text" matInput [(ngModel)]="medicalLicense" formControlName="MedicalLicenseCtrl" placeholder="Medical License" required>    
+                            </mat-form-field>       
+                            </p>
+                           <p>
+                              <mat-form-field style="width:400px" appearance="outline">
+                                <mat-label>Practise started date</mat-label>
+                                <input  [(ngModel)]="practiceStartedDate" formControlName="PracticeStartedDateCtrl" type="text" matInput [matDatepicker]="picker" placeholder="Choose a date" required>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>       
+                  </p>
+                            
 
-    <mat-horizontal-stepper labelPosition="top" #stepper>
-  
-      <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-          <div class="bgimage">
-            <ng-template matStepLabel>
-              <mat-icon>account_circle</mat-icon> Doctor details
-            </ng-template>
-            <table>
-              <tr>
-                <td>
-                  <label class="align">Name </label></td>
-                <mat-form-field>
-                  <td> <input class="form-control" type="text" formControlName="NameCtrl" matInput placeholder="Name"
-                      required minlength="4">
-                  </td>
-                </mat-form-field>
-              </tr>
-  
-              <tr>
-                <td><label class="align">Gender</label></td>
-                <td>
-                  <mat-radio-group>
-                <td>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" value="male" [(ngModel)]="gender"
-                      formControlName="GenderCtrl" required>
-                    <label class="form-check-label">Male</label>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" value="female" [(ngModel)]="gender"
-                      formControlName="GenderCtrl" required>
-                    <label class="form-check-label">Female</label>
-                  </div>
-                </td>
-                </mat-radio-group>
-                </td>
-              </tr>
-  
-              <tr>
-                <td> <label class="alignment">Medical License</label></td>
-                <mat-form-field>
-                  <td><input class="form-control" type="text" matInput [(ngModel)]="medicalLicense"
-                      formControlName="MedicalLicenseCtrl" placeholder="Medical License" required></td>
-                </mat-form-field>
-              </tr>
-  
-              <tr>
-                <td><label class="alignments">Practice Started Date</label></td>
-                <mat-form-field>
-                  <td> <input class="form-control" [(ngModel)]="practiceStartedDate"
-                      formControlName="PracticeStartedDateCtrl" type="text" matInput [matDatepicker]="picker"
-                      placeholder="Choose a date" required>
-                  <td>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  </td>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-              </tr>
-  
-              <tr>
-                <td> <label class="align">Email</label></td>
-                <mat-form-field>
-                  <td> <input class="form-control" type="text" matInput placeholder="Enter Email" [(ngModel)]="email"
-                      formControlName="EmailCtrl" required>
-                  </td>
-                </mat-form-field>
-              </tr>
-  
-              <tr>
-                <td> <label class="align">Password</label> </td>
-                <mat-form-field>
-                  <td> <input class="form-control" type="text" matInput placeholder="Enter password"
-                      [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="PasswordCtrl" required>
-                  </td>
-                  <td><button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                      [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button></td>
-                </mat-form-field>
-              </tr>
-  
-              <tr>
-                <td>
-                  <mat-label class="alignmentt">Profile phtoto</mat-label>
-                </td>
-                <td> <input class="aligns" type="file" [(ngModel)]="profilePhoto" formControlName="ProfilePhotoCtrl"
-                    accept="image/*"></td>
-              </tr>
-            </table>
-          </div>
-          <div class="next">
-            <button mat-raised-button matStepperNext (click)="saveDoctor()" color="primary">Next</button><br><br>
-          </div>
-        </form>
-      </mat-step>
-      <!-- first form close -->
-  
-      <!-- <second step start -->
-      <mat-step>
-        <div class="bgimage">
-          <ng-template matStepLabel>
-            <mat-icon>add_photo_alternate</mat-icon> Specialization
-          </ng-template>
-          <mat-button-toggle-group class="example-card">
-            <table>
-              <tr>
-                <div class="row">
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards ">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="dentist">
-                            <img mat-card-image src="/assets/images/den.jpg" alt="Dentist">
-                          </mat-button-toggle>
-                          <p>Dentist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="neurologist">
-                            <img mat-card-image src="/assets/images/neur.jpg" alt="Neurologist">
-                          </mat-button-toggle>
-                          <p>Neurologist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-  
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="physiotherapist">
-                            <img mat-card-image src="/assets/images/phy.jpg" alt="Physiotherapist"></mat-button-toggle>
-                          <p>Physiotherapist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-  
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="physician"><img mat-card-image
-                              src="/assets/images/physi.jpg" alt="Physician"></mat-button-toggle>
-                          <p>Physician</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                </div>
-              </tr>
-  
-              <tr>
-                <div class="row">
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="cardiologist">
-                            <img mat-card-image src="/assets/images/car.jpg" alt="Cardiologist"></mat-button-toggle>
-                          <p>Cardiologist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="dietician"><img mat-card-image
-                              src="/assets/images/diet.jpg" alt="Dietician"></mat-button-toggle>
-                          <p>Dietician</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="dermatologist">
-                            <img mat-card-image src="/assets/images/derm.jpg" alt="Dermatologist">
-                          </mat-button-toggle>
-                          <p>Dermatologist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="psychiatrist">
-                            <img mat-card-image src="/assets/images/psyc.jpg" alt="Psychiatrist">
-                          </mat-button-toggle>
-                          <p>Psychiatrist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                </div>
-              </tr>
-  
-              <tr>
-                <div class="row">
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="cardiologist">
-                            <img mat-card-image src="/assets/images/car.jpg" alt="Cardiologist">
-                          </mat-button-toggle>
-                          <p>Cardiologist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="dietician">
-                            <img mat-card-image src="/assets/images/diet.jpg" alt="Dietician">
-                          </mat-button-toggle>
-                          <p>Dietician</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="dermatologist">
-                            <img mat-card-image src="/assets/images/derm.jpg" alt="Dermatologist">
-                          </mat-button-toggle>
-                          <p>Dermatologist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="column">
-                      <mat-card>
-                        <div class="cards">
-                          <mat-button-toggle (change)="onValChange($event.value)" value="psychiatrist">
-                            <img mat-card-image src="/assets/images/psyc.jpg" alt="Psychiatrist">
-                          </mat-button-toggle>
-                          <p>Psychiatrist</p>
-                        </div>
-                      </mat-card>
-                    </div>
-                  </td>
-  
-                </div>
-              </tr>
-              <div align="center">
-                <button mat-stroked-button matStepperPrevious>Back</button>
-                <button mat-stroked-button matStepperNext>Next</button>
+                              <!-- <p>
+                                  <input class="upload" type="file" [(ngModel)]="profilePhoto" formControlName="ProfilePhotoCtrl"  accept="image/*">
+                                </p>   -->
+                              </div>            
               </div>
-            </table>
-          </mat-button-toggle-group>
-        </div>
-      </mat-step>
-      <mat-step [stepControl]="thirdFormGroup">
-        <div class="bgimage">
-  
-          <form [formGroup]="thirdFormGroup">
-  
-            <ng-template matStepLabel>
-              <mat-icon>home</mat-icon> Clinic details
-            </ng-template>
-  
-            <table>
-              <tr>
-                <td><label>Clinic Name </label></td>
-                <mat-form-field>
-                  <td> <input class="form-control" [(ngModel)]="clinicName" formControlName="ClinicNameCtrl" matInput
-                      placeholder="Clinic name" required minlength="4"></td>
-                </mat-form-field>
-              </tr>
-  
-              <tr>
-                <td>
-                  <mat-label class="align">State</mat-label>
-                </td>
-                <td>
-                  <mat-form-field>
-                    <select matNativeControl formControlName="StateCtrl" class="form-control">
-                      <option>Choose</option>
-                      <option value="andhra Pradesh">Andhra Pradesh</option>
-                      <option value="telangana">Telangana</option>
-                      <option value="uttar pradesh">Uttar Pradesh</option>
-                      <option value="madhya Pradesh">Madhya Pradesh</option>
-                    </select>
-                  </mat-form-field>
-                </td>
-              </tr>
-  
-              <tr>
-                <td>
-                  <mat-label class="align">City</mat-label>
-                </td>
-                <mat-form-field>
-                  <td><input class="form-control" [(ngModel)]="city" formControlName="CityCtrl" matInput
-                      placeholder="City" required></td>
-                </mat-form-field>
-              </tr>
-  
-              <tr>
-                <td>
-                  <mat-label class="align">Flat No</mat-label>
-                </td>
-                <mat-form-field>
-                  <td>
-                    <input class="form-control" [(ngModel)]="flatNo" formControlName="FlatNoCtrl" matInput
-                      placeholder="Flat No" required maxlength="50">
-                  </td>
-                </mat-form-field>
-              </tr>
-  
-              <tr>
-                <td>
-                  <mat-label class="align">Area</mat-label>
-                </td>
-                <mat-form-field>
-                  <td> <input class="form-control" [(ngModel)]="area" formControlName="AreaCtrl" matInput
-                      placeholder="Area" required maxlength="50"></td>
-                </mat-form-field>
-              </tr>
-              <tr>
-                <td>
-                  <mat-label class="align">Pincode</mat-label>
-                </td>
-                <mat-form-field>
-                  <td> <input class="form-control" [(ngModel)]="pincode" formControlName="PincodeCtrl" type="number"
-                      matInput placeholder="Pincode" required maxlength="6"></td>
-                </mat-form-field>
-              </tr>
-            </table>
-            <br />
-            <div>
-              <button mat-stroked-button matStepperPrevious>Back</button>
-              <button mat-stroked-button matStepperNext (click)="saveClinic()">Submit</button>
+         
+            <div align="center">
+              <button  mat-stroked-button  matStepperNext [disabled]="firstFormGroup.invalid" (click)="saveDoctor()" >Next</button><br><br>
             </div>
           </form>
-        </div>
-      </mat-step>
-  
-      <mat-step>
-        <div class="Done">
-          <ng-template matStepLabel>
-            <strong>Done!</strong>
-          </ng-template>
-          <img src="https://img.icons8.com/color/96/000000/ok.png" width=100 height=100>
-          <h1>
-            Thank you!!!
-          </h1>
-          <h2>Registered Successfully...</h2>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
-  
-  
-  </section>
-  </div>
-  </body>
-  <app-footer></app-footer>
+          </mat-card>
+        </mat-step>
+       
+         <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>
+             Specialization
+            </ng-template>
+            <mat-card align="center"class="example-card">
+              <mat-card-content align="center" class="content">
+                 <mat-grid-list cols="3" style="margin-top:-15px;margin-bottom:-15px">
+                    <mat-grid-tile>
+                      <mat-button-toggle  (change)="onValChange($event.value)" value="dentist">
+                        <img mat-card-image src="/assets/images/den.jpg" alt="Dentist">
+                      <p>Dentist</p>
+                    </mat-button-toggle>
+                    </mat-grid-tile>
+                    <mat-grid-tile>   
+                      <mat-button-toggle (change)="onValChange($event.value)" value="neurologist">
+                        <img mat-card-image src="/assets/images/neur.jpg" alt="Neurologist">
+                      <p>Neurologist</p>
+                    </mat-button-toggle>
+                   </mat-grid-tile>
+                  <mat-grid-tile>
+                    <mat-button-toggle (change)="onValChange($event.value)" value="physiotherapist">
+                      <img mat-card-image src="/assets/images/phy.jpg" alt="Physiotherapist">
+                    <p>Physiotherapist</p>
+                  </mat-button-toggle>
+                  </mat-grid-tile>
+               </mat-grid-list>
+               <mat-grid-list cols="3" style="margin-top:-15px;margin-bottom:-15px">
+                 <mat-grid-tile>
+                  <mat-button-toggle (change)="onValChange($event.value)" value="cardiologist">
+                    <img mat-card-image src="/assets/images/car.jpg" alt="Cardiologist">
+                  <p>Cardiologist</p>
+                </mat-button-toggle>
+               </mat-grid-tile>
+              <mat-grid-tile>
+                <mat-button-toggle (change)="onValChange($event.value)" value="paedriatrics"><img mat-card-image
+                  src="/assets/images/pae.jpg" alt="Paedriatrics">
+              <p>Paedriatrics</p>
+            </mat-button-toggle>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <mat-button-toggle (change)="onValChange($event.value)" value="dermatologist">
+                  <img mat-card-image src="/assets/images/derm.jpg" alt="Dermatologist">
+                  <p>Dermatologist</p>
+                </mat-button-toggle>
+              </mat-grid-tile>
+           </mat-grid-list>
+    <mat-grid-list cols="3" style="margin-top:-15px;margin-bottom:-15px">
+        <mat-grid-tile>
+          <mat-button-toggle (change)="onValChange($event.value)" value="generalPhysician">
+            <img mat-card-image src="/assets/images/physi.jpg" alt="General Physician">
+          <p>General Physician</p>
+        </mat-button-toggle>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-button-toggle (change)="onValChange($event.value)" value="opthalmologist">
+              <img mat-card-image src="/assets/images/opt.jpg" alt="Opthalmologist">
+            <p>Opthalmologist</p>
+          </mat-button-toggle>
+         </mat-grid-tile>
+         <mat-grid-tile>
+          <mat-button-toggle (change)="onValChange($event.value)" value="gynaechologist">
+            <img mat-card-image src="/assets/images/gyn.jpg" alt="Gynaechologist">
+          <p>Gynaechologist</p>
+        </mat-button-toggle>
+       </mat-grid-tile>
+     </mat-grid-list> 
+     <br/>
+     <p>
+        <mat-form-field align="center" style="width:400px" appearance="outline">
+          <mat-label>Other</mat-label>
+          <input  type="text" [(ngModel)]="Specialization" [formControl]="myControl" formControlName="SpecializationCtrl" matInput placeholder="Other Specialization" [matAutocomplete]="auto">
+          <mat-autocomplete  #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </p>
+          </mat-card-content>
+            </mat-card>
+            </form>
+            <br/>
+            <div align="center">
+                <button  mat-stroked-button matStepperPrevious>Back</button>
+                <button  mat-stroked-button matStepperNext  (click)="saveSpecialization()">Next</button>
+              </div>
+        </mat-step>
+
+        <mat-step [stepControl]="thirdFormGroup">
+            <mat-card class="example-card">
+            <form [formGroup]="thirdFormGroup">
+              <ng-template matStepLabel>
+                 Clinic details
+              </ng-template>
+            
+                  <p>
+                      <mat-form-field style="width:400px" appearance="outline">
+                        <mat-label>Clinic Name</mat-label>
+                        <input  type="text" [(ngModel)]="clinicName" formControlName="ClinicNameCtrl" matInput placeholder="Clinic name" required minlength="4">
+                      </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field style="width:400px" appearance="outline">
+                          <mat-label>Mobile</mat-label>
+                          <input type="text" [(ngModel)]="mobile" formControlName="MobileCtrl" matInput placeholder="Mobile" required minlength="10" maxlength="10">
+                        </mat-form-field>
+                      </p>
+                      <p>
+                          <mat-form-field style="width:400px" appearance="outline">
+                            <mat-label>State</mat-label>
+                            <select matNativeControl formControlName="StateCtrl">
+                                <option label="--choose--"></option>
+                                <option value="andhra Pradesh">Andhra Pradesh</option>
+                                <option value="telangana">Telangana</option>
+                                <option value="uttar pradesh">Uttar Pradesh</option>
+                                <option value="madhya Pradesh">Madhya Pradesh</option>
+                              </select>
+                          </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field style="width:400px" appearance="outline">
+                              <mat-label>City</mat-label>
+                              <input type="text" [(ngModel)]="city" formControlName="CityCtrl" matInput placeholder="City" required>
+                            </mat-form-field>
+                          </p>
+                          <p>
+                              <mat-form-field style="width:400px" appearance="outline">
+                                <mat-label>Flat No</mat-label>
+                                <input type="text" [(ngModel)]="flatNo" formControlName="FlatNoCtrl" matInput placeholder="Flat No" required maxlength="30">
+                              </mat-form-field>
+                            </p>
+                            <p>
+                                <mat-form-field style="width:400px" appearance="outline">
+                                  <mat-label>Area</mat-label>
+                                  <input type="text" [(ngModel)]="area" formControlName="AreaCtrl" matInput placeholder="Area" required maxlength="50">
+                                </mat-form-field>
+                              </p>
+                              <p>
+                                  <mat-form-field style="width:400px" appearance="outline">
+                                    <mat-label>Pincode</mat-label>
+                                    <input  formControlName="pincode" type="text" [(ngModel)]="pincode" formControlName="PincodeCtrl" matInput placeholder="Pincode" required maxlength="6">
+                                  </mat-form-field>
+                                </p>
+             
+              <div align="center">
+                <button mat-stroked-button matStepperPrevious>Back</button>
+                <button mat-stroked-button matStepperNext [disabled]="thirdFormGroup.invalid" (click)="saveClinic()">Submit</button>
+              </div>
+            </form>
+            </mat-card>
+        </mat-step>
+    
+        <mat-step>
+            <ng-template matStepLabel>
+              <strong>Done!</strong>
+            </ng-template>
+            <div align="center">
+            <img src="/assets/images/okk.png">
+            <button align="center" mat-stroked-button  (click)="goToLogin()" >Login  </button><br/><br/>
+            </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </section>
+    <router-outlet></router-outlet>
+    </body>
+   
+   

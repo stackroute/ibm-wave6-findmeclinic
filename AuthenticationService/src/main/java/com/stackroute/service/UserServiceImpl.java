@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
         User user=new User(patient.getEmailId(),patient.getPassword(),patient.getRole());
         saveUser(user);
     }
+
     @KafkaListener(topics = "doctorcredentials",groupId = "Group_Json1",containerFactory = "kafkaListenerContainerFactory1")
     public void consumeJson1(@Payload Doctor doctor)
     {

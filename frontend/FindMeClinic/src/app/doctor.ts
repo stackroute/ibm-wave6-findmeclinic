@@ -1,4 +1,5 @@
 import { Address } from './address';
+import { DoctorAppointment } from './doctorappointment';
 
 export class Doctor {
   name:String;
@@ -8,12 +9,13 @@ export class Doctor {
   profileImage:String;
   practiceStartedDate:String
   emailId:String;
-  password:String;
- 
-    // qualification;
+  password:String; 
+    qualification:String
     specialization:String;
     clinicName:String;
     address:Address;
+    phone:string;
+    doctorAppointment:DoctorAppointment;
 
 
   }

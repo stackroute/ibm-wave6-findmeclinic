@@ -1,11 +1,11 @@
 export class Patient{
 
-    name:String;
-    dateOfBirth:String;
-    gender:String;
-    phone:String;
-    emailId:String;
+    name:string;
+    dateOfBirth:string;
+    gender:string;
+    phone:string;
+    emailId:string;
     password:String;
-    role:String
+    role:string
 
 }

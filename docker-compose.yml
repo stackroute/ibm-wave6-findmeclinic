@@ -1,6 +1,42 @@
 version: "2"
 services:
 
+  eurekaserver:
+    image: eureka-servcie:1.0.0
+    build: eureka-server/
+    restart: always
+    network_mode: host
+    ports:
+      - 8084:8084
+    expose:
+      - 8084
+
+
+  zuulgateway:
+    image: zuul-service:1.0.0
+    build: zuul-api/
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaserver
+    ports:
+      - 8083:8083
+    expose:
+      - 8083
+
+
+  configserver:
+    image: config-server:1.0.0
+    build: config-server/
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaserver
+    ports:
+      - 8085:8085
+    expose:
+      - 8085
+
   zookeeper:
     container_name: zookeeper
     image: wurstmeister/zookeeper:latest
@@ -42,6 +78,15 @@ services:
     expose:
       - 8080
 
+  schedulerservice:
+    build: SchedulerService/
+    image: schedulerservice
+    network_mode: host
+    ports:
+      - 8086:8086
+    expose:
+      - 8086
+
   authenticationservice:
     build: AuthenticationService/
     image: authenticationservice
@@ -52,6 +97,19 @@ services:
       - 8081:8081
     expose:
       - 8081
+
+
+  bookappointmentservice:
+    build: BookAppointmentService/
+    image: bookappointmentservice
+    network_mode: host
+    depends_on:
+      [mongo]
+    ports:
+      - 8084:8084
+    expose:
+      - 8084
+
 
   mongo:
     image: mongo:3.4-xenial
@@ -77,6 +135,7 @@ services:
       MYSQL_DATABASE: logindb
       MYSQL_USER: root
       MYSQL_ALLOW_EMPTY_PASSWORD: "YES"
+
     volumes:
       - $HOME/data/datasql:/var/lib/mysql
     network_mode: "host"

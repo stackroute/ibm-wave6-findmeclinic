@@ -1,6 +1,7 @@
 package com.stackroute.controller;
 
 import com.stackroute.domain.Doctor;
+import com.stackroute.domain.DoctorAppointment;
 import com.stackroute.domain.Slot;
 import com.stackroute.exception.DoctorAlreadyExistsException;
 import com.stackroute.exception.DoctorNotFoundException;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,20 +29,22 @@ public class DoctorController {
     @PostMapping("doctor")
     public ResponseEntity<?> save(@RequestBody Doctor doctor) {
 
-        String status=null;
-        try {
-            status=doctorService.save(doctor);
-          return new ResponseEntity<String>(status, HttpStatus.CREATED);
+
+         try {
+            Doctor doctor1=doctorService.save(doctor);
+            return new ResponseEntity<>(doctor1, HttpStatus.CREATED);
 
         } catch (DoctorAlreadyExistsException e) {
-            return new ResponseEntity<String>("Doctor Already Exists",HttpStatus.CONFLICT);
-        }
+            return new ResponseEntity<>("Doctor Already Exists",HttpStatus.CONFLICT);
+       }
     }
+
+    
 
     @DeleteMapping("doctor/{emailId}")
     public ResponseEntity<?> delete(@PathVariable String emailId) {
 
-        return new ResponseEntity<String>(doctorService.delete(emailId), HttpStatus.OK);
+        return new ResponseEntity<>(doctorService.delete(emailId), HttpStatus.OK);
     }
 
     @PutMapping("doctor/{emailId}")
@@ -48,9 +52,9 @@ public class DoctorController {
 
         ResponseEntity responseEntity;
         try{
-            return new ResponseEntity<String>(doctorService.update(doctor),HttpStatus.OK);
+            return new ResponseEntity<>(doctorService.update(doctor),HttpStatus.OK);
         } catch (DoctorNotFoundException e) {
-            return new ResponseEntity<String>("Doctor doesn't exist",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Doctor doesn't exist",HttpStatus.NOT_FOUND);
 
         }
 
@@ -66,11 +70,23 @@ public class DoctorController {
             return new ResponseEntity<Doctor>(doctorService.updateSlot(slot,emailId),HttpStatus.OK);
     }
 
+    @GetMapping("doctors1/{emailId}")
+    public ResponseEntity<?> getDoctorByEmailId(@PathVariable String emailId){
+
+        return new ResponseEntity<>(doctorService.getDoctorByEmailId(emailId),HttpStatus.OK);
+    }
+
+
 
     @GetMapping("doctors")
     public ResponseEntity<?> getAll(){
 
         return new ResponseEntity<List<Doctor>>(doctorService.getAll(),HttpStatus.OK);
+    }
+
+    @GetMapping("doctors/{area}")
+    public ResponseEntity<?> findDoctorByLocation(@PathVariable String area){
+        return new ResponseEntity<>(doctorService.findDoctorByLocation(area), HttpStatus.OK);
     }
 
     @GetMapping("doctor/{specialization}")
@@ -81,6 +97,16 @@ public class DoctorController {
     @GetMapping("doctor/{area}/{specialization}")
     public ResponseEntity<?> findDoctorByLocationAndSpecialization(@PathVariable String area,@PathVariable String specialization){
         return new ResponseEntity<>(doctorService.findDoctorByLocationAndSpecialization(area, specialization), HttpStatus.OK);
+    }
+    @GetMapping("doctors2/{emailId}")
+    public ResponseEntity<?> getAllAppointments(@PathVariable String emailId){
+        try {
+            return new ResponseEntity<List<DoctorAppointment>>(doctorService.getAllAppointments(emailId), HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity<String>("No appointments Found",HttpStatus.NOT_FOUND);
+        }
     }
 
 }

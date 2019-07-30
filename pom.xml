@@ -19,6 +19,11 @@
         <module>AuthenticationService</module>
         <module>PatientService</module>
         <module>DoctorService</module>
+        <module>config-server</module>
+        <module>zuul-api</module>
+        <module>eureka-server</module>
+        <module>BookAppointmentService</module>
+        <module>SchedulerService</module>
     </modules>
 
     <dependencies>

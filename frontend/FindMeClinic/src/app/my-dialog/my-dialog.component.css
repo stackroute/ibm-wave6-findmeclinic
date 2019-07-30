@@ -1,14 +1,33 @@
 button{
-    margin-left: 50px;
-    margin-right: 10px;
-    width: 200px;
+  margin-left: 50px;
+  margin-right: 10px;
+  width: 200px;
 }
+
 @media (min-width: 768px) {
-    .container {
-      max-width: 730px;
-    }
+  .container {
+    max-width: 730px;
   }
-  p{
-    text-align: center;
-  }
-  
+}
+h5{
+  text-align: center;
+}
+.close{
+  display:flex;
+  justify-content: center;
+  /* text-align: center; */
+}
+
+/* .cross{
+  float: right;
+} */
+
+mat-chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+}

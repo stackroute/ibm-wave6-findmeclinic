@@ -6,6 +6,9 @@
 } */
 body{
   background-color: #eff5f8;
+  /* background-image: url("../../assets/images/background.png"); */
+  background-repeat: repeat;
+  background-image:url("https://wallpaperplay.com/walls/full/d/b/a/13993.jpg");
 }
 
 .container{
@@ -20,6 +23,22 @@ body{
     
   }
  
+h5{
+  color:  #2fd5f8;
+}
+.cards:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  animation-name: example;
+  animation-duration: 0.25s;
+  border-left: 8px solid #2fd5f8;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+
+
+
   .cards{
    margin-top: 10px;
    margin-bottom: 10px;
@@ -31,13 +50,20 @@ body{
    height: 250px;
    margin: 0 auto; 
    float: none;
-   border: 1px solid #e5e5e5; 
+   border: 2px solid #e5e5e5; 
+   /* background-color: beige; */
+   /* border: 2px solid gray; */
+   /* box-shadow: #2fd5f8;
+   box-shadow: 20px; */
  
    /* text-align: center; */
+   animation-name: fadeIn;
+  
   
   }
   .imageClass{
-    height: 230px; 
+    height: 160px; 
+    padding-top: 15px;
   }
   .buttons{
     margin-bottom: 10px;
@@ -52,6 +78,7 @@ body{
   button{
     background-color: #2fd5f8;
     color: #fff;
+    float: right;
   }
   
 /* 
@@ -61,6 +88,46 @@ body{
  }
 } */
 
+.hrCards{
+  width: 900px;
+  align-content:center;
+  color: grey;
+}
+#end-col{
+  padding-top: 40px;
+  text-align: center;
+  display: inline;
+ 
+  /* vertical-align: middle; */
+}
 
 
 
+/* td{
+  padding-left: 30px;
+  width: 100px;
+  padding: 10px;
+} */
+img{
+  border-radius: 50%;
+}
+
+
+i{
+  vertical-align: -6px;
+}
+.details{
+  color: solid grey;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

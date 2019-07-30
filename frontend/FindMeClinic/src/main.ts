@@ -9,6 +9,12 @@ if (environment.production) {
   enableProdMode();
 }
 
+// if(localStorage!=null)
+// {
+//   localStorage.clear();
+// }
+
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 

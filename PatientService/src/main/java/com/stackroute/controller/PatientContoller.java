@@ -1,6 +1,7 @@
 package com.stackroute.controller;
 
 import com.stackroute.domain.Patient;
+import com.stackroute.domain.PatientAppointment;
 import com.stackroute.exceptions.PatientAlreadyExistsException;
 import com.stackroute.exceptions.PatientNotFoundException;
 import com.stackroute.service.PatientService;
@@ -41,6 +42,17 @@ public class PatientContoller {
         return new ResponseEntity<List<Patient>>(patientService.getPatients(),HttpStatus.OK);
     }
 
+    @GetMapping("patients/{emailId}")
+    public ResponseEntity<?> getPatientByEmailId(@PathVariable String emailId){
+        try {
+            return new ResponseEntity<Patient>(patientService.getPatientByEmailId(emailId), HttpStatus.OK);
+        }
+        catch (PatientNotFoundException p)
+        {
+            return new ResponseEntity<String>("Patient Not Found",HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("patient/{emailId}")
     public ResponseEntity<?> deletePatient(@PathVariable String emailId){
         try {
@@ -55,6 +67,17 @@ public class PatientContoller {
     @PutMapping("patient")
     public ResponseEntity<?> updatePatient(@RequestBody Patient patient)  {
         return new ResponseEntity<Patient>(patientService.updatePatient(patient),HttpStatus.OK);
+    }
+
+    @GetMapping("patients1/{emailId}")
+    public ResponseEntity<?> getAllAppointments(@PathVariable String emailId){
+        try {
+            return new ResponseEntity<List<PatientAppointment>>(patientService.getAllAppointments(emailId), HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity<String>("No appointments Found",HttpStatus.NOT_FOUND);
+        }
     }
 
 

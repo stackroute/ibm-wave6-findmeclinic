@@ -1,8 +1,10 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { Patient } from '../Patient';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { PatientdashboardService } from '../patientdashboard.service';
 import { PatientRegistrationService } from '../patient-registration.service';
+
 
 @Component({
  selector: 'app-patientregistration',
@@ -17,21 +19,33 @@ export class PatientregistrationComponent implements OnInit {
   gender="";
 
  patient:Patient=new Patient();
- constructor(private registration:PatientRegistrationService,private formBuilder:FormBuilder) { }
+  patientData: any;
+  patientName:string;
+    patientDateOfBirth:string;
+    patientEmail:string;
+    patientPhone:string;
+ constructor(private registration:PatientRegistrationService,private formBuilder:FormBuilder,private activatedRoute:ActivatedRoute,
+  private patientEditProfile:PatientdashboardService,private router:Router) { }
 
  ngOnInit() {
+  this.patientName=sessionStorage.getItem('patientName');
+  this.patientDateOfBirth=sessionStorage.getItem('dateOfBirth');
+  this.patientEmail=sessionStorage.getItem('email');
+  this.patientPhone=sessionStorage.getItem('mobile');
   this.validation();
-  
+ 
+ 
  }
+ 
 
  validation()
  {
   this.registerForm = this.formBuilder.group({
-    firstName: ['', Validators.required],
-    date: ['', Validators.required],
-    phone: ['',[Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+    firstName: [this.patientName, Validators.required],
+    date: [this.patientDateOfBirth, Validators.required],
+    phone: [this.patientPhone,[Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
     gender: ['', Validators.required],
-    email: ['',[Validators.required, Validators.email]],
+    email: [this.patientEmail,[Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
     
 }, );
@@ -70,8 +84,15 @@ findInvalidControls() {
   console.log(invalid);
   if(invalid.length==0)
   {
+
     return this.registration.savePatient(this.patient).subscribe(data =>{
-      console.log(data);
+      if(localStorage.hasOwnProperty('url')){
+        sessionStorage.setItem('username',this.patient.emailId);
+        window.location.href=localStorage.getItem('url');
+      }
+      else{
+     this.router.navigateByUrl('/login');
+      }
        }
      );
   }
