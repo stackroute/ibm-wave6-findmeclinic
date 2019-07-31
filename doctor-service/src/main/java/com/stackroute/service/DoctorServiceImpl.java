@@ -18,6 +18,8 @@ import java.util.Optional;
 public class DoctorServiceImpl implements DoctorService {
 
     DoctorRepository doctorRepository;
+    private static final String DOCTOR_ALREADY_EXISTS ="Doctor Already Exists";
+    private static final String DOCTOR_DOESN_T_EXISTS ="Doctor doesn't exists";
 
     @Autowired
     public DoctorServiceImpl(DoctorRepository doctorRepository) {
@@ -39,7 +41,7 @@ public class DoctorServiceImpl implements DoctorService {
 
         try {
             if (optional.isPresent()){
-                throw new DoctorAlreadyExistsException("Doctor Already Exists");
+                throw new DoctorAlreadyExistsException(DOCTOR_ALREADY_EXISTS);
             }
             String[] slots={"morning","afternoon","evening"};
             Slot slot=new Slot(slots);
@@ -63,9 +65,9 @@ public class DoctorServiceImpl implements DoctorService {
                 doctorRepository.deleteById(emailId);
                 return "Deleted Successfully";
             }
-            throw new DoctorNotFoundException("Doctor doesn't exists");
+            throw new DoctorNotFoundException(DOCTOR_DOESN_T_EXISTS);
         } catch (DoctorNotFoundException e) {
-            return "Doctor doesn't exists";
+            return DOCTOR_DOESN_T_EXISTS;
         }
     }
 
@@ -80,9 +82,9 @@ public class DoctorServiceImpl implements DoctorService {
 
                 return "Updated Successfully";
             }
-            throw new DoctorNotFoundException("Doctor doesn't exists");
+            throw new DoctorNotFoundException(DOCTOR_DOESN_T_EXISTS);
         } catch (DoctorNotFoundException e) {
-            return "Doctor doesn't exists";
+            return DOCTOR_DOESN_T_EXISTS;
         }    }
 
     @Override
@@ -154,13 +156,11 @@ public class DoctorServiceImpl implements DoctorService {
         Optional optional=doctorRepository.findById(emailId);
         if (optional.isPresent())
         {
-            System.out.println(doctorAppointment.toString());
             Doctor doctor= (Doctor) optional.get();
             List<DoctorAppointment> doctorAppointments=doctor.getDoctorAppointmentList();
             doctorAppointments.add(doctorAppointment);
             doctor.setDoctorAppointmentList(doctorAppointments);
             doctorRepository.save(doctor);
-            System.out.println("Doctor Service Impl: "+doctor);
 
         }
           }
@@ -189,7 +189,6 @@ public class DoctorServiceImpl implements DoctorService {
     @KafkaListener(topics = "appointmentDetails",groupId = "Group_Json2",containerFactory = "kafkaListenerContainerFactory")
     public void consumeJson(@Payload BookAppointment bookAppointment)
     {
-        System.out.println("Consumed appointment"  +bookAppointment.toString());
         DoctorAppointment doctorAppointment=new DoctorAppointment(bookAppointment.getAppointmentId(),bookAppointment.getPatient(),bookAppointment.getAppointmentDate(),bookAppointment.getSlot(),bookAppointment.getKey(),bookAppointment.getAppointmentTime());
         String emailId=bookAppointment.getDoctor().getEmailId();
         updateDoctorAppointments(doctorAppointment,emailId);

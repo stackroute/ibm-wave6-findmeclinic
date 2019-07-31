@@ -1,30 +1,3 @@
-<!-- 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-    <a href="http://localhost:4200/#" class="navbar-brand ml-3" style="color:rgb(33, 173, 228)">
-        <img src="../../assets/images/logo (1).png" style="height: 60px;width: auto;margin-left: 40px" alt ="FindMeClinic"/>
-    </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-       
-         <ul class="nav navbar-nav ml-auto">
-               
-            <li> <button class="btn btn-lg button4 " type="text" (click)="openTabbedPane()">Login</button></li>
-       </ul> -->
-       <!-- <div  style="margin-left:350px">{{city1}}{{city}} <i class="down" (click)="routeto()"></i></div>
-       <div class="col-md-2 mb-6">
-        <div class="color-block mx-auto mb-3 warm-flame-gradient z-depth-2">
-        <div class="btn btn-info btn-lg btn-login" (click)="openTabbedPane()">Login</div>
-    </div>
-    </div>
-
-    
-           
-       
-</div>
-</nav> -->
 <app-navbar></app-navbar>
 
 <br><br><br>
@@ -37,39 +10,33 @@
                 <div class="d-flex justify-content-center h-80">
                     <div class="card text-white" style="margin-top:150px;background-color:rgba(7, 7, 7, 0.5)">
                         <div class="card-header" style="color: #2fd5f8">
-                           <div class="data" style="margin-left: 14%"> <h3>Find NearBy Doctors</h3></div>
+                           <div class="data" style="margin-left: 18%"> <h3>Find NearBy Doctors</h3></div>
                         </div>
                         <div class="card-body">
                             <form>
                                 <div class="container">
                                     <div class="row heading heading-icon" style="margin-left: 70px">
                                    
-                               <div style="color: #2fd5f8"> <h4>Select Location</h4></div>
-                                <!-- <div class="butt" style="margin-left: 10%"><form action="/action_page.php">
-                                    <select name="cars" (change)="selectChangeHandler($event)" >
-                                     
-                                      <option *ngFor="let place1 of places" [value]=place1>{{place1}}</option>
-                                    </select>
-                                   
-                                  </form></div> -->
-
-                                  <form>
-                                    <mat-form-field>
-                                        <input type="text" [(ngModel)]="location" matInput [matAutocomplete]="auto" [formControl]="myControl"  >
+                               <div style="color: #2fd5f8 ;margin-left: 39px"> <h4>Select Location</h4></div>
+                               
+    
+                            <div style="margin-left: 37px">
+                                <form >
+                                    <!-- <mat-form-field> -->
+                                        <input class="search-area" type="text" placeholder="Search an area"  [(ngModel)]="location"  [matAutocomplete]="auto" [formControl]="myControl"  >
                                         <mat-autocomplete #auto="matAutocomplete" >
                                                 <!-- autoActiveFirstOption -->
                                             <mat-option *ngFor="let option of filteredOptions | async" [value]="option"  (click)="search()">
                                                     {{option}}
                                             </mat-option>
                                         </mat-autocomplete>
-                                    </mat-form-field>
+                                    <!-- </mat-form-field> -->
                                 </form>
-    
-
+                            </div>
 
                                 </div>
                                 </div><br>
-                                <div class="container">
+                                <div class="" style="width:100%;background:white">
                                     
                                 <button class="btn btn1" (click)="doctorDetails()">Doctor</button>
                                 <button class="btn btn1" >Clinic</button>

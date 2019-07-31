@@ -104,12 +104,20 @@
  .btn-register {
   background: #2fd5f8;
   color: #fff;
-  height: 40px;
-  padding-bottom: 35px;
-  margin-top:20px;
+  height: 38px;
+  padding-bottom: 15px;
+  margin-top:18px;
  }
  .btn-register:hover{
   color: black;
   background-color: white;
   font-weight: 400
   }
+  .container{
+    padding:1%;
+    padding-bottom: 2%;
+  }
+  .row{
+    padding:4%;
+  }
+ 

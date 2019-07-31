@@ -44,7 +44,7 @@ export class LandingpageComponent implements OnInit {
     this.dialogRef = this.dialog.open(PopupComponent, {
       width: '750px',
       height: '320px',
-      //  disableClose: true,
+       disableClose: true,
       });
    this.start();
   // this.next();
@@ -127,3 +127,4 @@ private  _filter(value:string): string[] {
    console.log("selected location is ",this.selectedArea);
  }
 }
+

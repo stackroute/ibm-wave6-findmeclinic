@@ -1,8 +1,6 @@
 package com.stackroute.config;
 
 import com.stackroute.domain.BookAppointment;
-import com.stackroute.domain.Doctor;
-import com.stackroute.domain.Patient;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
@@ -20,10 +18,11 @@ import java.util.Map;
 @Configuration
 public class ConsumerConfiguration {
 
+    private static final String CONFIG_ADDRESS ="127.0.0.1:9092";
     @Bean
     public ConsumerFactory<String, BookAppointment> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, CONFIG_ADDRESS);
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "Group_Json2");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);

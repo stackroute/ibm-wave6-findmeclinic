@@ -13,7 +13,6 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
-import java.awt.print.Book;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,11 +20,12 @@ import java.util.Map;
 @Configuration
 public class ConsumerConfiguration {
 
+    private static final String CONFIG_ADDRESS ="127.0.0.1:9092";
     @Bean
-    public ConsumerFactory<String, Patient> consumerFactory4()
+    public ConsumerFactory<String, Patient> consumerFactory()
     {
         Map<String, Object> config=new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,"127.0.0.1:9092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, CONFIG_ADDRESS);
         config.put(ConsumerConfig.GROUP_ID_CONFIG,"Group_Json4");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
@@ -34,17 +34,17 @@ public class ConsumerConfiguration {
 
     }
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String,Patient> kafkaListenerContainerFactory4()
+    public ConcurrentKafkaListenerContainerFactory<String,Patient> kafkaListenerContainerFactory()
     {
         ConcurrentKafkaListenerContainerFactory<String,Patient> factory=new ConcurrentKafkaListenerContainerFactory();
-        factory.setConsumerFactory(consumerFactory4());
+        factory.setConsumerFactory(consumerFactory());
         return factory;
     }
     @Bean
     public ConsumerFactory<String, Doctor> consumerFactory5()
     {
         Map<String, Object> config=new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,"127.0.0.1:9092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, CONFIG_ADDRESS);
         config.put(ConsumerConfig.GROUP_ID_CONFIG,"Group_Json5");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
@@ -63,7 +63,7 @@ public class ConsumerConfiguration {
     public ConsumerFactory<String, Doctor> consumerFactory6()
     {
         Map<String, Object> config=new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,"127.0.0.1:9092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, CONFIG_ADDRESS);
         config.put(ConsumerConfig.GROUP_ID_CONFIG,"Group_Json6");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
@@ -81,7 +81,7 @@ public class ConsumerConfiguration {
     public ConsumerFactory<String, BookAppointment> consumerFactory7()
     {
         Map<String, Object> config=new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,"127.0.0.1:9092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, CONFIG_ADDRESS);
         config.put(ConsumerConfig.GROUP_ID_CONFIG,"Group_Json7");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);

@@ -1,7 +1,6 @@
 package com.stackroute.controller;
 
 import com.stackroute.domain.Doctor;
-import com.stackroute.domain.DoctorAppointment;
 import com.stackroute.domain.Slot;
 import com.stackroute.exception.DoctorAlreadyExistsException;
 import com.stackroute.exception.DoctorNotFoundException;
@@ -57,7 +56,7 @@ public class DoctorController {
     
 
     @DeleteMapping("doctor/{emailId}")
-    public ResponseEntity<?> delete(@PathVariable String emailId) {
+    public ResponseEntity<String> delete(@PathVariable String emailId) {
 
         return new ResponseEntity<>(doctorService.delete(emailId), HttpStatus.OK);
     }
@@ -76,13 +75,12 @@ public class DoctorController {
     }
 
     @PutMapping("doctor1/{emailId}")
-    public ResponseEntity<?> updateSlots(@RequestBody Slot slot,@PathVariable String emailId) {
+    public ResponseEntity<Doctor> updateSlots(@RequestBody Slot slot,@PathVariable String emailId) {
 
-        System.out.println(slot+"\t"+emailId);
 
         ResponseEntity responseEntity;
 
-            return new ResponseEntity<Doctor>(doctorService.updateSlot(slot,emailId),HttpStatus.OK);
+            return new ResponseEntity<>(doctorService.updateSlot(slot,emailId),HttpStatus.OK);
     }
 
     @GetMapping("doctors1/{emailId}")
@@ -105,23 +103,17 @@ public class DoctorController {
     }
 
     @GetMapping("doctor/{specialization}")
-    public ResponseEntity<?> findDoctorBySpecialization(@PathVariable String specialization){
+    public ResponseEntity<List<Doctor>> findDoctorBySpecialization(@PathVariable String specialization){
         return new ResponseEntity<>(doctorService.findDoctorBySpecialization(specialization),HttpStatus.OK);
     }
 
     @GetMapping("doctor/{area}/{specialization}")
-    public ResponseEntity<?> findDoctorByLocationAndSpecialization(@PathVariable String area,@PathVariable String specialization){
+    public ResponseEntity<List<Doctor>> findDoctorByLocationAndSpecialization(@PathVariable String area,@PathVariable String specialization){
         return new ResponseEntity<>(doctorService.findDoctorByLocationAndSpecialization(area, specialization), HttpStatus.OK);
     }
     @GetMapping("doctors2/{emailId}")
     public ResponseEntity<?> getAllAppointments(@PathVariable String emailId){
-        try {
-            return new ResponseEntity<List<DoctorAppointment>>(doctorService.getAllAppointments(emailId), HttpStatus.OK);
-        }
-        catch (Exception e)
-        {
-            return new ResponseEntity<String>("No appointments Found",HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>(doctorService.getAllAppointments(emailId),HttpStatus.OK);
     }
 
 }

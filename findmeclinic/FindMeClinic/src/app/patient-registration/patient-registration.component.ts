@@ -18,8 +18,8 @@ export class PatientregistrationComponent implements OnInit {
   status=false;
   gender="";
 
-  minDate = new Date(1990, 0, 1);
- maxDate =  new Date(2019, 6, 31);
+//   minDate = new Date(1990, 0, 1);
+//  maxDate =  new Date(2019, 7, 31);
 
  patient:Patient=new Patient();
   patientData: any;
@@ -71,6 +71,7 @@ export class PatientregistrationComponent implements OnInit {
 get f() { return this.registerForm.controls; }
 
 onSubmit() {
+  console.log("Hii");
     this.submitted = true;
     this.findInvalidControls();
  //  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
@@ -87,7 +88,7 @@ findInvalidControls() {
   console.log(invalid);
   if(invalid.length==0)
   {
-
+    
     return this.registration.savePatient(this.patient).subscribe(data =>{
       if(localStorage.hasOwnProperty('url')){
         sessionStorage.setItem('username',this.patient.emailId);

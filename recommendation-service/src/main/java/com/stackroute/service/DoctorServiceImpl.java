@@ -148,7 +148,6 @@ public class DoctorServiceImpl implements DoctorService {
     @KafkaListener(topics = "doctorcredentials", groupId = "Group_Json5", containerFactory = "kafkaListenerContainerFactory5")
     public void consumeJson1(@Payload Doctor doctor) {
         save(doctor);
-        System.out.println("Consumed doctor" + doctor.toString());
     }
 
     @KafkaListener(topics = "doctorupdateddetails", groupId = "Group_Json6", containerFactory = "kafkaListenerContainerFactory6")

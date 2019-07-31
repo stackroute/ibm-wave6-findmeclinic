@@ -117,12 +117,12 @@ public class PatientServiceImpl implements PatientService{
     public List<PatientAppointment> getAllAppointments(String emailId)
     {
         Optional optional=patientRepository.findById(emailId);
+        List<PatientAppointment> patientAppointmentList=new ArrayList<>();
         if(optional.isPresent()) {
             Patient patient = (Patient) optional.get();
-            List<PatientAppointment> patientAppointmentList = patient.getPatientAppointmentList();
-            return patientAppointmentList;
+            patientAppointmentList = patient.getPatientAppointmentList();
         }
-        return null;
+        return patientAppointmentList;
 
     }
 
@@ -136,7 +136,7 @@ public class PatientServiceImpl implements PatientService{
     }
 
 
-    @KafkaListener(topics = "appointmentDetails",groupId = "Group_Json2")
+    @KafkaListener(topics = "appointmentDetails",groupId = "Group_Json3")
     public void consumeJson(@Payload BookAppointment bookAppointment)
     {
 

@@ -17,10 +17,12 @@ mat-expansion-panel {
     background: url("../../assets/images/18.jpeg") no-repeat center top / cover;
   }
   .upcomingDataCard{
-      /* max-width: 500px; */
+       max-width: 500px; 
       background: url("../../assets/images/21.jpg") no-repeat center top / cover;
+     
   }
   .previousDataCard{
+    max-width: 500px; 
     background: url("../../assets/images/21.jpg") no-repeat center top / cover;
   }
  p{
@@ -29,6 +31,7 @@ mat-expansion-panel {
   font-weight:400;
  }
   .cardList {
+
   padding-left:30px;
   padding-top:30px;
     display: flex;

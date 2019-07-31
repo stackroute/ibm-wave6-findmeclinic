@@ -8,7 +8,7 @@ body{
   background-color: #eff5f8;
   /* background-image: url("../../assets/images/background.png"); */
   background-repeat: repeat;
-  background-image:url("https://wallpaperplay.com/walls/full/d/b/a/13993.jpg");
+  background: url("../../assets/images/36.jpg") repeat center top / cover;
 }
 
 .container{

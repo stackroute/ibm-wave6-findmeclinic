@@ -42,10 +42,9 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.deleteRelationForPatientAndDoctor(patientMailId, docEmailId);
     }
 
-    @KafkaListener(topics = "patientcredentials",groupId = "Group_Json4",containerFactory = "kafkaListenerContainerFactory4")
+    @KafkaListener(topics = "patientcredentials",groupId = "Group_Json4",containerFactory = "kafkaListenerContainerFactory")
     public void consumeJson(@Payload Patient patient)
-    {   save(patient);
-        System.out.println("Consumed patient"  +patient.toString());
-
+    {
+        save(patient);
     }
 }

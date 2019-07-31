@@ -39,7 +39,7 @@
    border-bottom-left-radius: 10% 50%;
 }
 .register-left img{
-   margin-top: 15%;
+   margin-top: 57%;
    margin-bottom: 5%;
    width: 25%;
    -webkit-animation: mover 2s infinite  alternate;
@@ -68,7 +68,7 @@
    border: none;
    border-radius: 1.5rem;
    padding: 2%;
-   background: #0062cc;
+   background: #2fd5f8;
    color: #fff;
    font-weight: 600;
    width: 50%;
@@ -106,3 +106,15 @@
    margin-bottom: -15%;
    color: #495057;
 }
+.btn-register {
+   background: #2fd5f8;
+   color: #fff;
+   height: 38px;
+   padding-bottom: 15px;
+   margin-top:18px;
+  }
+  .btn-register:hover{
+   color: black;
+   background-color: white;
+   font-weight: 400
+   }
