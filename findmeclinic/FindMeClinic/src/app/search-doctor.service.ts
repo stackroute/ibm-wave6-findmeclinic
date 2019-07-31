@@ -26,13 +26,13 @@ location: any;
 //  }
  getAllDoctors(){
   console.log('this is in allDoctors service method');
-    return this.http.get('http://172.17.0.1:8082/api/v1/doctors', this.httpOptions);
+    return this.http.get('http://13.234.236.221:8082/api/v1/doctors', this.httpOptions);
    
   }
   
  getAllDoctorsBySpecialization(specialization:string) {
 
-   this.http.get('http://172.17.0.1:8082/api/v1/doctor/'+specialization).subscribe(data => {
+   this.http.get('http://13.234.236.221:8082/api/v1/doctor/'+specialization).subscribe(data => {
      this.filteredDoctors.next(data)
    });
   
@@ -42,8 +42,8 @@ getAllDoctorsBySpecializationAndArea(specialization:string) {
   console.log("Is this getting called in specialization and area ??");
   let y=sessionStorage.getItem('key');
   // console.log(`http://172.17.0.1:8082/api/v1/doctor/${encodeURIComponent(y)}/${encodeURIComponent(specialization)}`);
-  console.log(`http://172.17.0.1:8082/api/v1/doctor/${(y)}/${(specialization)}`);
-  this.http.get('http://172.17.0.1:8082/api/v1/doctor/'+y+'/'+specialization, this.httpOptions).subscribe(data =>{
+  console.log(`http://13.234.236.221:8082/api/v1/doctor/${(y)}/${(specialization)}`);
+  this.http.get('http://13.234.236.221:8082/api/v1/doctor/'+y+'/'+specialization, this.httpOptions).subscribe(data =>{
     this.byAreaDoctors.next(data);
   });
  console.log(this.byAreaDoctors,'in service');
@@ -52,7 +52,7 @@ getAllDoctorsBySpecializationAndArea(specialization:string) {
 getAllDoctorsByArea(area){
     
     console.log(area,'this is in byArea service method');
-     return this.http.get('http://172.17.0.1:8082/api/v1/doctors/'+area, this.httpOptions);
+     return this.http.get('http://13.234.236.221:8082/api/v1/doctors/'+area, this.httpOptions);
 
      this.location=area;
      }

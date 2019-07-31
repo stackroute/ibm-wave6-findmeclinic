@@ -63,25 +63,31 @@ public class DoctorServiceImpl implements DoctorService {
 
         Address address = addressService.save(doctor.getAddress());
         Clinic clinic = clinicService.save(new Clinic(doctor.getClinicName(), doctor.getClinicImage()));
-        DoctorDTO doctorDTO = doctorRepository.findById(doctor.getEmailId()).get();
-        doctorDTO = doctorRepository.deleteRelationShipBetweenDoctorDTOAndClinic(doctorDTO.getEmailId());
-        doctorDTO = doctorRepository.deleteRelationShipBetweenDoctorDTOAndAddress(doctorDTO.getEmailId());
+        Optional optional=doctorRepository.findById(doctor.getEmailId());
+        if (optional.isPresent()){
+            DoctorDTO doctorDTO = (DoctorDTO) optional.get();
+            doctorDTO = doctorRepository.deleteRelationShipBetweenDoctorDTOAndClinic(doctorDTO.getEmailId());
+            doctorDTO = doctorRepository.deleteRelationShipBetweenDoctorDTOAndAddress(doctorDTO.getEmailId());
 
-        doctorDTO.setEmailId(doctor.getEmailId());
-        doctorDTO.setName(doctor.getName());
-        doctorDTO.setGender(doctor.getGender());
-        doctorDTO.setPhone(doctor.getPhone());
-        doctorDTO.setProfileImage(doctor.getProfileImage());
-        doctorDTO.setQualification(doctor.getQualification());
-        doctorDTO.setPracticeStartedDate(doctor.getPracticeStartedDate());
-        doctorDTO.setNoOfAppointments(doctor.getDoctorAppointmentList().size());
+            doctorDTO.setEmailId(doctor.getEmailId());
+            doctorDTO.setName(doctor.getName());
+            doctorDTO.setGender(doctor.getGender());
+            doctorDTO.setPhone(doctor.getPhone());
+            doctorDTO.setProfileImage(doctor.getProfileImage());
+            doctorDTO.setQualification(doctor.getQualification());
+            doctorDTO.setPracticeStartedDate(doctor.getPracticeStartedDate());
+            doctorDTO.setNoOfAppointments(doctor.getDoctorAppointmentList().size());
 
-        doctorDTO = doctorRepository.save(doctorDTO);
+            doctorDTO = doctorRepository.save(doctorDTO);
 
-        doctorDTO = doctorRepository.createRelationBetweenDoctorDTOAndClinic(doctorDTO.getEmailId(), clinic.getClinicName());
-        doctorDTO = doctorRepository.createRelationBetweenDoctorDTOAndAddress(doctorDTO.getEmailId(), address.getPinCode());
+            doctorDTO = doctorRepository.createRelationBetweenDoctorDTOAndClinic(doctorDTO.getEmailId(), clinic.getClinicName());
+            doctorDTO = doctorRepository.createRelationBetweenDoctorDTOAndAddress(doctorDTO.getEmailId(), address.getPinCode());
 
-        return doctorDTO;
+            return doctorDTO;
+        }else{
+            return null;
+        }
+
 
     }
 
@@ -92,7 +98,11 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public DoctorDTO getDoctorByEmailId(String emailId) {
-        return doctorRepository.findById(emailId).get();
+        Optional optional=doctorRepository.findById(emailId);
+        if (optional.isPresent()){
+            return (DoctorDTO) optional.get();
+        }
+        return null;
     }
 
     @Override
@@ -135,26 +145,31 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.getDoctorsByLocationAndSpecializationForPatient(emailId);
     }
 
-    @KafkaListener(topics = "doctorcredentials", groupId = "Group_Json1", containerFactory = "kafkaListenerContainerFactory1")
+    @KafkaListener(topics = "doctorcredentials", groupId = "Group_Json5", containerFactory = "kafkaListenerContainerFactory5")
     public void consumeJson1(@Payload Doctor doctor) {
         save(doctor);
         System.out.println("Consumed doctor" + doctor.toString());
     }
 
-    @KafkaListener(topics = "doctorupdateddetails", groupId = "Group_Json2", containerFactory = "kafkaListenerContainerFactory2")
+    @KafkaListener(topics = "doctorupdateddetails", groupId = "Group_Json6", containerFactory = "kafkaListenerContainerFactory6")
     public void consumeJson2(@Payload Doctor doctor) {
         update(doctor);
-        System.out.println("Consumed doctor" + doctor.toString());
     }
 
-    @KafkaListener(topics = "appointmentDetails", groupId = "Group_Json3")
+    @KafkaListener(topics = "appointmentDetails", groupId = "Group_Json7",containerFactory = "kafkaListenerContainerFactory7")
     public void consumeJson(@Payload BookAppointment bookAppointment) {
-        System.out.println("Consumed appointment" + bookAppointment.toString());
-        updateAppointments(doctorRepository.findById(bookAppointment.getDoctor().getEmailId()).get());
+        Optional optional=doctorRepository.findById(bookAppointment.getDoctor().getEmailId());
+        if (optional.isPresent()) {
+            updateAppointments((DoctorDTO) optional.get());
+        }
     }
 
     public DoctorDTO updateAppointments(DoctorDTO doctorDTO) {
-        doctorDTO.setNoOfAppointments(doctorDTO.getNoOfAppointments() + 1);
+        Optional optional=doctorRepository.findById(doctorDTO.getEmailId());
+        if (optional.isPresent()){
+            doctorDTO.setNoOfAppointments(doctorDTO.getNoOfAppointments() + 1);
+            doctorRepository.save(doctorDTO);
+        }
 
         return doctorRepository.save(doctorDTO);
     }

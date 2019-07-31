@@ -14,16 +14,42 @@ import { Router, ActivatedRoute } from '@angular/router';
  styleUrls: ['./doctorregistration.component.css']
 })
 export class DoctorregistrationComponent implements OnInit {
+
+  minDate = new Date(1990, 0, 1);
+  maxDate = new Date(2019, 6, 31);
+
+  selectedVideo: any;
+  currentFileUpload: any;
+  mediaName: any;
   [x: string]: any;
+  cardSpecializaion='';
 
   myControl = new FormControl();
-  options: string[] = ['Nephrologist', 'Otolaryngologist', 'Pulmonologist','Radiologist','Anesthesiologist','Oncologist','Gastroenterologist','Surgeon'];
+  options: string[] = ['Dermatologist', 'Dietician', 'ENT Specialist','Homoeopath','Physiotherapist','Psychiatrist'];
   filteredOptions: Observable<string[]>;
 
+  control = new FormControl();
+  streets: string[] = ['Karnataka', 'Maharashtra', 'Delhi', 'Tamil Nadu','Andhra Pradesh','Uttar Pradesh','Madhya Pradesh'];
+  filteredStreets: Observable<string[]>;
 
-
+  namePattern = "[a-zA-Z\\s]*$";
  emailPattern =   "[a-z0-9._%+-]{1,40}[@]{1}[a-z]{1,10}[.]{1}[a-z]{3}";
+ passwordPattern = "[a-zA-Z0-9$#@]*$";
+ qualificationPattern = "[a-zA-Z,]*$";
+ medicalLicensePattern = "[a-zA-Z0-9]*$";
+specializationPattern = "[a-zA-Z]*$";
+
+
+clinicNamePattern = "[a-zA-Z\\s]*$";
+mobilePattern = "[0-9]{10}";
+statePattern = "[a-zA-Z\\s]*$";
+cityPattern = "[a-zA-Z]*$";
+flatNoPattern = "[a-zA-Z0-9]*$";
+areaPattern = "[a-zA-Z]{4,16}[\\s]{0,5}";
  pincodePattern= "[0-9]{6}";
+
+
+
 
  firstFormGroup: FormGroup;
  secondFormGroup:FormGroup;
@@ -31,9 +57,6 @@ export class DoctorregistrationComponent implements OnInit {
  doctor = new Doctor();
  address: any = {}
  hide= true;
- currentFileUpload:File;
- selectedVideo:FileList;
- mediaName:any;
 
 
 
@@ -61,6 +84,14 @@ private _filter(value: string): string[] {
   return this.options.filter(option => option.toLowerCase().includes(filterValue));
 }
 
+
+private _filter1(value: string): string[] {
+  const filterValue = value.toLowerCase();
+  return this.streets.filter(street => street.toLowerCase().includes(filterValue));
+}
+
+
+
  ngOnInit() {
 
   this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -68,31 +99,38 @@ private _filter(value: string): string[] {
     map(value => this._filter(value))
   );
 
+  this.filteredStreets = this.control.valueChanges.pipe(
+    startWith(''),
+    map(value => this._filter1(value))
+  );
+
+
    this.firstFormGroup = this._formBuilder.group({
-     NameCtrl: ['', Validators.required],
+     NameCtrl: ['', Validators.pattern(this.namePattern)],
      GenderCtrl: ['', Validators.required],
-     QualificationCtrl: ['', Validators.required],
-     MedicalLicenseCtrl: ['', Validators.required],
+     QualificationCtrl: ['', Validators.pattern(this.qualificationPattern)],
+     MedicalLicenseCtrl: ['', Validators.pattern(this.medicalLicensePattern)],
      PracticeStartedDateCtrl: ['', Validators.required],
      EmailCtrl: ['',Validators.pattern(this.emailPattern)],
-     PasswordCtrl: ['', Validators.required],
+     PasswordCtrl: ['', Validators.pattern(this.passwordPattern)],
      ProfilePhotoCtrl: ['', Validators.required],
    });
 
    this.secondFormGroup = this._formBuilder.group({
-    SpecializationCtrl: ['']
+    SpecializationCtrl: ['',Validators.pattern(this.specializationPattern)]
 
     });
 
 
    this.thirdFormGroup = this._formBuilder.group({
-     ClinicNameCtrl: ['', Validators.required],
-     MobileCtrl:['', Validators.required],
-     StateCtrl: ['', Validators.required],
-     CityCtrl: ['', Validators.required],
-     FlatNoCtrl: ['', Validators.required],
-     AreaCtrl: ['', Validators.required],
-     PincodeCtrl: ['',Validators.pattern(this.pincodePattern)]
+     ClinicNameCtrl: ['', Validators.pattern(this.clinicNamePattern)],
+     MobileCtrl:['', Validators.pattern(this.mobilePattern)],
+     StateCtrl: ['', Validators.pattern(this.statePattern)],
+     CityCtrl: ['', Validators.pattern(this.cityPattern)],
+     FlatNoCtrl: ['', Validators.pattern(this.flatNoPattern)],
+     AreaCtrl: ['', Validators.pattern(this.areaPattern)],
+     PincodeCtrl: ['',Validators.pattern(this.pincodePattern)],
+     ClinicPhotoCtrl:['',Validators.required]
    });
  }
 
@@ -106,41 +144,50 @@ private _filter(value: string): string[] {
    this.doctor.qualification = this.firstFormGroup.controls.QualificationCtrl.value;
    this.doctor.medicalLicense = this.firstFormGroup.controls.MedicalLicenseCtrl.value;
    this.doctor.password = this.firstFormGroup.controls.PasswordCtrl.value;
-   this.doctor.profileImage = this.mediaName;
+  //  this.doctor.profileImage = this.firstFormGroup.controls.ProfilePhotoCtrl.value;
+  this.doctor.profileImage = this.mediaName;
 
  }
 
 onValChange(something) {
-   this.doctor.specialization = something;
+   this.cardSpecializaion=something;
  }
 
-saveSpecialization(){
-  this.doctor.specialization=this.secondFormGroup.controls.SpecializationCtrl.value;
+saveSpecialization()
+{
+  if(this.secondFormGroup.controls.SpecializationCtrl.value===undefined){
+    this.doctor.specialization=this.cardSpecializaion;
+    console.log(this.doctor.specialization);
+  }
+  else
+  {
+    this.doctor.specialization=this.secondFormGroup.controls.SpecializationCtrl.value;
   console.log(this.doctor.specialization);
+  }
 }
 
 
  saveClinic() {
-   this.doctor.clinicName=this.thirdFormGroup.controls.ClinicNameCtrl.value;
+
    this.address.state = this.thirdFormGroup.controls.StateCtrl.value;
-   this.doctor.phone = this.thirdFormGroup.controls.MobileCtrl.value;
+   this.address.mobile = this.thirdFormGroup.controls.MobileCtrl.value;
    this.address.city = this.thirdFormGroup.controls.CityCtrl.value;
    this.address.address = this.thirdFormGroup.controls.FlatNoCtrl.value;
    this.address.area = this.thirdFormGroup.controls.AreaCtrl.value;
    this.address.pinCode = this.thirdFormGroup.controls.PincodeCtrl.value;
+   this.address.clinicPhoto = this.mediaName;
    this.doctor.address = this.address;
 
    return this.doctors.saveDoctor(this.doctor).subscribe(data => {
      console.log(data);
    });
  }
+ 
  selectVideo(event){
   this.selectedVideo=event.target.files;
   this.currentFileUpload = this.selectedVideo.item(0)
   this.mediaName=this.currentFileUpload.name;
   console.log(this.mediaName);
-}
- 
-
+ }
  
 }

@@ -18,7 +18,7 @@ public class FeedDataApplicationListener implements ApplicationListener<ContextR
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent)
     {
-
+        //Do nothing
     }
 
 

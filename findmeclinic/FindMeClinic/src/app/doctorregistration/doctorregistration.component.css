@@ -1,10 +1,10 @@
 .example-card
 {
- background-image: url("../../assets/images/bg10.jpg");
+ background-image: url("/assets/images/bg10.jpg");
  background-repeat: no-repeat;
  background-size: cover;
  position: relative;
- font-size: 14px;
+ font-size: 30px;
 }
 mat-button-toggle
 {
@@ -23,8 +23,8 @@ mat-button-toggle
 .content
 {
      text-align: center;
-     width: 60%;
-    margin-left: 20%;
+     width: 80%;
+    margin-left: 10%;
 }
 /* Remove extra left and right margins, due to padding */
 .row
@@ -70,9 +70,9 @@ vertical-align: middle;
 }
 button
 {
- background-color:#2fd5f8;
- color: white;
- width: 100px;
+ background-color:white;
+ color: gray;
+ width: 120px;
  margin-right:50px;
  padding-left: 12px;
  padding-right: 12px;
@@ -93,7 +93,6 @@ p
  margin-bottom: 0%;
  font-size: 14px;
 }
-
 .picture-container{
  position: relative;
  cursor: pointer;

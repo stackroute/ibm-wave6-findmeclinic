@@ -21,10 +21,10 @@ export class SchedulerService {
 
 
   getSlots(emailId:String){
-    return this.http.get("http://localhost:8086/api/v1/slots/"+emailId, this.httpOptions);
+    return this.http.get("http://13.234.236.221:8086/api/v1/slots/"+emailId, this.httpOptions);
   }
 
   putSlots(emailId:string,key:string,value:number){
-    return this.http.put("http://localhost:8086/api/v1/slots/"+emailId+"/"+key+"/"+value, this.httpOptions);
+    return this.http.put("http://13.234.236.221:8086/api/v1/slots/"+emailId+"/"+key+"/"+value, this.httpOptions);
   }
 }

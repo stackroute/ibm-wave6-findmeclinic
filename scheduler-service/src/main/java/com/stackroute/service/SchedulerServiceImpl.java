@@ -2,15 +2,8 @@ package com.stackroute.service;
 
 import com.stackroute.domain.Scheduler;
 import com.stackroute.repository.ScheduleRepository;
-import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 import org.springframework.stereotype.Service;
-
-import java.lang.management.OperatingSystemMXBean;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,8 +30,8 @@ public class SchedulerServiceImpl implements SchedulerService {
         Optional optional=scheduleRepository.findById(emailId);
         if (optional.isPresent())
         {
-            Scheduler scheduler=scheduleRepository.findById(emailId).get();
-            return scheduler;
+
+            return (Scheduler)optional.get();
         }else{
             Scheduler scheduler=new Scheduler();
             scheduler.setEmailId(emailId);
@@ -70,7 +63,7 @@ public class SchedulerServiceImpl implements SchedulerService {
         Scheduler scheduler=new Scheduler();
         if (optional.isPresent())
         {
-             scheduler=scheduleRepository.findById(emailId).get();
+             scheduler=(Scheduler)optional.get();
             Map<String,Integer> map=scheduler.getSlots();
             map.put(key,value);
             scheduler.setSlots(map);
@@ -82,7 +75,6 @@ public class SchedulerServiceImpl implements SchedulerService {
     @Override
     public List<Scheduler> getAll() {
         List<Scheduler> schedulerList= (List<Scheduler>) scheduleRepository.findAll();
-        System.out.println("From service"+schedulerList);
         return schedulerList;
     }
 

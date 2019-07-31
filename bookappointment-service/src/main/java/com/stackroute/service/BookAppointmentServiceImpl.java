@@ -41,28 +41,25 @@ public class BookAppointmentServiceImpl  implements BookAppointmentService{
         String key=bookAppointment.getKey();
         Calendar calendar = Calendar.getInstance();
 
-        System.out.println(key);
+
 
         if(key.equals("todaya")||key.equals("todaym")||key.equals("todaye"))
         {
-            System.out.println("today");
+
             Date today = calendar.getTime();
-            System.out.println(today);
             bookAppointment.setAppointmentDate(today);
         }
         else if(key.equals("tomorrowa")||key.equals("tomorrowe")||key.equals("tomorrowm")) {
-            System.out.println("tomorrow");
+
             calendar.add(Calendar.DATE, 1);
             Date tomorrow = calendar.getTime();
-            System.out.println(tomorrow);
             bookAppointment.setAppointmentDate(tomorrow);
         }
         else
         {
-            System.out.println("overmorrow");
+
             calendar.add(Calendar.DATE, 2);
             Date overmorrow = calendar.getTime();
-            System.out.println(overmorrow);
             bookAppointment.setAppointmentDate(overmorrow);
         }
 
@@ -71,7 +68,6 @@ public class BookAppointmentServiceImpl  implements BookAppointmentService{
 
         sendJson(bookAppointment);
 
-        System.out.println("Harshitha");
         return bookAppointment1;
     }
 

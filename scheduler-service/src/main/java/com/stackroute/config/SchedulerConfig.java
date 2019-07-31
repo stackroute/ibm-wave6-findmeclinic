@@ -6,11 +6,9 @@ import java.util.Properties;
 import com.stackroute.service.SpringJobFactory;
 import com.stackroute.domain.QuartzJob;
 import org.quartz.JobDetail;
-import org.quartz.SimpleTrigger;
 import org.quartz.Trigger;
 import org.quartz.spi.JobFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +17,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
-import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
+
 
 @Configuration
 public class SchedulerConfig {
@@ -38,8 +36,6 @@ public class SchedulerConfig {
         factory.setJobFactory(jobFactory);
         factory.setQuartzProperties(quartzProperties());
         factory.setTriggers(simpleJobTrigger);
-        //factory.setApplicationContextSchedulerContextKey("applicationContext");
-        System.out.println("starting jobs....");
         return factory;
     }
 
@@ -47,7 +43,7 @@ public class SchedulerConfig {
     public CronTriggerFactoryBean simpleJobTrigger(
             @Qualifier("simpleJobDetail") JobDetail jobDetail)
     {
-        System.out.println("simpleJobTrigger");
+
 
         CronTriggerFactoryBean factoryBean = new CronTriggerFactoryBean();
         factoryBean.setJobDetail(jobDetail);

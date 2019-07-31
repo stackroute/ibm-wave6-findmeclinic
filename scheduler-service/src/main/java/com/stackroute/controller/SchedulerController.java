@@ -22,21 +22,21 @@ public class SchedulerController{
     private SchedulerService schedulerService;
 
     @GetMapping("slots")
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<List<Scheduler>> getAll(){
         return new ResponseEntity<>(schedulerService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("slots/{emailId}")
-    public ResponseEntity<?> getSlots(@PathVariable String emailId){
+    public ResponseEntity<Scheduler> getSlots(@PathVariable String emailId){
         return new ResponseEntity<>(schedulerService.getSlots(emailId), HttpStatus.OK);
     }
 
     @PostMapping("slot")
-    public ResponseEntity<?> postSlots(@RequestBody Scheduler scheduler){
+    public ResponseEntity<Scheduler> postSlots(@RequestBody Scheduler scheduler){
         return new ResponseEntity<>(schedulerService.save(scheduler),HttpStatus.CREATED);
     }
     @PutMapping("slots/{emailId}/{key}/{value}")
-    public ResponseEntity<?> putSlots(@PathVariable String emailId,@PathVariable String key,@PathVariable Integer value){
+    public ResponseEntity<Scheduler> putSlots(@PathVariable String emailId,@PathVariable String key,@PathVariable Integer value){
         return new ResponseEntity<>(schedulerService.putSlots(emailId,key,value),HttpStatus.OK);
     }
 

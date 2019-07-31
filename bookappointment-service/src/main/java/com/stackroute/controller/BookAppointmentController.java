@@ -22,7 +22,7 @@ public class BookAppointmentController {
     }
 
     @PostMapping("appointment")
-    public ResponseEntity<?> saveAppointment(@RequestBody BookAppointment bookAppointment) {
+    public ResponseEntity<BookAppointment> saveAppointment(@RequestBody BookAppointment bookAppointment) {
 
             BookAppointment bookAppointment1 = bookAppointmentService.saveAppointment(bookAppointment);
             return new ResponseEntity<BookAppointment>(bookAppointment1, HttpStatus.CREATED);

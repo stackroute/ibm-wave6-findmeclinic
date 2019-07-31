@@ -18,6 +18,9 @@ export class PatientregistrationComponent implements OnInit {
   status=false;
   gender="";
 
+  minDate = new Date(1990, 0, 1);
+ maxDate =  new Date(2019, 6, 31);
+
  patient:Patient=new Patient();
   patientData: any;
   patientName:string;

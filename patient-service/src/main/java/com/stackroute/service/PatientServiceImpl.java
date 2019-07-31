@@ -56,7 +56,7 @@ public class PatientServiceImpl implements PatientService{
        Optional optional=patientRepository.findById(emailId);
        if(optional.isPresent())
        {
-           patient=patientRepository.findById(emailId).get();
+           patient= (Patient) optional.get();
            return patient;
        }
        else {
@@ -71,7 +71,7 @@ public class PatientServiceImpl implements PatientService{
         Patient patient;
         Optional optional=patientRepository.findById(emailId);
         if (optional.isPresent()){
-            patient=patientRepository.findById(emailId).get();
+            patient= (Patient) optional.get();
             patientRepository.deleteById(emailId);
             return patient;
         }
@@ -102,14 +102,13 @@ public class PatientServiceImpl implements PatientService{
         Optional optional=patientRepository.findById(emailId);
         if (optional.isPresent())
         {
-            System.out.println(patientAppointment.toString());
-            Patient patient=patientRepository.findById(emailId).get();
-            System.out.println(patient);
+
+            Patient patient= (Patient) optional.get();
             List<PatientAppointment> patientAppointments=patient.getPatientAppointmentList();
             patientAppointments.add(patientAppointment);
             patient.setPatientAppointmentList(patientAppointments);
             patientRepository.save(patient);
-            System.out.println(patient);
+
         }
 
     }
@@ -117,9 +116,14 @@ public class PatientServiceImpl implements PatientService{
     @Override
     public List<PatientAppointment> getAllAppointments(String emailId)
     {
-        Patient patient=patientRepository.findById(emailId).get();
-        List<PatientAppointment> patientAppointmentList=patient.getPatientAppointmentList();
-        return  patientAppointmentList;
+        Optional optional=patientRepository.findById(emailId);
+        if(optional.isPresent()) {
+            Patient patient = (Patient) optional.get();
+            List<PatientAppointment> patientAppointmentList = patient.getPatientAppointmentList();
+            return patientAppointmentList;
+        }
+        return null;
+
     }
 
 
@@ -135,7 +139,7 @@ public class PatientServiceImpl implements PatientService{
     @KafkaListener(topics = "appointmentDetails",groupId = "Group_Json2")
     public void consumeJson(@Payload BookAppointment bookAppointment)
     {
-        System.out.println("Consumed appointment"  +bookAppointment.toString());
+
         PatientAppointment patientAppointment=new PatientAppointment(bookAppointment.getAppointmentId(),bookAppointment.getDoctor(),bookAppointment.getAppointmentDate(),bookAppointment.getSlot(),bookAppointment.getKey(),bookAppointment.getAppointmentTime());
         String emailId=bookAppointment.getPatient().getEmailId();
         updatePatientAppointment(patientAppointment,emailId);

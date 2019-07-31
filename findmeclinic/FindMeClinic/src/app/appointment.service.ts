@@ -17,12 +17,12 @@ export class AppointmentService {
   }
     checkPatient(emailId:String)
     {
-      return this.http.get<Patient>("http://localhost:8080/api/v1/patients/"+emailId,this.httpOptions);
+      return this.http.get<Patient>("http://13.234.236.221:8080/api/v1/patients/"+emailId,this.httpOptions);
     }
 
 
     saveAppointment(bookAppointment:BookAppointment){
       
-      return this.http.post<BookAppointment>("http://localhost:8084/api/v1/appointment",bookAppointment,this.httpOptions);
+      return this.http.post<BookAppointment>("http://13.234.236.221:8084/api/v1/appointment",bookAppointment,this.httpOptions);
     }
 }

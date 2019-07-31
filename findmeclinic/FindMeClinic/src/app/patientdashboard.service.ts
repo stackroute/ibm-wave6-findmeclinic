@@ -24,21 +24,21 @@ export class PatientdashboardService {
 // }
 getAllAppointments(emailId:string)
 {
-  return this.http.get("http://localhost:8080/api/v1/patients1/"+emailId,this.httpOptions);
+  return this.http.get("http://13.234.236.221:8080/api/v1/patients1/"+emailId,this.httpOptions);
 }
 
 getPatientDetails(emailId:String){
     
-  return this.http.get("http://localhost:8080/api/v1/patients/"+emailId,this.httpOptions);
+  return this.http.get("http://13.234.236.221:8080/api/v1/patients/"+emailId,this.httpOptions);
 }
 
 getDoctorDetails(emailId:String){
     
-  return this.http.get("http://localhost:8082/api/v1/doctors1/"+emailId,this.httpOptions);
+  return this.http.get("http://13.234.236.221:8082/api/v1/doctors1/"+emailId,this.httpOptions);
 }
 
 updatePatientDetails(patient:Patient){
   patient.role="patient";
-  return this.http.put<Patient>("http://localhost:8080/api/v1/patient",patient,this.httpOptions);
+  return this.http.put<Patient>("http://13.234.236.221:8080/api/v1/patient",patient,this.httpOptions);
 }
 }

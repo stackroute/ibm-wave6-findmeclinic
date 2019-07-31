@@ -17,6 +17,6 @@ export class AuthenticationService {
 
   saveUser(user:User){
 
-    return this.http.post<User>("http://localhost:8081/api/v1/user",user,this.httpOptions);
+    return this.http.post<User>("http://13.234.236.221:8081/api/v1/user",user,this.httpOptions);
   }
 }

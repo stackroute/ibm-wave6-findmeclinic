@@ -7,7 +7,7 @@ import { Doctor } from './doctor';
 })
 export class DoctorregistrationService {
 
-  _url = 'http://localhost:8082/api/v1/doctor';
+  _url = 'http://13.234.236.221:8082/api/v1/doctor';
 
   httpOptions = {
     headers: new HttpHeaders({

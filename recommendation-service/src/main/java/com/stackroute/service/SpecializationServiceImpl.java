@@ -5,6 +5,8 @@ import com.stackroute.repository.SpecializationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class SpecializationServiceImpl implements SpecializationService {
 
@@ -17,9 +19,11 @@ public class SpecializationServiceImpl implements SpecializationService {
 
     @Override
     public Specialization save(String specialization) {
-        if (!specializationRepository.existsById(specialization)){
-            return specializationRepository.save(new Specialization(specialization));
+        Optional optional=specializationRepository.findById(specialization);
+        if (optional.isPresent()){
+            return (Specialization) optional.get();
         }
-        return specializationRepository.findById(specialization).get();
+        return specializationRepository.save(new Specialization(specialization));
+
     }
 }

@@ -16,6 +16,6 @@ export class PatientRegistrationService {
 
    savePatient(patient:Patient){
      patient.role="patient";
-     return this.http.post<Patient>("http://localhost:8080/api/v1/patient",patient,this.httpOptions);
+     return this.http.post<Patient>("http://13.234.236.221:8080/api/v1/patient",patient,this.httpOptions);
    }
 }

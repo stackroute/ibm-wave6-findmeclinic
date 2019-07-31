@@ -5,6 +5,8 @@ import com.stackroute.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AddressServiceImpl implements AddressService {
 
@@ -18,9 +20,10 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address save(Address address) {
-        if (!addressRepository.existsById(address.getPinCode())){
-            return addressRepository.save(address);
+        Optional optional=addressRepository.findById(address.getPinCode());
+        if (optional.isPresent()){
+            return (Address) optional.get();
         }
-        return addressRepository.findById(address.getPinCode()).get();
+        return addressRepository.save(address);
     }
 }

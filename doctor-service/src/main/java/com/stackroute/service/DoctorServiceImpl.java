@@ -87,7 +87,11 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Doctor getDoctorByEmailId(String emailId) {
-        return doctorRepository.findById(emailId).get();
+        Optional optional=doctorRepository.findById(emailId);
+        if (optional.isPresent()){
+            return (Doctor) optional.get();
+        }
+        return null;
     }
 
 
@@ -102,7 +106,7 @@ public class DoctorServiceImpl implements DoctorService {
         Optional optional=doctorRepository.findById(emailId);
         Doctor doctor=null;
         if (optional.isPresent()){
-            doctor=doctorRepository.findById(emailId).get();
+            doctor= (Doctor) optional.get();
             doctor.setSlot(slot);
             doctorRepository.save(doctor);
             return doctor;
@@ -151,7 +155,7 @@ public class DoctorServiceImpl implements DoctorService {
         if (optional.isPresent())
         {
             System.out.println(doctorAppointment.toString());
-            Doctor doctor=doctorRepository.findById(emailId).get();
+            Doctor doctor= (Doctor) optional.get();
             List<DoctorAppointment> doctorAppointments=doctor.getDoctorAppointmentList();
             doctorAppointments.add(doctorAppointment);
             doctor.setDoctorAppointmentList(doctorAppointments);
@@ -165,9 +169,12 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public List<DoctorAppointment> getAllAppointments(String emailId)
     {
-        Doctor doctor=doctorRepository.findById(emailId).get();
-        List<DoctorAppointment> doctorAppointmentList=doctor.getDoctorAppointmentList();
-        return  doctorAppointmentList;
+        Optional optional=doctorRepository.findById(emailId);
+        if (optional.isPresent()){
+            Doctor doctor= (Doctor) optional.get();
+            return doctor.getDoctorAppointmentList();
+        }
+        return  new ArrayList<>();
     }
 
 
@@ -179,7 +186,7 @@ public class DoctorServiceImpl implements DoctorService {
         return "returned json successfully";
     }
 
-    @KafkaListener(topics = "appointmentDetails",groupId = "Group_Json3")
+    @KafkaListener(topics = "appointmentDetails",groupId = "Group_Json2",containerFactory = "kafkaListenerContainerFactory")
     public void consumeJson(@Payload BookAppointment bookAppointment)
     {
         System.out.println("Consumed appointment"  +bookAppointment.toString());

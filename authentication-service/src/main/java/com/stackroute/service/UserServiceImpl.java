@@ -9,12 +9,10 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
-
 
     UserRepository userRepository;
 
@@ -26,28 +24,27 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEmailId(String emailId) {
 
+        //this statement used to find the id from repository and saved into variable
         Optional optional= userRepository.findById(emailId);
         User user=null;
 
         if(optional.isPresent())
         {
-            user=userRepository.findById(emailId).get();
-
+            user= (User) optional.get();
         }
         return  user;
     }
 
     @Override
     public User saveUser(User user)  {
-        User savedUser = userRepository.save(user);
-        System.out.println(savedUser);
-        return savedUser;
+        //savedUser stores user object
+         return userRepository.save(user);
     }
 
     @KafkaListener(topics = "patientcredentials",groupId = "Group_Json")
     public void consumeJson(@Payload Patient patient)
     {
-        System.out.println("Consumed patient"  +patient.toString());
+
         User user=new User(patient.getEmailId(),patient.getPassword(),patient.getRole());
         saveUser(user);
     }
@@ -55,7 +52,7 @@ public class UserServiceImpl implements UserService {
     @KafkaListener(topics = "doctorcredentials",groupId = "Group_Json1",containerFactory = "kafkaListenerContainerFactory1")
     public void consumeJson1(@Payload Doctor doctor)
     {
-        System.out.println("Consumed doctor"  +doctor.toString());
+
         User user=new User(doctor.getEmailId(),doctor.getPassword(),doctor.getRole());
         saveUser(user);
     }

@@ -2,7 +2,8 @@ package com.stackroute.exceptions;
 
 public class PatientAlreadyExistsException extends Exception {
 
-    private String message;
+
+    private  String message;
 
     public PatientAlreadyExistsException() {
     }
