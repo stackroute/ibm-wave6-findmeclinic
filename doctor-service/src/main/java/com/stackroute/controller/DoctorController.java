@@ -26,8 +26,8 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("doctor")
-    public ResponseEntity<?> save(@RequestBody Doctor[] doctor) {
+    @PostMapping("savedoctors")
+    public ResponseEntity<?> saveDoctors(@RequestBody Doctor[] doctor) {
         List<Doctor> doctorList=new ArrayList<>();
         try {
             int index=0;
