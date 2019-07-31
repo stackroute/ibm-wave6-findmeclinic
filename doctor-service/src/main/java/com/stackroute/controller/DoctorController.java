@@ -27,8 +27,23 @@ public class DoctorController {
     }
 
     @PostMapping("doctor")
-    public ResponseEntity<?> save(@RequestBody Doctor doctor) {
+    public ResponseEntity<?> save(@RequestBody Doctor[] doctor) {
+        List<Doctor> doctorList=new ArrayList<>();
+        try {
+            int index=0;
+            while(index<doctor.length){
+                Doctor doctor1=doctorService.save(doctor[index]);
+                doctorList.add(doctor1);
+                index++;
+            }
+            return new ResponseEntity<>(doctorList, HttpStatus.CREATED);
+        } catch (DoctorAlreadyExistsException e) {
+            return new ResponseEntity<String>("Doctor Already Exists",HttpStatus.CONFLICT);
+        }
+    }
 
+    @PostMapping("doctor")
+    public ResponseEntity<?> save(@RequestBody Doctor doctor) {
 
          try {
             Doctor doctor1=doctorService.save(doctor);

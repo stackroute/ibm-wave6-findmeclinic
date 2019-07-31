@@ -8,6 +8,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.springframework.data.annotation.Transient;
 
 import java.util.Date;
+import java.util.List;
 
 @NodeEntity
 @Data
@@ -25,7 +26,7 @@ public class Patient {
     private String password;
     @Transient
     private String role;
-//    private List<PatientAppointment> patientAppointmentList;
+    private List<PatientAppointment> patientAppointmentList;
 
 }
 

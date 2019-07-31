@@ -7,14 +7,15 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class DoctorAppointment {
+@AllArgsConstructor
+public class PatientAppointment {
 
-    private Patient patient;
+    private Integer appointmentId;
+    private Doctor doctor;
     private Date appointmentDate;
     private String slot;
+    private String key;
     private String appointmentTime;
-    private Integer appointmentId;
 
 }

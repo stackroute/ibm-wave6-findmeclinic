@@ -14,8 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class BookAppointment {
 
-
-
     private String id;
     private Doctor doctor;
     private Patient patient;
