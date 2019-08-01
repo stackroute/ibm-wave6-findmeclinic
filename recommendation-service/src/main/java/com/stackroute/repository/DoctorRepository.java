@@ -46,4 +46,8 @@ public interface DoctorRepository extends Neo4jRepository<DoctorDTO, String> {
             "(s:Specialization)<-[:specialized_in]-(doc:DoctorDTO) WHERE p.emailId={emailId} " +
             "RETURN doc ORDER BY doc.noOfAppointments DESC,doc.practiceStartedDate LIMIT 4")
     List<DoctorDTO> getDoctorsByLocationAndSpecializationForPatient(String emailId);
+
+    @Query("MATCH (d:DoctorDTO)-[r:located_in]-(a:Address) WHERE a.city={city} RETURN d" +
+            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate")
+    List<DoctorDTO> getDoctorsByCity(String city);
 }

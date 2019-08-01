@@ -35,6 +35,8 @@ public interface DoctorService {
 
     List<DoctorDTO> getDoctorsByLocationAndSpecializationForPatient(String emailId);
 
+    List<DoctorDTO> getDoctorsByCity(String city);
+
     void consumeJson1(Doctor doctor);
     void consumeJson2(Doctor doctor);
 

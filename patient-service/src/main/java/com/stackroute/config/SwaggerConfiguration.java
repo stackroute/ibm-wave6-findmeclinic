@@ -9,6 +9,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+
 import static springfox.documentation.builders.PathSelectors.regex;
 
 @EnableSwagger2
@@ -18,7 +19,7 @@ public class SwaggerConfiguration {
     private static final String SWAGGER_API_VERSION="1.0";
     private static final String LICENSE_TEXT="License";
     private static final String title="FindMeClinic Applicatoion  REST API";
-    private static final String description="Restful Api for Authentication";
+    private static final String description="Restful Api for PatientService";
 
 
     private ApiInfo apiInfo()

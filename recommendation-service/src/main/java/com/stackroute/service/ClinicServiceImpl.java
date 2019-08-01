@@ -24,8 +24,13 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
     @Override
-    public List<Clinic> getClinicsByLocation(String area) {
-        return clinicRepository.getClinicsByLocation(area);
+    public List<Clinic> getClinicsByArea(String area) {
+        return clinicRepository.getClinicsByArea(area);
+    }
+
+    @Override
+    public List<Clinic> getClinicsByCity(String city) {
+        return clinicRepository.getClinicsByCity(city);
     }
 
     @Override

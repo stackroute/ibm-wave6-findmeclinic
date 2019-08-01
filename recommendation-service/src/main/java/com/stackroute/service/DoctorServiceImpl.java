@@ -172,6 +172,11 @@ public class DoctorServiceImpl implements DoctorService {
 
         return doctorRepository.save(doctorDTO);
     }
+
+    @Override
+    public List<DoctorDTO> getDoctorsByCity(String city) {
+        return doctorRepository.getDoctorsByCity(city);
+    }
 }
 
 

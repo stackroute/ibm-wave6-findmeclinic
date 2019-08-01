@@ -9,7 +9,9 @@ public interface ClinicService {
 
     Clinic save(Clinic clinic);
 
-    List<Clinic> getClinicsByLocation(String area);
+    List<Clinic> getClinicsByArea(String area);
+
+    List<Clinic> getClinicsByCity(String city);
 
     List<Clinic> getClinicsByLocationAndSpecialization(String area, String specialization);
 

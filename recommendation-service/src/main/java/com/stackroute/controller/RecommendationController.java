@@ -30,6 +30,11 @@ public class RecommendationController {
         this.specializationService = specializationService;
     }
 
+    @GetMapping("doctorsByCity/{city}")
+    ResponseEntity<?> getDoctorsByCity(@PathVariable String city) {
+        return new ResponseEntity<>(doctorService.getDoctorsByCity(city), HttpStatus.OK);
+    }
+
     @PutMapping("patientupdate")
     public ResponseEntity<?> update(@RequestBody Patient patient) {
         return new ResponseEntity<>(patientService.update(patient), HttpStatus.OK);
@@ -124,7 +129,12 @@ public class RecommendationController {
 
     @GetMapping("clinicsByArea/{area}")
     ResponseEntity<?> getClinicsByArea(@PathVariable String area) {
-        return new ResponseEntity<>(clinicService.getClinicsByLocation(area), HttpStatus.OK);
+        return new ResponseEntity<>(clinicService.getClinicsByArea(area), HttpStatus.OK);
+    }
+
+    @GetMapping("clinicsByCity/{city}")
+    ResponseEntity<?> getClinicsByCity(@PathVariable String city) {
+        return new ResponseEntity<>(clinicService.getClinicsByCity(city), HttpStatus.OK);
     }
 
     @GetMapping("clinicsByAreaAndSpe/{area}/{specialization}")

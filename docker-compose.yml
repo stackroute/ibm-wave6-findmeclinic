@@ -23,6 +23,18 @@ services:
     expose:
       - 8083
 
+  findmeclinic:
+    build:
+      context: ./findmeclinic
+      args:
+        NG_CLI_ANYALYTICS: ci
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8087:8087
+    restart: always
+    environment:
+      NG_CLI_ANYALYTICS: ci
 
   configserver:
     image: config-server:1.0.0
@@ -126,7 +138,7 @@ services:
       - 27017
     hostname: localhost
     volumes:
-      - ../data:/data/db'
+      - ../data/datamongo:/data/db
 
   mysqldb:
     image: mysql:5.7
@@ -144,18 +156,6 @@ services:
     hostname: localhost
     restart: always
 
-  findmeclinic:
-    build:
-      context: ./findmeclinic
-      args:
-        NG_CLI_ANYALYTICS: ci
-    network_mode: "host"
-    hostname: localhost
-    ports:
-      - 8087:8087
-    restart: always
-    environment:
-      NG_CLI_ANYALYTICS: ci
 
   doctorservice:
     build: doctor-service/
