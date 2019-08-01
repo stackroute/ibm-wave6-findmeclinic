@@ -5,7 +5,7 @@
             <mat-card class="example-card">
           <form [formGroup]="firstFormGroup">
               <ng-template matStepLabel>
-                 Doctor details
+                <strong> Doctor details</strong>
               </ng-template>
               <!-- <div class="form-row">
               <div class="col" style="padding-left: 20%">
@@ -22,7 +22,7 @@
                   <p>
                       <mat-form-field style="width:400px;" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input  type="text" formControlName="NameCtrl" matInput placeholder="Name" required maxlength="10" minlength="4">       
+                        <input  type="text" formControlName="NameCtrl" matInput placeholder="Name" required minlength="4">       
                       </mat-form-field>
                     <!-- </p>
                     <mat-chip-list matNativeControl formControlName="GenderCtrl">
@@ -60,20 +60,20 @@
                                   <mat-form-field style="width:400px" appearance="outline">
                                     <mat-label>Password</mat-label>
                                     <input pw-show-hide  type="text" matInput placeholder="Enter password"
-                        [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="PasswordCtrl" required minlength="6" maxlength="8">
+                        [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="PasswordCtrl" required  minlength="8" maxlength="16">
                       </mat-form-field>      
                       </p>
                       <hr style="margin-top: 0%">
                      <p>
                           <mat-form-field style="width:400px" appearance="outline">
                             <mat-label>Qualification</mat-label>
-                            <input type="text" matInput [(ngModel)]="qualification" formControlName="QualificationCtrl" placeholder="Qualification" required maxlength="12">    
+                            <input type="text" matInput [(ngModel)]="qualification" formControlName="QualificationCtrl" placeholder="Qualification" required maxlength="16">    
                           </mat-form-field>   
                         </p>
                        <p>
                             <mat-form-field style="width:400px" appearance="outline">
                               <mat-label>Medical license</mat-label>
-                              <input  type="text" matInput [(ngModel)]="medicalLicense" formControlName="MedicalLicenseCtrl" placeholder="Medical License" required maxlength="12">    
+                              <input  type="text" matInput [(ngModel)]="medicalLicense" formControlName="MedicalLicenseCtrl" placeholder="Medical License" required maxlength="16">    
                             </mat-form-field>       
                             </p>
                            <p>
@@ -85,11 +85,10 @@
                   </mat-form-field>       
                   </p>
                             
+                               
                                 <p>
-                                
-                                          <input class="upload"  (change)="selectVideo($event)"  type="file" [(ngModel)]="profilePhoto" formControlName="ProfilePhotoCtrl"  accept="image/*">
-                 
-                                </p>    
+                                          <input class="upload" style="margin-top: 0%" (change)="selectVideo($event)"  type="file" [(ngModel)]="profilePhoto" formControlName="ProfilePhotoCtrl"  accept="image/*">
+                   </p>
                               <!-- </div>            
               </div> -->
          
@@ -103,11 +102,11 @@
          <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>
-             Specialization
+             <strong>Specialization</strong>
             </ng-template>
             <mat-card align="center"class="example-card">
               <mat-card-content align="center" class="content">
-                 <mat-grid-list cols="4" style="margin-top:8px;margin-bottom:8px;padding-left: 15px">
+                 <mat-grid-list cols="4" style="padding-left: 15px">
                     <mat-grid-tile>
                       <mat-button-toggle  (change)="onValChange($event.value)" value="dentist">
                         <img mat-card-image src="/assets/images/den.jpg" alt="Dentist">
@@ -185,13 +184,13 @@
             <mat-card class="example-card">
             <form [formGroup]="thirdFormGroup">
               <ng-template matStepLabel>
-                 Clinic details
+                <strong> Clinic details</strong>
               </ng-template>
             
                   <p>
                       <mat-form-field style="width:400px" appearance="outline">
                         <mat-label>Clinic Name</mat-label>
-                        <input  type="text" [(ngModel)]="clinicName" formControlName="ClinicNameCtrl" matInput placeholder="Clinic name" required maxlength="10">
+                        <input  type="text" [(ngModel)]="clinicName" formControlName="ClinicNameCtrl" matInput placeholder="Clinic name" required minlength="3">
                       </mat-form-field>
                     </p>
                     <p>
@@ -214,7 +213,7 @@
                         <p>
                             <mat-form-field style="width:400px" appearance="outline">
                               <mat-label>City</mat-label>
-                              <input type="text" [(ngModel)]="city" formControlName="CityCtrl" matInput placeholder="City" required maxlength="12">
+                              <input type="text" [(ngModel)]="city" formControlName="CityCtrl" matInput placeholder="City" required maxlength="16">
                             </mat-form-field>
                           </p>
                           <p>
@@ -236,7 +235,7 @@
                                   </mat-form-field>
                                 </p>
                                 <p>
-                                  <input class="upload"  (change)="selectVideo($event)"  type="file" [(ngModel)]="clinicPhoto" formControlName="ClinicPhotoCtrl"  accept="image/*">
+                                  <input class="upload" style="margin-top: 0%" (change)="selectVideo($event)"  type="file" [(ngModel)]="clinicPhoto" formControlName="ClinicPhotoCtrl"  accept="image/*">
                                 </p>
 
                              
@@ -252,10 +251,15 @@
             <ng-template matStepLabel>
               <strong>Done!</strong>
             </ng-template>
-            <div align="center" style="padding-left: 10%">
-            <img src="/assets/images/okk.png">
-            <button align="center" mat-stroked-button  (click)="goToLogin()" >Login  </button><br/><br/>
-            </div>
+            <!-- <div align="center" >
+                <img align="center" src="/assets/images/okk.png" alt="ok">
+                <br/><br/><br/>
+                <button align="center" mat-stroked-button  (click)="goToLogin()" >Login </button><br/><br/><br/><br/>
+                </div> -->
+                <div align="center" >
+                  <img src="/assets/images/okk.png" style="padding-left: 4%">
+                  <div class="btn btn-info btn-lg btn-login" align="center" mat-stroked-button  (click)="goToLogin()" >Login </div><br/><br/>
+                  </div>
         </mat-step>
       </mat-horizontal-stepper>
     </section>

@@ -96,6 +96,25 @@ public class ConsumerConfiguration {
         factory.setConsumerFactory(consumerFactory7());
         return factory;
     }
+    public ConsumerFactory<String, BookAppointment> consumerFactory8()
+    {
+        Map<String, Object> config=new HashMap<>();
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, CONFIG_ADDRESS);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG,"Group_Json8");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), new JsonDeserializer<>(BookAppointment.class));
+
+    }
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String,BookAppointment> kafkaListenerContainerFactory8()
+    {
+        ConcurrentKafkaListenerContainerFactory<String, BookAppointment> factory=new ConcurrentKafkaListenerContainerFactory();
+        factory.setConsumerFactory(consumerFactory7());
+        return factory;
+    }
+
 
 
 

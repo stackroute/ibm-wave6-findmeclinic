@@ -29,7 +29,7 @@ export class DoctorregistrationComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   control = new FormControl();
-  streets: string[] = ['Karnataka', 'Maharashtra', 'Delhi', 'Tamil Nadu','Andhra Pradesh','Uttar Pradesh','Madhya Pradesh'];
+  streets: string[] = ['Karnataka', 'Maharashtra', 'Delhi', 'Tamil Nadu','Telangana','Andhra Pradesh','Uttar Pradesh','Madhya Pradesh'];
   filteredStreets: Observable<string[]>;
 
   namePattern = "[a-zA-Z\\s]*$";
@@ -44,8 +44,8 @@ clinicNamePattern = "[a-zA-Z\\s]*$";
 mobilePattern = "[0-9]{10}";
 statePattern = "[a-zA-Z\\s]*$";
 cityPattern = "[a-zA-Z]*$";
-flatNoPattern = "[a-zA-Z0-9]*$";
-areaPattern = "[a-zA-Z]{4,16}[\\s]{0,5}";
+flatNoPattern = "[a-zA-Z0-9,/-]*$";
+areaPattern = "[a-zA-Z\\s]*$";
  pincodePattern= "[0-9]{6}";
 
 
@@ -168,16 +168,18 @@ saveSpecialization()
 
 
  saveClinic() {
-
+   this.doctor.clinicName=this.thirdFormGroup.controls.ClinicNameCtrl.value;
    this.address.state = this.thirdFormGroup.controls.StateCtrl.value;
-   this.address.mobile = this.thirdFormGroup.controls.MobileCtrl.value;
+  //  this.address.mobile = this.thirdFormGroup.controls.MobileCtrl.value;
+  this.doctor.phone = this.thirdFormGroup.controls.MobileCtrl.value;
    this.address.city = this.thirdFormGroup.controls.CityCtrl.value;
    this.address.address = this.thirdFormGroup.controls.FlatNoCtrl.value;
    this.address.area = this.thirdFormGroup.controls.AreaCtrl.value;
    this.address.pinCode = this.thirdFormGroup.controls.PincodeCtrl.value;
-   this.address.clinicPhoto = this.mediaName;
+   this.doctor.clinicImage = this.mediaName;
    this.doctor.address = this.address;
-
+   console.log(this.doctor.phone);
+   console.log(this.doctor.address);
    return this.doctors.saveDoctor(this.doctor).subscribe(data => {
      console.log(data);
    });

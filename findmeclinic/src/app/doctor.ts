@@ -16,6 +16,7 @@ export class Doctor {
     address:Address;
     phone:string;
     doctorAppointment:DoctorAppointment;
+    clinicImage:string;
 
 
   }

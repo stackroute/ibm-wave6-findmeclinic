@@ -803,7 +803,10 @@ button{
  .search-area{
   width: 170px;
  }
- 
+ .container{
+   padding:1%;
+   padding-bottom: 2%;
+ }
  
  
               

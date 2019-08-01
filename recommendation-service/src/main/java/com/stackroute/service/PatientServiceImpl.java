@@ -1,11 +1,15 @@
 package com.stackroute.service;
 
+import com.stackroute.domain.BookAppointment;
+import com.stackroute.domain.DoctorDTO;
 import com.stackroute.domain.Patient;
 import com.stackroute.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -46,5 +50,10 @@ public class PatientServiceImpl implements PatientService {
     public void consumeJson(@Payload Patient patient)
     {
         save(patient);
+    }
+
+    @KafkaListener(topics = "appointmentDetails", groupId = "Group_Json8",containerFactory = "kafkaListenerContainerFactory8")
+    public void consumeJson(@Payload BookAppointment bookAppointment) {
+       createRelationForPatientAndDoctor(bookAppointment.getPatient().getEmailId(),bookAppointment.getDoctor().getEmailId());
     }
 }
