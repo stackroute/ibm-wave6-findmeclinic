@@ -3,6 +3,7 @@ import { ObservableLike, Observable } from 'rxjs';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
+import { RecommendationsService } from '../recommendations.service';
 
 @Component({
  selector: 'app-patientdashboard',
@@ -17,9 +18,18 @@ export class PatientdashboardComponent implements OnInit {
  );
  route: ActivatedRoute;
 
-constructor(private breakpointObserver: BreakpointObserver,private router:Router,private route1:ActivatedRoute) {}
+constructor(private breakpointObserver: BreakpointObserver,private router:Router,private route1:ActivatedRoute,private recommendationService:RecommendationsService) {}
 
- ngOnInit() {
+ngOnInit() {
+  const email= this.route1.snapshot.paramMap.get('username');
+  this.recommendationService.getTopDoctorsForPatient(email).subscribe(data=>{
+    console.log(data);
+  });
+
+  this.recommendationService.getTopClinicsForPatient(email).subscribe(data=>{
+    console.log(data);
+  });
+
  }
  patientAppointments(){
    this.router.navigate(['myAppointments'],{relativeTo:this.route});

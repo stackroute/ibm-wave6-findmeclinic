@@ -24,10 +24,10 @@
                 </div>
                 <!-- <div class="butt" style="margin-left: 10%"><form action="/action_page.php">
                                     <select name="cars" (change)="selectChangeHandler($event)" >
-                                     
+
                                       <option *ngFor="let place1 of places" [value]=place1>{{place1}}</option>
                                     </select>
-                                   
+
                                   </form></div> -->
 
                 <!-- <form>
@@ -74,7 +74,7 @@
   </div>
 </div>
 
-<section class="team-area pt-100 pb-100" id="team">
+<section class="team-area pt-100 pb-100" id="clinics">
   <div class="container">
     <div class="row">
       <div class="col-xl-8 mx-auto text-center">
@@ -85,7 +85,7 @@
     </div>
     <div *ngFor="let doctorData of topDoctors">
     <div class="cards">
-     
+
         <div class="single-team">
           <img class="imageClass" src="../../assets/images/{{doctorData.profileImage}}" style="width: 230px" style="height: 225px" alt=""/>
           <div class="team-hover">
@@ -94,7 +94,7 @@
             <h6>{{doctorData.emailId}}</h6>
             <h6>{{doctorData.qualification}}</h6>
 
-         
+
         </div>
       </div>
       </div>
@@ -112,19 +112,19 @@
     </div>
     <div *ngFor="let clinicData of topClinics">
     <div class="cards">
-     
+
         <div class="single-team">
           <img class="imageClass" src="../../assets/images/{{clinicData.clinicImage}}" style="width: 300px" style="height: 255px" alt=""/>
             <div class="team-hover">
             <h4>{{clinicData.clinicName}}</h4>
           </div>
-         
-        
+
+
       </div>
     </div>
     </div>
   </div>
-</section> 
+</section>
 
 
 
@@ -136,7 +136,7 @@
                         <p class="description">{{doctorData.emailId}}</p>
                         <p class="description">{{doctorData.name}}</p>
                         <p class="description">{{doctorData.qualification}}</p>
-              
+
                      </div>
                   </div>
              </div>
@@ -146,11 +146,11 @@
               <div class="box21" style=" padding-left: 40px;">
                 <img class="imageClass" src="../../assets/images/{{clinicData.clinicImage}}" />
                           <div class="box-content">
-                           
+
                               <p class="description">{{clinicData.clinicName}}</p>
                         </div>
                       </div>
                  </div>
               </div>
-          
+
     -->

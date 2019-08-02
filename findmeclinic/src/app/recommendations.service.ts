@@ -12,10 +12,18 @@ export class RecommendationsService {
       'Content-Type': 'application/json',
     })
   };
-  getTopDoctors(area:String){
-    return this.http.get("http://13.234.236.221:8088/rest/neo4j/doctorsByArea/"+area, this.httpOptions);
+  getTopDoctors(city:String){
+    return this.http.get("http://13.234.236.221:8088/rest/neo4j/doctorsByCity/"+city, this.httpOptions);
   }
-  getTopClinics(area:String){
-    return this.http.get("http://13.234.236.221:8088/rest/neo4j/clinicsByArea/"+area, this.httpOptions);
+  getTopClinics(city:String){
+    return this.http.get("http://13.234.236.221:8088/rest/neo4j/clinicsByCity/"+city, this.httpOptions);
   }
+  getTopDoctorsForPatient(emailId:String){
+      return this.http.get("http://13.234.236.221:8088/rest/neo4j/doctorsForPatient/"+emailId, this.httpOptions);
+  }
+
+   getTopClinicsForPatient(emailId:String){
+        return this.http.get("http://13.234.236.221:8088/rest/neo4j/clinicsForPatient/"+emailId, this.httpOptions);
+    }
+
   }
