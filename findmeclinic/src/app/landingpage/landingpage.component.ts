@@ -93,6 +93,7 @@ export class LandingpageComponent implements OnInit {
  }
  getTopClinics() {
    this.recommendatioService.getTopClinics(this.city).subscribe(data => {
+     console.log(data);
      this.topClinics = JSON.parse(JSON.stringify(data));
      console.log("recommended clinics-->"+this.topClinics);
    })

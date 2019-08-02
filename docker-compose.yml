@@ -23,19 +23,6 @@ services:
     expose:
       - 8083
 
-  findmeclinic:
-    build:
-      context: ./findmeclinic
-      args:
-        NG_CLI_ANYALYTICS: ci
-    network_mode: "host"
-    hostname: localhost
-    ports:
-      - 8087:8087
-    restart: always
-    environment:
-      NG_CLI_ANYALYTICS: ci
-
   configserver:
     image: config-server:1.0.0
     build: config-server/
@@ -47,6 +34,19 @@ services:
       - 8085:8085
     expose:
       - 8085
+
+  findmeclinic:
+    build:
+      context: ./findmeclinic
+      args:
+        NG_CLI_ANYALYTICS: ci
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8081:8081
+    restart: always
+    environment:
+      NG_CLI_ANYALYTICS: ci
 
   zookeeper:
     container_name: zookeeper

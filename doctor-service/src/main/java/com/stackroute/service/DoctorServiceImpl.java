@@ -5,6 +5,9 @@ import com.stackroute.exception.DoctorAlreadyExistsException;
 import com.stackroute.exception.DoctorNotFoundException;
 import com.stackroute.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -14,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+@CacheConfig(cacheNames = {"doctor"})
 @Service
 public class DoctorServiceImpl implements DoctorService {
 
@@ -33,7 +38,7 @@ public class DoctorServiceImpl implements DoctorService {
 
 
 
-
+    @CacheEvict(allEntries = true)
     @Override
     public Doctor save(Doctor doctor) {
 
@@ -55,7 +60,7 @@ public class DoctorServiceImpl implements DoctorService {
             return null;
         }
     }
-
+    @CacheEvict(allEntries = true)
     @Override
     public String delete(String emailId) {
         Optional optional=doctorRepository.findById(emailId);
@@ -70,7 +75,7 @@ public class DoctorServiceImpl implements DoctorService {
             return DOCTOR_DOESN_T_EXISTS;
         }
     }
-
+    @CacheEvict(allEntries = true)
     @Override
     public String update(Doctor doctor) {
         Optional optional=doctorRepository.findById(doctor.getEmailId());
@@ -87,6 +92,8 @@ public class DoctorServiceImpl implements DoctorService {
             return DOCTOR_DOESN_T_EXISTS;
         }    }
 
+
+    @Cacheable(value="doctor")
     @Override
     public Doctor getDoctorByEmailId(String emailId) {
         Optional optional=doctorRepository.findById(emailId);
@@ -97,12 +104,13 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
 
-
+    @Cacheable(value="doctor")
     @Override
     public List<Doctor> getAll() {
         return doctorRepository.findAll();
     }
 
+    @CacheEvict(allEntries = true)
     @Override
     public Doctor updateSlot(Slot slot,String emailId) {
         Optional optional=doctorRepository.findById(emailId);
@@ -115,7 +123,7 @@ public class DoctorServiceImpl implements DoctorService {
         }
         return null;
     }
-
+    @Cacheable(value="doctor")
     @Override
     public List<Doctor> findDoctorBySpecialization(String specialization) {
         List<Doctor> doctors=doctorRepository.findAll();
@@ -127,7 +135,7 @@ public class DoctorServiceImpl implements DoctorService {
        });
         return doctorList;
     }
-
+    @Cacheable(value="doctor")
     @Override
     public List<Doctor> findDoctorByLocationAndSpecialization(String area, String specialization) {
         List<Doctor> doctors=doctorRepository.findAll();
@@ -139,7 +147,7 @@ public class DoctorServiceImpl implements DoctorService {
         });
         return doctorList;
     }
-
+    @Cacheable(value="doctor")
     @Override
     public List<Doctor> findDoctorByLocation(String area) {
         List<Doctor> doctors=doctorRepository.findAll();
@@ -150,7 +158,7 @@ public class DoctorServiceImpl implements DoctorService {
             }
         });
         return doctorList;    }
-
+    @CacheEvict(allEntries = true)
     @Override
     public void updateDoctorAppointments(DoctorAppointment doctorAppointment,String emailId) {
         Optional optional=doctorRepository.findById(emailId);
@@ -166,6 +174,7 @@ public class DoctorServiceImpl implements DoctorService {
           }
 
 
+    @Cacheable(value="doctor")
     @Override
     public List<DoctorAppointment> getAllAppointments(String emailId)
     {

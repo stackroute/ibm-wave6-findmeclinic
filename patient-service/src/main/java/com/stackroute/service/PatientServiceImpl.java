@@ -7,6 +7,9 @@ import com.stackroute.exceptions.PatientAlreadyExistsException;
 import com.stackroute.exceptions.PatientNotFoundException;
 import com.stackroute.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CacheConfig(cacheNames = {"patient"})
 @Service
 public class PatientServiceImpl implements PatientService{
 
@@ -30,6 +34,7 @@ public class PatientServiceImpl implements PatientService{
 
     private static String topic= "patientcredentials";
 
+    @CacheEvict(allEntries = true)
     @Override
     public Patient savePatient(Patient patient) throws PatientAlreadyExistsException {
 
@@ -43,7 +48,7 @@ public class PatientServiceImpl implements PatientService{
         return savedPatient;
 
     }
-
+    @Cacheable(value="patient")
     @Override
     public List<Patient> getPatients() {
 
@@ -64,7 +69,7 @@ public class PatientServiceImpl implements PatientService{
        }
 
     }
-
+    @CacheEvict(allEntries = true)
     @Override
     public Patient deletePatientById(String emailId) throws PatientNotFoundException {
 
@@ -82,7 +87,7 @@ public class PatientServiceImpl implements PatientService{
 
 
     }
-
+    @CacheEvict(allEntries = true)
     @Override
     public Patient updatePatient(Patient patient) {
 
@@ -96,6 +101,7 @@ public class PatientServiceImpl implements PatientService{
 
         return patient;
     }
+    @CacheEvict(allEntries = true)
     @Override
     public void updatePatientAppointment(PatientAppointment patientAppointment,String emailId) {
 

@@ -13,9 +13,7 @@ httpOptions = {
     'Content-Type': 'application/json',
   })
 };
-// getAllDoctors() {
-//   return this.http.get('http://localhost:3000/doctors', this.httpOptions);
-// }
+
 getDoctorDetails(emailId:String){
   return this.http.get("http://13.234.236.221:8082/api/v1/doctors1/"+emailId,this.httpOptions);
  }

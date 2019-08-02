@@ -5,12 +5,16 @@ import com.stackroute.domain.Patient;
 import com.stackroute.domain.User;
 import com.stackroute.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@CacheConfig(cacheNames = {"user"})
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -21,6 +25,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    @Cacheable(value="user")
     @Override
     public User findByEmailId(String emailId) {
 
@@ -34,7 +39,7 @@ public class UserServiceImpl implements UserService {
         }
         return  user;
     }
-
+    @CacheEvict(allEntries = true)
     @Override
     public User saveUser(User user)  {
         //savedUser stores user object

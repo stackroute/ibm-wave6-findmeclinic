@@ -3,6 +3,9 @@ package com.stackroute.service;
 import com.stackroute.domain.*;
 import com.stackroute.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+@CacheConfig(cacheNames = {"doctor1"})
 @Service
 public class DoctorServiceImpl implements DoctorService {
 
@@ -28,6 +32,7 @@ public class DoctorServiceImpl implements DoctorService {
         this.specializationService = specializationService;
     }
 
+    @CacheEvict(allEntries = true)
     @Override
     public DoctorDTO save(Doctor doctor) {
 
@@ -51,13 +56,13 @@ public class DoctorServiceImpl implements DoctorService {
         doctorDTO = createRelationBetweenDoctorDTOAndSpecialization(doctorDTO.getEmailId(), specialization.getSpecialization());
         return doctorDTO;
     }
-
+    @CacheEvict(allEntries = true)
     @Override
     public String delete(String emailId) {
         doctorRepository.deleteNode(emailId);
         return "Deleted Successfully";
     }
-
+    @CacheEvict(allEntries = true)
     @Override
     public DoctorDTO update(Doctor doctor) {
 
@@ -90,12 +95,13 @@ public class DoctorServiceImpl implements DoctorService {
 
 
     }
-
+    @Cacheable(value="doctor1")
     @Override
     public List<DoctorDTO> getAll() {
         return doctorRepository.getAll();
     }
 
+    @Cacheable(value="doctor1")
     @Override
     public DoctorDTO getDoctorByEmailId(String emailId) {
         Optional optional=doctorRepository.findById(emailId);

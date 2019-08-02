@@ -6,6 +6,8 @@ import com.stackroute.domain.Doctor;
 import com.stackroute.domain.Patient;
 import com.stackroute.repository.BookAppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -18,6 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Service
+@CacheConfig(cacheNames = {"appointment"})
 public class BookAppointmentServiceImpl  implements BookAppointmentService{
 
 
@@ -34,7 +37,7 @@ public class BookAppointmentServiceImpl  implements BookAppointmentService{
 
     private static String topic= "appointmentDetails";
 
-
+    @CacheEvict(allEntries = true)
     @Override
     public BookAppointment saveAppointment(BookAppointment bookAppointment) {
 
