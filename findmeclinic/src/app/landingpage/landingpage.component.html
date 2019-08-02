@@ -6,55 +6,55 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="carousel">
-    <div class="container" style="margin-left: 650px">
-        <div class="d-flex justify-content-center h-80">
-            <div class="card text-white" style="margin-top:150px;background-color:rgba(7, 7, 7, 0.5)">
-                <div class="card-header" style="color: #2fd5f8">
-                    <div class="data" style="margin-left: 18%">
-                        <h3>Find NearBy Doctors</h3>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="container">
-                            <div class="row heading heading-icon" style="margin-left: 70px">
-
-                                <div style="color: #2fd5f8;margin-left: 39px">
-                                    <h4>Select Location</h4>
-                                </div>
-
-
-                                <div style="margin-left: 38px">
-                                    <form>
-                                        <!-- <mat-form-field> -->
-                                        <input class="search-area" type="text" placeholder="Search an area"
-                                            [(ngModel)]="location" [matAutocomplete]="auto" [formControl]="myControl">
-                                        <mat-autocomplete #auto="matAutocomplete">
-                                            <!-- autoActiveFirstOption -->
-                                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option"
-                                                (click)="search()">
-                                                {{option}}
-                                            </mat-option>
-                                        </mat-autocomplete>
-                                        <!-- </mat-form-field> -->
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div><br>
-                        <div class="" style="width:100%;background:white">
-
-                            <button class="btn btn1" (click)="doctorDetails()">Doctor</button>
-                            <button class="btn btn1">Clinic</button>
-                            <button class="btn btn1">Pharmacy</button>
-                            <button class="btn btn1">Labs</button>
-
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <div class="container" style="margin-left: 650px">
+    <div class="d-flex justify-content-center h-80">
+      <div class="card text-white" style="margin-top:150px;background-color:rgba(7, 7, 7, 0.5)">
+        <div class="card-header" style="color: #2fd5f8">
+          <div class="data" style="margin-left: 18%">
+            <h3>Find NearBy Doctors</h3>
+          </div>
         </div>
+        <div class="card-body">
+          <form>
+            <div class="container">
+              <div class="row heading heading-icon" style="margin-left: 70px">
+
+                <div style="color: #2fd5f8;margin-left: 39px">
+                  <h4>Select Location</h4>
+                </div>
+
+
+                <div style="margin-left: 38px">
+                  <form>
+                    <!-- <mat-form-field> -->
+                    <input class="search-area" type="text" placeholder="Search an area"
+                           [(ngModel)]="location" [matAutocomplete]="auto" [formControl]="myControl">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <!-- autoActiveFirstOption -->
+                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option"
+                                  (click)="search()">
+                        {{option}}
+                      </mat-option>
+                    </mat-autocomplete>
+                    <!-- </mat-form-field> -->
+                  </form>
+                </div>
+
+              </div>
+            </div><br>
+            <div class="" style="width:100%;background:white">
+
+              <button class="btn btn1" (click)="doctorDetails()">Doctor</button>
+              <button class="btn btn1">Clinic</button>
+              <button class="btn btn1">Pharmacy</button>
+              <button class="btn btn1">Labs</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <section class="team-area pt-100 pb-100" id="clinics">
   <div class="container">
@@ -66,7 +66,7 @@
       </div>
     </div>
     <div *ngFor="let doctorData of topDoctors">
-    <div class="cards">
+      <div class="cards">
 
         <div class="single-team">
           <img class="imageClass" src="../../assets/images/{{doctorData.profileImage}}" style="width: 230px" style="height: 225px" alt=""/>
@@ -77,10 +77,10 @@
             <h6>{{doctorData.qualification}}</h6>
 
 
+          </div>
         </div>
       </div>
-      </div>
- </div>
+    </div>
   </div>
 </section>
 <section class="team-area pt-100 pb-100" id="team">
@@ -93,69 +93,69 @@
       </div>
     </div>
     <div *ngFor="let clinicData of topClinics">
-    <div class="cards">
+      <div class="cards">
 
         <div class="single-team">
           <img class="imageClass" src="../../assets/images/{{clinicData.clinicImage}}" style="width: 300px" style="height: 255px" alt=""/>
-            <div class="team-hover">
+          <div class="team-hover">
             <h4>{{clinicData.clinicName}}</h4>
           </div>
 
 
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </section>
 
 <div class="container">
   <div class="card">
-      <div class="container-fliud">
-          <div class="wrapper row">
-              <div class="preview col-md-6">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
 
-                  <div class="preview-pic tab-content">
-                      <div class="tab-pane active" id="pic-1"><img
-                              src="https://findmeclinic.com/images/feature/responsive.png" /></div>
-                  </div>
-
-              </div>
-              <div class="details col-md-6">
-                  <h4 class="product-title" style="color:#2fd5f8">Find Nearby Clinics around you.</h4><br>
-                  <p> See nearby clinics in your area and request for online appointment. Only you have to share your
-                      location from your browser and you can see nearby clinics and hospitals. You can get online
-                      appointment in your favorite clinic.</p>
-              </div>
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"><img
+              src="https://findmeclinic.com/images/feature/responsive.png" /></div>
           </div>
+
+        </div>
+        <div class="details col-md-6">
+          <h4 class="product-title" style="color:#2fd5f8">Find Nearby Clinics around you.</h4><br>
+          <p> See nearby clinics in your area and request for online appointment. Only you have to share your
+            location from your browser and you can see nearby clinics and hospitals. You can get online
+            appointment in your favorite clinic.</p>
+        </div>
       </div>
+    </div>
   </div>
 </div><br>
 <app-patientreviews></app-patientreviews>
 <div class="container">
   <div class="card">
-      <div class="container-fliud">
-          <div class="wrapper row">
-              <div class="preview col-md-6">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
 
-                  <div class="preview-pic tab-content">
-                      <h6>Are you a Doctor or own a clinic?</h6>
-                      <h4 class="product-title" style="color:#2fd5f8">Register Your Clinic, It's Free.</h4><br>
+          <div class="preview-pic tab-content">
+            <h6>Are you a Doctor or own a clinic?</h6>
+            <h4 class="product-title" style="color:#2fd5f8">Register Your Clinic, It's Free.</h4><br>
 
-                      <li>Add Your Doctors</li>
-                      <li>Add Clinic Detail</li>
-                      <li>Manage Patients</li>
-                      <li>Get Online Appointment Requests</li>
+            <li>Add Your Doctors</li>
+            <li>Add Clinic Detail</li>
+            <li>Manage Patients</li>
+            <li>Get Online Appointment Requests</li>
 
-                  </div>
-              </div>
-              <div class="details col-md-6">
-
-                  <div class="tab-pane active" id="pic-1"><img
-                          src="https://findmeclinic.com/images/register-vector.png" /></div>
-
-              </div>
           </div>
+        </div>
+        <div class="details col-md-6">
+
+          <div class="tab-pane active" id="pic-1"><img
+            src="https://findmeclinic.com/images/register-vector.png" /></div>
+
+        </div>
       </div>
+    </div>
   </div>
 </div><br>
 
