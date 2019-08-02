@@ -24,13 +24,9 @@ export class PopupComponent  implements OnInit  {
     //       $("#popup").fadeIn();
     //       sessionStorage.setItem('popState','shown')
     //   }
-    //    });  
-     
-
+    //    });
   }
-
   public hyderabad() {
-  
     this.places =["Madinaguda","Miyapur", "Gachibowli","Ameerpet","SR Nagar","L.B Nagar","Kukatpalli"];
     this.popupService.places = this.places;
     // this.popupService.places1=this.places;
@@ -74,4 +70,6 @@ export class PopupComponent  implements OnInit  {
     const dialogRef = this.dialog.closeAll();
     this.popupService.check =false;
   }
+ 
 }
+

@@ -34,8 +34,8 @@ public interface DoctorRepository extends Neo4jRepository<DoctorDTO, String> {
     List<DoctorDTO> getAll();
 
     @Query("MATCH (d:DoctorDTO)-[r:located_in]-(a:Address) WHERE a.area={area} RETURN d" +
-            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate")
-    List<DoctorDTO> getDoctorsByLocation(String area);
+            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate LIMIT 4")
+    List<DoctorDTO> getDoctorsByArea(String area);
 
     @Query("MATCH (s:Specialization)<-[:specialized_in]-(d:DoctorDTO)-[:located_in]->(a:Address) " +
             "WHERE s.specialization={specialization} AND a.area={area} RETURN d " +
@@ -48,6 +48,6 @@ public interface DoctorRepository extends Neo4jRepository<DoctorDTO, String> {
     List<DoctorDTO> getDoctorsByLocationAndSpecializationForPatient(String emailId);
 
     @Query("MATCH (d:DoctorDTO)-[r:located_in]-(a:Address) WHERE a.city={city} RETURN d" +
-            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate")
+            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate LIMIT 4")
     List<DoctorDTO> getDoctorsByCity(String city);
 }

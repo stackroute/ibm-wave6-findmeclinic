@@ -29,7 +29,7 @@ public interface DoctorService {
 
     DoctorDTO deleteRelationShipBetweenDoctorDTOAndAddress(String emailId);
 
-    List<DoctorDTO> getDoctorsByLocation(String area);
+    List<DoctorDTO> getDoctorsByArea(String area);
 
     List<DoctorDTO> getDoctorsByLocationAndSpecialization(String area, String specialization);
 

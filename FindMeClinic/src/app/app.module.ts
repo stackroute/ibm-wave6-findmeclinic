@@ -32,7 +32,6 @@ import { DoctortimingsComponent } from './doctortimings/doctortimings.component'
 import { MatToolbarModule, MatButtonModule, MatIconModule, MatCardModule  } from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { PatientdashboardComponent } from './patientdashboard/patientdashboard.component';
-import { Popup1Component } from './popup1/popup1.component';
 import { PatientEditProfileComponent } from './patient-edit-profile/patient-edit-profile.component';
 import { AppointmentSlotBookingComponent } from './appointment-slot-booking/appointment-slot-booking.component';
 import { ConfirmbookingComponent } from './confirmbooking/confirmbooking.component';
@@ -86,7 +85,7 @@ const appRoutes:Routes=[
   {  path: 'landingpage', component:LandingpageComponent, pathMatch: 'prefix',
   children:[
  
-    {path:'popup',component:Popup1Component},
+    
  
   ]
  
@@ -134,7 +133,6 @@ children:[
     DoctorprofileComponent,
     DoctortimingsComponent,
     PatientdashboardComponent,
-    Popup1Component,
     PatientEditProfileComponent,
     AppointmentSlotBookingComponent,
     ConfirmbookingComponent,

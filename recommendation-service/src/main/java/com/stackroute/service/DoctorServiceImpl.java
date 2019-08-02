@@ -131,8 +131,8 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public List<DoctorDTO> getDoctorsByLocation(String area) {
-        return doctorRepository.getDoctorsByLocation(area);
+    public List<DoctorDTO> getDoctorsByArea(String area) {
+        return doctorRepository.getDoctorsByArea(area);
     }
 
     @Override

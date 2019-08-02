@@ -4,6 +4,10 @@ import { User } from '../User';
 import { AuthenticationService } from '../authentication.service';
 import * as jwt_decode from "jwt-decode";
 import { PatientregistrationComponent } from '../patient-registration/patient-registration.component';
+import { MatDialog } from '@angular/material';
+import { PopupService } from '../popup.service';
+import { PopupComponent } from '../popup/popup.component';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +16,14 @@ import { PatientregistrationComponent } from '../patient-registration/patient-re
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router:Router,private authentication:AuthenticationService) { }
-
+  constructor(private router:Router,private authentication:AuthenticationService,private dialog:MatDialog, public popupService: PopupService,private overlay:Overlay) { }
+  public dialogRef:any;
   user:User=new User();
   userDetails:any;
   details:any;
 
   ngOnInit() {
+
   }
   sendRole(){
 
