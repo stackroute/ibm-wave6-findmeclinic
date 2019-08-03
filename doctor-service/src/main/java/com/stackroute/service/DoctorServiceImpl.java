@@ -178,12 +178,13 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public List<DoctorAppointment> getAllAppointments(String emailId)
     {
+        List<DoctorAppointment> doctorAppointmentList=new ArrayList<>();
         Optional optional=doctorRepository.findById(emailId);
         if (optional.isPresent()){
             Doctor doctor= (Doctor) optional.get();
-            return doctor.getDoctorAppointmentList();
+            doctorAppointmentList= doctor.getDoctorAppointmentList();
         }
-        return  new ArrayList<>();
+        return  doctorAppointmentList;
     }
 
 
