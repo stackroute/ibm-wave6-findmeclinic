@@ -1,119 +1,143 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link href="https://fonts.googleapis.com/css?family=Cardo:400,400italic|Radley|Tangerine" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-
 <div id="fullscreen_bg" class="fullscreen_bg">
-
+<!--new code-->
 <div class="container">
+    <mat-card>
+        <h4>Select a time slot to book an appointment</h4>
 
-
-
-
-<div id="login">
-       
-        <div class="container">
-            
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-9">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
-<section class="section-tours">
-        <div class=" text-center  u-margin-bottom-medium" >
-            <br>  <br>  <h1 class="heading-secondary">
-               Choose And Book Now
-            </h1>
-            <br>  <br>
+        <div style="padding-left: 28%;padding-top: 4%;text-align: center" class="row">
+            <div class="col-md-0">
+        <!-- <a href="/tomorrow" style="margin-left: -90%" class="previous round">&#8249;</a> -->
         </div>
-
-<mat-tab-group>
-        <mat-tab label="Today" > 
-            
-                <div class="main-content">
-                <div class="container mt-7">
-                        <form class="outset">
-                            <h4>
-                                <mat-radio-group>
-                                    <mat-radio-button value="Today(10-1)"  [disabled]="status1" (click)="clickMe1('today','morning')" >10:00AM-01:00AM</mat-radio-button> <br>
-                                 <mat-radio-button value="Today(2-5)" [disabled]="status2" (click)="clickMe2('today','afternoon')">02:00PM-05:00PM</mat-radio-button> <br>
-                                    <mat-radio-button value="Today(6-9)"   [disabled]="status3" (click)="clickMe3('today','evening')">06:00PM-09:00PM</mat-radio-button> <br>
-                                  </mat-radio-group>
-                                  </h4>
-                                 
-                        </form>
-                </div>
-                </div>
-          
-        </mat-tab>        
-            
-         <mat-tab label="Tomorrow"> 
-           
-        <div class="main-content">
-        <div class="container mt-7">
-                <form class="outset">
-                    <h4>
-                        <mat-radio-group>
-                            <mat-radio-button value="Tomorrow(10-1)" [disabled]="status4" (click)="clickMe4('tommorow','morning')">10:00AM-01:00AM</mat-radio-button> <br>
-                            <mat-radio-button value="Tomorrow(2-5)"   [disabled]="status5" (click)="clickMe5('tommorow','afternoon')">02:00PM-05:00PM</mat-radio-button> <br>
-                            <mat-radio-button value="Tomorrow(6-9)"  [disabled]="status6" (click)="clickMe6('tommorow','evening')">06:00PM-09:00PM</mat-radio-button> <br>
-                          </mat-radio-group>
-                          </h4>
-                          
-             
-                </form>
-        </div>
-        </div>
-        </mat-tab>
-        <mat-tab label="Overmorrow"> 
-            
-               
-                <div class="main-content">
-                <div class="container mt-7">
-                        <form class="outset">
-                            <h4>
-                                <mat-radio-group>
-                                    <mat-radio-button value="Overmorrow(10-1)" [disabled]="status7" (click)="clickMe7('Overmorrow','morning')">10:00AM-01:00AM</mat-radio-button> <br>
-                                    <mat-radio-button value="Overmorrow(2-5)"   [disabled]="status8" (click)="clickMe8('Overmorrow','afternoon')">02:00PM-05:00PM</mat-radio-button> <br>
-                                    <mat-radio-button value="Overmorrow(6-9)"  [disabled]="status9" (click)="clickMe9('Overmorrow','evening')">06:00PM-09:00PM</mat-radio-button> <br>
-                                  </mat-radio-group>
-                                  </h4>
+        <div class="col">
+    <mat-tab-group>
+            <mat-tab id="today" label="Today" > 
+                <br/>
+                    <div class="main-content">
+                    <div class="container mt-7">
+                            <form class="outset">
+                                <h4> 
+                                    <div style="margin-left: -18%" class="row">
+                                        <div class="col">
+                                        <i class="far fa-sun"></i>
+                                        </div>
+                                        <div style="margin-left:-20%" class="col">
+                                                <h5>Morning</h5>
+                                        </div>
+                                        <div class="col">
+                                                <button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button value="Today(10-1)"  [disabled]="status1" (click)="clickMe1('today','morning')" >10:00AM-01:00AM</button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div style="margin-left: -18%" class="row">
+                                            <div class="col"><i class="fas fa-cloud"></i></div>
+                                                    <div style="margin-left:-20%" class="col"> <h5>Afternoon</h5></div>
+                                                            <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(2-5)" [disabled]="status2" (click)="clickMe2('today','afternoon')">02:00PM-05:00PM</button>
+                                                            </div>
+                                    </div>
+                                    <hr>
+                                    <div style="margin-left: -18%" class="row">
+                                            <div class="col"><i class="far fa-moon"></i></div>
+                                            <div style="margin-left:-20%" class="col"><h5>Evening</h5></div>
+                                            <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(6-9)"   [disabled]="status3" (click)="clickMe3('today','evening')">06:00PM-09:00PM</button>                                          
+                                            </div>
+                                            </div>    
+                                    </h4>
+                                     
+                            </form>
+                    </div>
+                    </div>
+            </mat-tab>        
+                
+             <mat-tab id="tomorrow" label="Tomorrow"> 
+               <br/>
+            <div class="main-content">
+            <div class="container mt-7">
+                    <form class="outset">
+                        <h4>
+                                <div style="margin-left: -18%" class="row">
+                                        <div class="col">
+                                        <i class="far fa-sun"></i>
+                                        </div>
+                                        <div style="margin-left:-20%" class="col">
+                                                <h5>Morning</h5>
+                                        </div>
+                                        <div class="col">
+                                                <button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button value="Today(10-1)"  [disabled]="status1" (click)="clickMe1('today','morning')" >10:00AM-01:00AM</button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div style="margin-left: -18%" class="row">
+                                            <div class="col"><i class="fas fa-cloud"></i></div>
+                                                    <div style="margin-left:-20%" class="col"> <h5>Afternoon</h5></div>
+                                                            <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(2-5)" [disabled]="status2" (click)="clickMe2('today','afternoon')">02:00PM-05:00PM</button>
+                                                            </div>
+                                    </div>
+                                    <hr>
+                                    <div style="margin-left: -18%" class="row">
+                                            <div class="col"><i class="far fa-moon"></i></div>
+                                            <div style="margin-left:-20%" class="col"><h5>Evening</h5></div>
+                                            <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(6-9)"   [disabled]="status3" (click)="clickMe3('today','evening')">06:00PM-09:00PM</button>                                          
+                                            </div>
+                                            </div>    
+                            
+                        </h4>
+                    </form>
+            </div>
+            </div>
+            </mat-tab>
+            <mat-tab label="Overmorrow"> 
+                
+                   <br/>
+                    <div class="main-content">
+                    <div class="container mt-7">
+                            <form class="outset">
+                                <h4>
+                                       
+                                        <div style="margin-left: -18%" class="row">
+                                                <div class="col">
+                                                <i class="far fa-sun"></i>
+                                                </div>
+                                                <div style="margin-left:-20%" class="col">
+                                                        <h5>Morning</h5>
+                                                </div>
+                                                <div class="col">
+                                                        <button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button value="Today(10-1)"  [disabled]="status1" (click)="clickMe1('today','morning')" >10:00AM-01:00AM</button>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div style="margin-left: -18%" class="row">
+                                                    <div class="col"><i class="fas fa-cloud"></i></div>
+                                                            <div style="margin-left:-20%" class="col"> <h5>Afternoon</h5></div>
+                                                                    <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(2-5)" [disabled]="status2" (click)="clickMe2('today','afternoon')">02:00PM-05:00PM</button>
+                                                                    </div>
+                                            </div>
+                                            <hr>
+                                            <div style="margin-left: -18%" class="row">
+                                                    <div class="col"><i class="far fa-moon"></i></div>
+                                                    <div style="margin-left:-20%" class="col"><h5>Evening</h5></div>
+                                                    <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(6-9)"   [disabled]="status3" (click)="clickMe3('today','evening')">06:00PM-09:00PM</button>                                          
+                                                    </div>
+                                                    </div>    
                                 
-                        </form>
-                </div>
-                </div>
-                </mat-tab>
-
-
-       
-      </mat-tab-group> 
-    
+                                </h4>
+                                    
+                            </form>
+                    </div>
+                    </div>
+                    </mat-tab>
+          </mat-tab-group> 
+          </div>
+          <div class="col">
+                <!-- <a href="#" style="margin-left: -87%" class="next round">&#8250;</a> -->
+          </div>
+        </div><br><br>
         <div class="form-group text-center">
-            <button class="btn btn-info"  role="button" (click)="routingto()">Continue</button>
-        </div>
-
-      </section>
-    </form>
-</div>
-
-</div>
-
+                <button class="btn btn-info"  role="button" (click)="routingto()">Continue</button>
+            </div>
+        </mat-card>
+       
+    
 </div>
 </div>
-     </div>
-     </div>
 
 

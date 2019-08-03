@@ -1,28 +1,204 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
-<mdb-navbar SideClass="navbar navbar-expand-lg fixed-top" [containerInside]="false" style="background:white">
- <mdb-navbar-brand> <a href="#" class="navbar-brand ml-3" style="color:rgb(33, 173, 228)">
-   <img src="../../assets/images/logo (1).png" style="height: 60px;width: auto;margin-left: 40px" alt ="FindMeClinic"/>
-</a></mdb-navbar-brand>
-  <!-- Collapsible content -->
-  <links>
-    <!-- Links -->
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-         <a class="nav-link waves-light" (click)="openAppointments()" mdbWavesEffect><i class="fa fa-users"></i>My Appointments<span class="sr-only">(current)</span></a>
-          </li>
-      <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
-       <a mdbWavesEffect type="button" (click)="openProfile()" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-         <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
-      </li>
-      <li class="nav-item active">
-       <a class="nav-link " style="font-size: 18px;font-weight:400;"  href="" mdbWavesEffect><i class="fa fa-sign-out"></i>Logout<span class="sr-only">(current)</span></a>
-     </li>
-    </ul>
-    <!-- Links -->
-  </links>
-  <!-- Collapsible content -->
-</mdb-navbar>
-<!--/.Navbar-->
-<router-outlet></router-outlet>
-<br>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+  <a href="http://13.234.236.221:4200/#" style="color:rgb(33, 173, 228)">
+    <div class="" style="margin-left:-77% ">  <img src="../../assets/images/logo (1).png" style="height: 60px;width: auto;" alt ="FindMeClinic"/></div>
+  </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+    
+     <div class="nav1" style="margin-left: 87%" >
+      <div class="color-block mx-auto mb-3 warm-flame-gradient z-depth-2">
+      <div class="btn btn-info btn-lg btn-login" (click)="click()">Logout</div>
+  </div>
+  </div>
+</div>
+</nav>
+<div class="wrapper" style="margin-top:6%;"><br>
+    <div class="container emp-profile" >
+    <div class="hey">
+        <mat-toolbar class="toolbar">Profile</mat-toolbar>
+        <mat-card class="cards">  
+
+            <div class="row">
+                <div class="col-3" div="first">
+                   
+                    <img class="imageClass" src="../../assets/images/{{doctorData.profileImage}}" />
+                    <br>
+                 <div class="chips">
+                    <mat-chip-list aria-label="Fish selection">
+                            <mat-chip><i class="material-icons">
+                                    email
+                                    </i>{{doctorData.emailId}}</mat-chip>
+                                <mat-chip><i class="material-icons" >
+                                        mobile_screen_share
+                                        </i>{{doctorData.phone}}</mat-chip>
+                              </mat-chip-list>
+                            </div>
+                </div>
+               
+                <div  id="second" class="col">
+                    <h4>Dr. {{doctorData.name}}</h4>
+                      <br>
+                              <p><i class="material-icons" style="color: green">
+                                    verified_user
+                                    </i> Medical License Verified &nbsp; &nbsp;
+
+                                    <i class="material-icons" style="color: red">
+                                            local_hospital
+                                            </i>License Number is &nbsp;{{doctorData.medicalLicense}}</p>
+
+                                            <p>Dr. {{doctorData.name}} is {{preposition}} 
+                                                {{doctorData.specialization}} at {{doctorData.clinicName}} Clinic in the city of {{doctorData.address.city}}. {{pronoun}} has been practicing medicine since {{doctorData.practiceStartedDate}}. {{pronoun}} keeps {{self}} abreast with the latest advances and technologies available and has also presented numerous papers at national and international forums. </p>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                                <label>Clinic Address:
+                                </label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{doctorData.clinicName}} Clinic, {{doctorData.address.flatNo}} {{doctorData.address.area}}</p>
+                              <p >{{doctorData.address.city}}, {{doctorData.address.state}} - {{doctorData.address.pinCode}}</p>
+                             
+                            </div>
+                        </div>
+           
+                  
+            </div>  
+
+        </div> 
+    </mat-card> 
+</div>
+
+</div>
+
+
+
+  <div class="container">
+      <br>
+      <br>
+  
+  
+    <div class="row">
+        <div class="col-6" >
+          <mat-toolbar _ngcontent-tpn-c4="" class="mat-toolbar mat-toolbar-single-row"> Upcoming Appointments </mat-toolbar>
+          <mat-card>
+    
+              <div *ngFor="let upcomingDetails of upcomingAppointmentData">
+              <mat-accordion class="myPanel" style="margin-top:10%">
+                  <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                     
+                      <mat-panel-title >
+                        {{upcomingDetails.patient.name}} will visit on {{upcomingDetails.appointmentDate}} &nbsp;<i class="material-icons">
+                          calendar_today
+                          </i>
+                      </mat-panel-title>
+                     
+                    </mat-expansion-panel-header>
+               
+               
+    
+                            <div class="row">
+               
+                              <div class="col">
+                                <p>Patient Name</p>
+                                
+                                <p>Appointment Date</p>
+                                <p>Appointment Time</p>
+                                <p>Email Id </p>
+                                
+                               
+                                <p>Mobile</p>
+                              </div>
+                              <div class="col">
+                               <p>{{upcomingDetails.patient.name}}</p>
+                              
+                               <p>{{upcomingDetails.appointmentDate}}</p>
+                               <p>{{upcomingDetails.appointmentTime}}</p>
+                               <p>{{upcomingDetails.patient.emailId}}</p>
+                               <p>{{upcomingDetails.patient.phone}}</p>
+                              </div>
+                            </div>
+                          
+                         
+                  </mat-expansion-panel>
+                </mat-accordion>
+                
+              </div>
+          </mat-card>
+        </div>
+    
+    
+    
+       
+        <div class="col-6" >
+          <mat-toolbar _ngcontent-tpn-c4="" class="mat-toolbar mat-toolbar-single-row"> Previous Appointments </mat-toolbar>
+          <mat-card>
+              <div *ngFor=" let previousDetails of previousAppointmentData">
+              <mat-accordion class="myPanel">
+                  <mat-expansion-panel >  
+                    <mat-expansion-panel-header>
+                      <mat-panel-title >
+                        {{previousDetails.patient.name}} visited on {{previousDetails.appointmentDate}} &nbsp; <i class="material-icons">
+                          calendar_today
+                          </i>
+                      </mat-panel-title>
+                      
+                    </mat-expansion-panel-header>
+              
+                            <div class="row">
+               
+                              <div class="col">
+                               <p>Patient Name</p>
+                                
+                                <p>Appointment Date</p>
+                                <p>Appintment Time</p>
+                                <p>Email Id </p>
+                                
+                               
+                                <p>Mobile</p>
+                              </div>
+                              <div class="col">
+                               <p>{{previousDetails.patient.name}}</p>
+                              
+                               <p>{{previousDetails.appointmentDate}}</p>
+                               <p>{{previousDetails.appointmentTime}}</p>
+                               <p>{{previousDetails.patient.emailId}}</p>
+                               <p>{{previousDetails.patient.phone}}</p>
+                              </div>
+                            </div>
+                      
+               
+               
+                  </mat-expansion-panel>
+                </mat-accordion>
+              
+              </div>
+          </mat-card>
+        </div>
+      </div>
+    
+    
+    
+  
+  
+  
+  </div> 
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -3,7 +3,7 @@ mat-expansion-panel {
   margin:auto;
   margin-top:3%;
   /* background:    rgb(238, 236, 238); */
-  background: url("../../assets/images/18.jpeg") no-repeat center top / cover;
+ 
  }
  .title{
   font-weight: 500;

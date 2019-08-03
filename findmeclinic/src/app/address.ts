@@ -1,7 +1,7 @@
 export class Address {
     state: string;
     city: string;
-    address: string;
+    flatNo: string;
     area: string;
     pinCode: number;
 }

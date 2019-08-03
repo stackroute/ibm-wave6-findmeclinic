@@ -35,16 +35,16 @@ export class DoctorregistrationComponent implements OnInit {
   namePattern = "[a-zA-Z\\s]*$";
  emailPattern =   "[a-z0-9._%+-]{1,40}[@]{1}[a-z]{1,10}[.]{1}[a-z]{3}";
  passwordPattern = "[a-zA-Z0-9$#@]*$";
- qualificationPattern = "[a-zA-Z,]*$";
- medicalLicensePattern = "[a-zA-Z0-9]*$";
-specializationPattern = "[a-zA-Z]*$";
+ qualificationPattern = "[a-zA-Z,\\s]*$";
+ medicalLicensePattern = "[a-zA-Z0-9\\s]*$";
+specializationPattern = "[a-zA-Z\\s]*$";
 
 
 clinicNamePattern = "[a-zA-Z\\s]*$";
 mobilePattern = "[0-9]{10}";
 statePattern = "[a-zA-Z\\s]*$";
-cityPattern = "[a-zA-Z]*$";
-flatNoPattern = "[a-zA-Z0-9,/-]*$";
+cityPattern = "[a-zA-Z\\s]*$";
+flatNoPattern = "[a-zA-Z0-9,/-\\s]*$";
 areaPattern = "[a-zA-Z\\s]*$";
  pincodePattern= "[0-9]{6}";
 

@@ -25,7 +25,7 @@
                                             <div class="form-group">
                                                     <div class="field ">
                                                     <label>Name</label>
-                                                    <input type="text" formControlName="firstName" maxlength="15" minlength="4" pattern="^[a-zA-Z]*$" class="form-control" #patientname [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                                                    <input type="text" formControlName="firstName" pattern="[a-zA-Z ]*$" class="form-control" #patientname [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                                                     <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                                         <div *ngIf="f.firstName.errors.required"> Name is required</div>
                                                     </div>

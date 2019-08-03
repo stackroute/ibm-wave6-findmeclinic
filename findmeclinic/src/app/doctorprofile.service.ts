@@ -17,7 +17,7 @@ httpOptions = {
 //   return this.http.get('http://13.234.236.221:3000/doctors', this.httpOptions);
 // }
 getDoctorDetails(emailId:string){
-  return this.http.get("http://13.234.236.221:8082/api/v1/doctors1/"+emailId,this.httpOptions);
+  return this.http.get("http://13.234.236.221:8082/api/v1/doctor-by-email/"+emailId,this.httpOptions);
  }
 //  updatePatientDetails(doctor:Doctor){
 //   doctor.role="doctor";

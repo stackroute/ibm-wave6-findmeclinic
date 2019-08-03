@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Doctor } from '../doctor';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -9,7 +9,8 @@ import { SchedulerService } from '../scheduler.service';
 @Component({
   selector: 'app-appointment-slot-booking',
   templateUrl: './appointment-slot-booking.component.html',
-  styleUrls: ['./appointment-slot-booking.component.css']
+  styleUrls: ['./appointment-slot-booking.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppointmentSlotBookingComponent implements OnInit {
 
@@ -18,8 +19,6 @@ export class AppointmentSlotBookingComponent implements OnInit {
   emailId: string;
   address: string;
   area: string;
-  city:string;
-  specialization:string;
   date: Date;
   slot: string;
   day: string;
@@ -51,8 +50,6 @@ export class AppointmentSlotBookingComponent implements OnInit {
       this.emailId = params["emailId"];
       this.address = params["address"];
       this.area = params["area"];
-      this.city=params["city"];
-      this.specialization=params["specialization"]
       this.todaym = params["todaym"];
       this.todaya = params["todaya"];
       this.todaye = params["todaye"];
@@ -201,8 +198,6 @@ export class AppointmentSlotBookingComponent implements OnInit {
         "emailId": this.emailId,
         "address": this.address,
         "area": this.area,
-        "city":this.city,
-        "specialization":this.specialization,
         "slot": this.slot,
         "key":this.key,
         "appointmentId":this.value,

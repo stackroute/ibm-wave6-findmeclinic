@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientdashboardService } from '../patientdashboard.service';
+import { ActivatedRoute } from '@angular/router';
+import { RecommendationsService } from '../recommendations.service';
 
 @Component({
   selector: 'app-patientappointments',
@@ -21,9 +23,16 @@ export class PatientappointmentsComponent implements OnInit {
  appointmentDate:string;
  appointmentDate1:string;
  data1:any;
- constructor(private appointments:PatientdashboardService) { }
+  patientRecommendationData: Object;
+ constructor(private appointments:PatientdashboardService,private route1:ActivatedRoute,private recommendationService:RecommendationsService) { }
 
  ngOnInit() {
+
+  const email= this.route1.snapshot.paramMap.get('username');
+  this.recommendationService.getTopDoctorsForPatient(email).subscribe(data=>{
+    console.log("recom"+data);
+    this.patientRecommendationData=data;
+  });
 
   
   this.appointments.getAllAppointments(sessionStorage.getItem('username')).subscribe((data:any)=>

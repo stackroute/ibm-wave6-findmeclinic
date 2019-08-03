@@ -1,96 +1,143 @@
-<br><br><br><br><br>
-<mat-accordion class="myPanel" style="margin-top:10%">
-   <mat-expansion-panel [expanded]="true">
-     <mat-expansion-panel-header>
-       <mat-panel-title class="title">
-         Upcoming Appontment Details
-       </mat-panel-title>
-     </mat-expansion-panel-header>
+
+<div class="wrapper">
+<div class="container">
+    <br>
+    <br>
+  <!--my code.....................................................................................    -->
+
+  <div class="row">
+      <div class="col-6" >
+        <mat-toolbar>
+          Upcoming Appointments
+        </mat-toolbar>
+        <mat-card>
+  
+            <div *ngFor="let upcomingDetails of upcomingAppointmentData">
+            <mat-accordion class="myPanel" style="margin-top:10%">
+                <mat-expansion-panel >
+                  <mat-expansion-panel-header>
+                    <!-- <mat-panel-title class="title">
+                      Upcoming Appontment Details
+                    </mat-panel-title> -->
+                    <mat-panel-title >
+                      {{upcomingDetails.patient.name}} will visit on {{upcomingDetails.appointmentDate}} &nbsp;<i class="material-icons">
+                        calendar_today
+                        </i>
+                    </mat-panel-title>
+                    <!-- <p>{{upcomingDetails.patient.name}}</p>
+                    <br>
+                    <p>{{upcomingDetails.appointmentDate}}</p> -->
+                  </mat-expansion-panel-header>
+             
+             
+                  <!-- <mat-card class="cardList"> -->
+  <!--            
+                    <div *ngFor="let upcomingDetails of upcomingAppointmentData"> -->
+                      <!-- <mat-card class="upcomingDataCard">
+                        <mat-card-content> -->
+                          <div class="row">
+             
+                            <div class="col">
+                              <p>Patient Name</p>
+                              
+                              <p>Appointment Date</p>
+                              <p>Appointment Time</p>
+                              <p>Email Id </p>
+                              
+                             
+                              <p>Mobile</p>
+                            </div>
+                            <div class="col">
+                             <p>{{upcomingDetails.patient.name}}</p>
+                            
+                             <p>{{upcomingDetails.appointmentDate}}</p>
+                             <p>{{upcomingDetails.appointmentTime}}</p>
+                             <p>{{upcomingDetails.patient.emailId}}</p>
+                             <p>{{upcomingDetails.patient.phone}}</p>
+                            </div>
+                          </div>
+                        <!-- </mat-card-content>
+                      </mat-card><br> -->
+                    <!-- </div> -->
+             
+             
+                  <!-- </mat-card> -->
+                       
+                </mat-expansion-panel>
+              </mat-accordion>
+              
+            </div>
+        </mat-card>
+      </div>
+  
+  
+  
+      <!--next appointment-->
+      <div class="col-6" >
+        <mat-toolbar>
+          Previous Appointments
+        </mat-toolbar>
+        <mat-card>
+            <div *ngFor=" let previousDetails of previousAppointmentData">
+            <mat-accordion class="myPanel">
+                <mat-expansion-panel >  
+                  <mat-expansion-panel-header>
+                    <mat-panel-title >
+                      {{previousDetails.patient.name}} visited on {{previousDetails.appointmentDate}} &nbsp; <i class="material-icons">
+                        calendar_today
+                        </i>
+                    </mat-panel-title>
+                    
+                  </mat-expansion-panel-header>
+                  <!-- <mat-card class="cardList"> -->
+             
+                    <!-- <div *ngFor=" let previousDetails of previousAppointmentData"> -->
+                      <!-- <mat-card class="previousDataCard">
+                        <mat-card-content> -->
+                          <div class="row">
+             
+                            <div class="col">
+                             <p>Patient Name</p>
+                              
+                              <p>Appointment Date</p>
+                              <p>Appintment Time</p>
+                              <p>Email Id </p>
+                              
+                             
+                              <p>Mobile</p>
+                            </div>
+                            <div class="col">
+                             <p>{{previousDetails.patient.name}}</p>
+                            
+                             <p>{{previousDetails.appointmentDate}}</p>
+                             <p>{{previousDetails.appointmentTime}}</p>
+                             <p>{{previousDetails.patient.emailId}}</p>
+                             <p>{{previousDetails.patient.phone}}</p>
+                            </div>
+                          </div>
+                        <!-- </mat-card-content>
+                      </mat-card> -->
+                      
+                    <!-- </div> -->
+             
+             
+                  <!-- </mat-card> -->
+             
+             
+                </mat-expansion-panel>
+              </mat-accordion>
+            
+            </div>
+        </mat-card>
+      </div>
+    </div>
+  
+  
+  
 
 
-     <mat-card class="cardList">
-
-       <div *ngFor="let upcomingDetails of upcomingAppointmentData">
-         <mat-card class="upcomingDataCard">
-           <mat-card-content>
-             <div class="row">
-
-               <div class="col">
-                 <p>Patient Name</p>
-                 
-                 <p>Appointment Date</p>
-                 <p>Appointment Time</p>
-                 <p>Email Id </p>
-                 
-                
-                 <p>Mobile</p>
-               </div>
-               <div class="col">
-                <p>{{upcomingDetails.patient.name}}</p>
-               
-                <p>{{upcomingDetails.appointmentDate}}</p>
-                <p>{{upcomingDetails.appointmentTime}}</p>
-                <p>{{upcomingDetails.patient.emailId}}</p>
-                <p>{{upcomingDetails.patient.phone}}</p>
-               </div>
-             </div>
-           </mat-card-content>
-         </mat-card><br>
-       </div>
-
-
-     </mat-card>
-
-     
-
-
-   </mat-expansion-panel>
- </mat-accordion>
- <br>
- <mat-accordion class="myPanel">
-   <mat-expansion-panel [expanded]="true">
-     <mat-expansion-panel-header>
-       <mat-panel-title class="title">
-         Previous Appontment Details
-       </mat-panel-title>
-     </mat-expansion-panel-header>
-     <mat-card class="cardList">
-
-       <div *ngFor=" let previousDetails of previousAppointmentData">
-         <mat-card class="previousDataCard">
-           <mat-card-content>
-             <div class="row">
-
-               <div class="col">
-                <p>Patient Name</p>
-                 
-                 <p>Appointment Date</p>
-                 <p>Appintment Time</p>
-                 <p>Email Id </p>
-                 
-                
-                 <p>Mobile</p>
-               </div>
-               <div class="col">
-                <p>{{previousDetails.patient.name}}</p>
-               
-                <p>{{previousDetails.appointmentDate}}</p>
-                <p>{{previousDetails.appointmentTime}}</p>
-                <p>{{previousDetails.patient.emailId}}</p>
-                <p>{{previousDetails.patient.phone}}</p>
-               </div>
-             </div>
-           </mat-card-content>
-         </mat-card><br>
-       </div>
-
-
-     </mat-card>
-
-
-   </mat-expansion-panel>
- </mat-accordion>
-
+</div> 
+</div> 
 
 
 

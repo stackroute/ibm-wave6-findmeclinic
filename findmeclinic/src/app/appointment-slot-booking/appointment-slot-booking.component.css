@@ -1,60 +1,73 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #17a2b8;
-  height: 100vh;
-}
-#login .container #login-row #login-column #login-box {
-  margin-top: 10px;
-  width: 2000px;
-  height: 420px;
-  background-color:white;
-}
-#login .container #login-row #login-column #login-box #login-form {
-  padding: 10px;
-}
-#login .container #login-row #login-column #login-box #login-form #register-link {
-  margin-top: -85px;
-}
 .fullscreen_bg {
 position: fixed;
-padding: 150px;
+padding: 90px;
 top: 0;
 right: 0;
 bottom: 0;
 left: 0;
 background-size: cover;
 background-position: 50% 50%;
-background: url("../../assets/images/36.jpg") repeat center top / cover;
+background: url("../../assets/images/21.jpg") repeat center top / cover;
 background-repeat:repeat;
 }
-.section-tours{
-padding-top: 7px;
+
+.mat-card{
+  margin-top: 0%;
+height: 100%;
+background-color: white;
+width: 100%;
 }
-h4 {
-letter-spacing: 3px;
+h4{
+  padding-top: 5%;
+  text-align: center;
 }
-.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
-background:#2fd5f8;
-font-size: 26px;
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  
 }
-.mat-tab-labels, .mat-tab-label, .mat-tab-link {
-font-size: 26px;
-/* background-color: #2fd5f8;; */
+
+
+
+
+.round {
+  border-radius: 50%;
 }
-.row{
-padding: 19px;
+
+.btn-slot {
+  background: #2fd5f8;
+  color:black;
+  height: 40px;
+  padding-bottom: 38px;
+  /* margin-top:15px; */
 }
-.btn{
-background-color:#2fd5f8;
-color: white;
+.btn-slot:hover{
+  color: black;
+  background-color: white;
+  font-weight: 400
+  }
+ 
+.next {
+  background-color: #2fd5f8;
+  color: black;
 }
--primary{
-text-align: center;
+next:hover {
+  background-color: #ddd;
+  color: black;
 }
-.heading-secondary{
-color: #2fd5f8;
+
+.previous{
+  background-color: #2fd5f8;
+  color: black;
 }
-.outset{
-padding:20px;
-} 
+.previous:hover{
+  background-color: #ddd;
+  color: black;
+}
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #2fd5f8;
+}
+.col{
+  margin-block: center;
+}

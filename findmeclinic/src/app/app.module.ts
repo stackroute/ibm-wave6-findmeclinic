@@ -60,7 +60,7 @@ const dashboardRoutes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'tabbedViewForRegistration',component:TabbedPaneForRegComponent},
   {path:'patientregistration',component:PatientregistrationComponent},
-  {path:'doctordashboard',component:DoctordashboardComponent},
+  {path:'doctordashboard/:email',component:DoctordashboardComponent},
   {path:'patientdashboard/:username',component:PatientdashboardComponent},
   {path:'doctorregistration',component:DoctorregistrationComponent},
   {path:'patientProfile',component:PatientprofileComponent},
@@ -101,13 +101,13 @@ const appRoutes:Routes=[
 
 },
 
-{  path: '', component:DoctordashboardComponent, pathMatch: 'prefix',
-children:[
- {path:'openProfile/:email',component:DoctorprofileComponent},
- {path:'openAppointments',component:DoctorappointmentsComponent},
- {path:'openTimings',component:DoctortimingsComponent }
-]
-},
+// {  path: '', component:DoctordashboardComponent, pathMatch: 'prefix',
+// children:[
+//  {path:'openProfile/:email',component:DoctorprofileComponent},
+//  {path:'openAppointments',component:DoctorappointmentsComponent},
+//  {path:'openTimings',component:DoctortimingsComponent }
+// ]
+// },
  
  ];
 

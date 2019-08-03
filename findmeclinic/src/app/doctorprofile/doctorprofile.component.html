@@ -10,144 +10,58 @@
     <div class="hey">
         <mat-toolbar class="toolbar">Dashboard</mat-toolbar>
         <mat-card class="cards">  
-        <!-- <mat-toolbar>Dashboard</mat-toolbar> -->
-    <form method="post">
-      
-            <!-- <div class="row">
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-8">
-                    <div class="profile-head">
-                    </div>
-                </div>
-            </div> -->
+
             <div class="row">
-                <div class="col-3">
-                    <!-- <button  class="btn  float-right btn-info btn-md btn-register" (click)="editPatientProfile()"><i class="fa fa-edit"></i>Edit Profile</button> -->
+                <div class="col-3" div="first">
+                   
                     <img class="imageClass" src="../../assets/images/{{doctorData.profileImage}}" />
-                </div>
-                <div class="col">
-                    <h5>Dr. {{doctorData.name}}</h5>
-                    <!-- <mat-chip-list aria-label="Fish selection">
-                            <mat-chip>{{doctorData.qualification}}</mat-chip>
-                          </mat-chip-list> -->
                     <br>
-                    <!-- <div class="tab-content profile-tab" id="myTabContent"> -->
-                        <!-- <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> -->
-                            <!-- <div class="row"> -->
-                                <!-- <div class="col-md-6">
-                                    <label>Name </label>
-                                </div> -->
-                                <!-- <div class="col-md-6">
-                                    <p style="color: blue;">{{doctorData.name}}</p>
-                                </div> -->
-                            <!-- </div> -->
-                            <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Qualification :</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p style="color:#1d90a7;">{{doctorData.qualification}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Specialization
-        
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="color:#1d90a7;">{{doctorData.specialization}}</p>
-                                        </div>
-                                    </div>
-                                    <!-- <p>Email: {{doctorData.emailId}}</p> -->
-                                    <!-- <p>{{doctorData.qualification}}</p> -->
-                                
-                                    <!-- <p style="color: blue;">{{doctorData.emailId}}</p> -->
-                               
-                            
-                            <div class="row">
-                              <div class="col-md-6">
-                                  <label>Gender
-                                  </label>
-                              </div>
-                              <div class="col-md-6">
-                                  <p style="color:#1d90a7;">{{doctorData.gender}}</p>
-                              </div>
-                          </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Medical License Number</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p style="color:#1d90a7;">{{doctorData.medicalLicense}}</p>
-                                </div>
+                 <div class="chips">
+                    <mat-chip-list aria-label="Fish selection">
+                            <mat-chip><i class="material-icons">
+                                    email
+                                    </i>{{doctorData.emailId}}</mat-chip>
+                                <mat-chip><i class="material-icons" >
+                                        mobile_screen_share
+                                        </i>{{doctorData.phone}}</mat-chip>
+                              </mat-chip-list>
                             </div>
-                          
-                            <div class="row">
-                              <div class="col-md-6">
-                                  <label>Practice Start Date
-                                  </label>
-                              </div>
-                              <div class="col-md-6">
-                                  <p style="color:#1d90a7;">{{doctorData.practiceStartedDate}}</p>
-                              </div>
-                          </div>
-                          <div class="row">
-                                <div class="col-md-6">
-                                    <label>Email :
-                                    </label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p style="color:#1d90a7;">{{doctorData.emailId}}</p>
-                                </div>
-                            </div>
+                </div>
+               
+                <div  id="second" class="col">
+                    <h4>Dr. {{doctorData.name}}</h4>
+                        <!-- <mat-chip-list aria-label="Fish selection">
+                                <mat-chip >{{doctorData.specialization}}</mat-chip>
+                              </mat-chip-list> -->
+                              <br>
+                              <p><i class="material-icons" style="color: green">
+                                    verified_user
+                                    </i> Medical License Verified &nbsp; &nbsp;
+
+                                    <i class="material-icons" style="color: red">
+                                            local_hospital
+                                            </i>License Number is &nbsp;{{doctorData.medicalLicense}}</p>
+
+                                            <p>Dr. {{doctorData.name}} is {{preposition}} 
+                                                {{doctorData.specialization}} at {{doctorData.clinicName}} Clinic in the city of {{doctorData.address.city}}. {{pronoun}} has been practicing medicine since {{doctorData.practiceStartedDate}}. {{pronoun}} keeps {{self}} abreast with the latest advances and technologies available and has also presented numerous papers at national and international forums. </p>
+
                           <div class="row">
                             <div class="col-md-6">
-                                <label>Address
+                                <label>Clinic Address:
                                 </label>
                             </div>
                             <div class="col-md-6">
-                              <p style="color:#1d90a7;">{{doctorData.address.flatNo}}, {{doctorData.address.area}}</p>
-                              <p style="color:#1d90a7;">{{doctorData.address.city}}, {{doctorData.address.state}}</p>
-                              <p style="color:#1d90a7;">{{doctorData.address.pinCode}}</p>
-                              <!-- <p style="color: blue;">{{doctorData.address.pinCode}}</p> -->
+                                <p>{{doctorData.clinicName}} Clinic, {{doctorData.address.flatNo}} {{doctorData.address.area}}</p>
+                              <p >{{doctorData.address.city}}, {{doctorData.address.state}} - {{doctorData.address.pinCode}}</p>
+                             
                             </div>
                         </div>
-                            
-                        <!-- </div> -->
-<!-- 
-                    </div> -->
-                </div>  <!--second column ends here-->
-                <div id="end-col" class="col-3">
-                        <p><i class="material-icons">
-                            person
-                            </i>Gender: {{doctorData.gender}}</p>
-                      <p><i class="material-icons">
-                          verified_user
-                          </i> Medical License Verified </p>
-                         <p> <i class="material-icons">
-                            local_hospital
-                            </i>License Number: &nbsp;{{doctorData.medicalLicense}}</p>
-                            <p><i class="material-icons">
-                              email
-                              </i>{{doctorData.emailId}}</p>
-                              <p> <i class="material-icons">
-                                mobile_screen_share
-                                </i>{{doctorData.phone}}
-                              </p>
-                            <hr>
-                            
-                            <br>
-                          <!-- <p>{{getExp(doctor.practiceStartedDate  | date: 'yyyy/MM/dd')}} Of Overall Experience</p> -->
-                        
-                    </div>
+           
                   
-            </div> <!--row ends here-->
-        
-       
-    </form>
-        </mat-card>
+            </div>  <!--second column ends-->
+
+        </div>  <!--row ends here-->
+    </mat-card> 
 </div>
 
 </div>

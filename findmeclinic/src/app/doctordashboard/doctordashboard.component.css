@@ -1,128 +1,169 @@
-body,html{
-    height: 100%;
-    margin-top:5%;
-   }
-   /* remove outer padding */
-   .main .row{
-    padding: 0px;
-    margin: 0px;
-   }
-  
-   nav.sidebar.navbar {
-    border-radius: 0px;
-   }
-   nav.sidebar, .main{
-    -webkit-transition: margin 200ms ease-out;
-    -moz-transition: margin 200ms ease-out;
-    -o-transition: margin 200ms ease-out;
-    transition: margin 200ms ease-out;
-   }
-   .main{
-    padding: 10px 10px 0 10px;
-   }
-  
-   @media (min-width: 768px) {
-  
-    .main{
-        position: absolute;
-        width: calc(100% - 40px); 
-        margin-left: 40px;
-        float: right;
-    }
-   
-    nav.sidebar:hover + .main{
-        margin-left: 200px;
-    }
-    
-    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-        margin-left: 0px;
-    }
-    
-    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
-        text-align: center;
-        width: 100%;
-        margin-left: 0px;
-    }
-    
-    nav.sidebar a{
-        padding-right: 13px;
-    }
-   
-    nav.sidebar .navbar-nav > li:first-child{
-        border-top: 1px #e5e5e5 solid;
-    }
-   
-    nav.sidebar .navbar-nav > li{
-        border-bottom: 1px #e5e5e5 solid;
-    }
-    nav.sidebar .navbar-nav .open .dropdown-menu {
-        position: static;
-        float: none;
-        width: auto;
-        margin-top: 0;
-        background-color: transparent;
-        border: 0;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-    }
- 
-    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
-        padding: 0 0px 0 0px;
-    }
-   
-    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-        color: #777;
-    }
- 
-    nav.sidebar{
-        width: 200px;
-        height: 100%;
-        margin-left: -160px;
-        float: left;
-        z-index: 8000;
-        margin-bottom: 0px;
-    }
-   
-    nav.sidebar li {
-        width: 100%;
-    }
-    nav.sidebar:hover{
-        margin-left: 0px;
+.navbar-brand{
+    font-family:'Pacifico';
+    font-size:20px;
+  }
+  nav{
+    background:white;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    position: fixed;
+    padding-top:20px;
+  }
+  .btn-login {
+    background: #2fd5f8;
+    color: #fff;
+    height: 40px;
+    padding-bottom: 38px;
+    /* margin-top:15px; */
+  }
+  .btn-login:hover{
+    color: black;
+    background-color: white;
+    font-weight: 400
     }
 
-    .forAnimate{
-        opacity: 0;
-    }
-   }
-   /* .....NavBar: Fully showing nav bar..... */
-   @media (min-width: 1330px) {
    
-    .main{
-        width: calc(100% - 200px); 
-        margin-left: 200px;
-    }
-    
-    nav.sidebar{
-        margin-left: 0px;
-        float: left;
-    }
-    
-    nav.sidebar .forAnimate{
-        opacity: 1;
-    }
-   }
-   nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-    color: #CCC;
-    background-color: transparent;
-   }
-   nav:hover .forAnimate{
-    opacity: 1;
-   }
-   section{
-    padding-left: 15px;
-   }
-   @media only screen and (max-width: 340 px) {
-    body {
-      margin-top: 43%
-    }
-   }
+      
+      mat-expansion-panel {
+        /* width: 90%; */
+        margin:auto;
+        margin-top:3%;
+        /* background:    rgb(238, 236, 238); */
+        background: url("../../assets/images/22.jpg") no-repeat center top / cover;
+      }
+
+      .mat-toolbar-single-row{
+        background-color:  #5bd8f1; 
+      }
+      
+      
+      .title{
+        font-weight: 500;
+        font-size:17px;
+        color:white;
+      }
+        .example-card {
+          display: flex;
+          flex-direction: column;
+          margin: auto;
+      
+          background: url("../../assets/images/18.jpeg") no-repeat center top / cover;
+        }
+      
+        .upcomingDataCard{
+            
+            /* max-width: 500px; */
+           
+           width:120%;
+            background: url("../../assets/images/21.jpg") no-repeat center top / cover;
+        }
+        .previousDataCard{
+         
+         width:120%;
+          background: url("../../assets/images/21.jpg") no-repeat center top / cover;
+        }
+      p{
+        color: rgb(3, 0, 8);
+        font-size:14px;
+        font-weight:400;
+      }
+      
+      
+        .cardList {
+          padding-left:90px;
+         
+          padding-top:30px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+           max-width: 1180px;
+           margin:auto;
+           margin-top:2%;
+      
+        }
+        /* Column Gap */
+        .cardList > * {
+          box-sizing: border-box;
+        }
+        .cardList > *:not(:last-child) {
+          margin-right: 34px;
+        }
+        /* Item sizing */
+        .cardListItem {
+          flex: 0 1 calc(33.3% - 32px);
+        }
+        /* medium size viewport */
+      
+      @media screen and (max-width: 959px) {
+          /* Column Gap */
+          .cardList > *:not(:last-child) {
+            margin-right: 32px;
+          }
+          /* Item sizing */
+          .cardListItem {
+            flex: 0 1 calc(50% - 32px);
+          }
+        }
+        /* small size viewport */
+      
+      @media screen and (max-width: 599px) {
+          .cardList {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+          }
+          .cardList > *:not(:last-child) {
+            margin-right: unset;
+            margin-bottom: 32px;
+          }
+        }
+        label{
+            font-weight: 500;
+          }
+          .chips{
+            padding-top: 8px;
+            
+          }
+          #second{
+            padding-left: 60px;
+            padding-right: 100px;
+          }
+          
+          img{
+            height: 60%;
+          }
+          .toolbar{
+            background-color:  #5bd8f1;
+            margin-top: 30px;
+           }
+          
+           .register{
+           margin-right: 10px;
+           margin-top: 1px;
+           background: #5bd8f1;
+           color: #fff;
+           }
+          
+           i{
+            vertical-align: -6px;
+          }
+          .wrapper{
+            height:100vh;
+            background: url("../../assets/images/22.jpg") repeat center top / cover;
+            background-position:120% 100%;
+            background-size:cover;
+           }
+          
+          
+          
+      
+      
+      
+      
+      
+      
+      
+      
+      
+  

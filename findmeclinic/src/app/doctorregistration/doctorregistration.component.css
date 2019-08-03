@@ -89,8 +89,6 @@ font-weight: 400;
 }
 p
 {
-font-style: oblique;
-font-weight: bolder;
 text-align: center;
 margin-bottom: 0%;
 font-size: 14px;
@@ -133,8 +131,6 @@ hr{
 }
 
 .upload{
-     font-style: oblique;
-     font-weight: bolder;
      font-size: 14px;
      margin-left: -11%;
      margin-bottom: 0%;

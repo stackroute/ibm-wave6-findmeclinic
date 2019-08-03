@@ -134,30 +134,7 @@ export class ConfirmbookingComponent implements OnInit {
           this.bookAppointment.key=this.key;
           this.bookAppointment.patient=this.patient;
           this.bookAppointment.id=this.id;
-          sessionStorage.setItem('appointmentid',this.appointmentId+"");
-          sessionStorage.setItem('key',this.key);
-        //  var url=location.href;
-         // localStorage.setItem('url',url);
-         sessionStorage.setItem('emailid',this.doctor.emailId);
-         sessionStorage.setItem('doctorName',this.doctor.name);
-         sessionStorage.setItem('specializtion',this.specialization);
-         sessionStorage.setItem('clinicName',this.doctor.clinicName);
-         sessionStorage.setItem('area',this.address.area);
-         sessionStorage.setItem('city',this.address.city);
-          sessionStorage.setItem('patientName',this.patient.name);
-          sessionStorage.setItem('dateOfBirth',this.patient.dateOfBirth);
-          sessionStorage.setItem('gender',this.patient.gender);
-          sessionStorage.setItem('mobile',this.patient.phone);
-          sessionStorage.setItem('email',this.patient.emailId);
-          
-
-          this.appointment.checkPatient(this.bookAppointment.patient.emailId).subscribe(data=>
-          {
-            if(this.bookAppointment.patient.emailId==sessionStorage.getItem('username'))
-            {
-            if(data.emailId==this.bookAppointment.patient.emailId)
-            {
-              this.appointmentId1=this.bookAppointment.appointmentId;
+          this.appointmentId1=this.bookAppointment.appointmentId;
               
                  if(this.key=="todaym")
                  {
@@ -201,6 +178,30 @@ export class ConfirmbookingComponent implements OnInit {
                   this.bookAppointment.appointmentTime=this.evening[--this.appointmentId1];
                 }
             
+          sessionStorage.setItem('appointmentid',this.appointmentId+"");
+          sessionStorage.setItem('key',this.key);
+        //  var url=location.href;
+         // localStorage.setItem('url',url);
+         sessionStorage.setItem('emailid',this.doctor.emailId);
+         sessionStorage.setItem('doctorName',this.doctor.name);
+         sessionStorage.setItem('specializtion',this.specialization);
+         sessionStorage.setItem('clinicName',this.doctor.clinicName);
+         sessionStorage.setItem('area',this.address.area);
+         sessionStorage.setItem('city',this.address.city);
+          sessionStorage.setItem('patientName',this.patient.name);
+          sessionStorage.setItem('dateOfBirth',this.patient.dateOfBirth);
+          sessionStorage.setItem('gender',this.patient.gender);
+          sessionStorage.setItem('mobile',this.patient.phone);
+          sessionStorage.setItem('email',this.patient.emailId);
+          
+
+          this.appointment.checkPatient(this.bookAppointment.patient.emailId).subscribe(data=>
+          {
+            if(this.bookAppointment.patient.emailId==sessionStorage.getItem('username'))
+            {
+            if(data.emailId==this.bookAppointment.patient.emailId)
+            {
+              
           
               this.appointment.saveAppointment(this.bookAppointment).subscribe(data =>{
               console.log(data);
@@ -227,9 +228,13 @@ export class ConfirmbookingComponent implements OnInit {
            
           });
       
+         
           dialogRef.afterClosed().subscribe(result => {
             if(sessionStorage.getItem('status1')=="true")
             {
+              this.appointment.saveAppointment(this.bookAppointment).subscribe(data =>{
+                console.log(data);
+                     });
 
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
@@ -257,8 +262,12 @@ export class ConfirmbookingComponent implements OnInit {
             //disableClose: true,
            
           });
+       
       
           dialogRef.afterClosed().subscribe(result => {
+            this.appointment.saveAppointment(this.bookAppointment).subscribe(data =>{
+              console.log(data);
+                   });
             const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
               width: '350px',
             

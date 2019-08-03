@@ -11,6 +11,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Doctor } from '../doctor';
 import { PatientdashboardService } from '../patientdashboard.service';
 import { SchedulerService } from '../scheduler.service';
+import { Overlay } from '@angular/cdk/overlay';
 
 
 @Component({
@@ -37,7 +38,8 @@ export class SearchDoctorComponent implements OnInit {
              private router:Router,
              private route: ActivatedRoute,
              private myprofile:PatientdashboardService,
-             private schedulerService:SchedulerService
+             private schedulerService:SchedulerService,
+             private overlay:Overlay
              ) {
 
  }
@@ -45,7 +47,8 @@ export class SearchDoctorComponent implements OnInit {
  ngOnInit() {
    const dialogRef = this.dialog.open(MyDialogComponent, {
      width: '650px',
-     height: '300px'
+     height: '300px',
+     scrollStrategy: this.overlay.scrollStrategies.noop()
    });
  
   const location=this.route.snapshot.queryParams;

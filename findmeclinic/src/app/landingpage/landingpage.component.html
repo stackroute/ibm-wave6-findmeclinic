@@ -93,21 +93,20 @@
       </div>
     </div>
     <div *ngFor="let clinicData of topClinics">
-      <div class="cards">
-
+    <div class="cards">
+     
         <div class="single-team">
-          <img class="imageClass" src="../../assets/images/{{clinicData.clinicImage}}" style="width: 300px" style="height: 255px" alt=""/>
-          <div class="team-hover">
+          <img src="../../assets/images/{{clinicData.clinicImage}}" id="clinicImage"  alt=""/>
+            <div class="team-hover">
             <h4>{{clinicData.clinicName}}</h4>
           </div>
-
-
-        </div>
+         
+        
       </div>
     </div>
+    </div>
   </div>
-</section>
-
+</section> 
 <div class="container">
   <div class="card">
     <div class="container-fliud">
@@ -158,5 +157,80 @@
     </div>
   </div>
 </div><br>
+<div class="services">
+  <div class="container">
+  <div class="row">
+  <div class="col text-center">
+  <div class="section_title">Our Services</div>
+   </div>
+  </div>
+  <div class="row icon_boxes_row">
+  
+  <div class="col-xl-4 col-lg-6">
+  <div class="icon_box">
+  <div class="icon_box_title_container d-flex flex-row align-items-center justify-content-start">
+  <div class="icon_box_icon"><img src="../../assets/images/icon_1.svg" alt=""></div>
+  <div class="icon_box_title">Cardiology</div>
+  </div>
+  <div class="icon_box_text">Cardiology is a medical specialty and a branch of internal medicine concerned with disorders of the heart. </div>
+  </div>
+  </div>
+  
+  <div class="col-xl-4 col-lg-6">
+  <div class="icon_box">
+  <div class="icon_box_title_container d-flex flex-row align-items-center justify-content-start">
+  <div class="icon_box_icon"><img src="../../assets/images/icon_2.svg" alt=""></div>
+  <div class="icon_box_title">Gastroenterology</div>
+  </div>
+  <div class="icon_box_text">Gastroenterology is the study of the normal function and diseases of the esophagus, stomach, small intestine, colon and rectum.</div>
+  </div>
+  </div>
+  
+  <div class="col-xl-4 col-lg-6">
+  <div class="icon_box">
+  <div class="icon_box_title_container d-flex flex-row align-items-center justify-content-start">
+  <div class="icon_box_icon"><img src="../../assets/images/icon_3.svg" alt=""></div>
+  <div class="icon_box_title">Medical Lab</div>
+  </div>
+  <div class="icon_box_text">clinical laboratory is a laboratory where clinical pathology tests are carried out on clinical specimens to obtain information </div>
+  </div>
+  </div>
+  
+  <div class="col-xl-4 col-lg-6">
+  <div class="icon_box">
+  <div class="icon_box_title_container d-flex flex-row align-items-center justify-content-start">
+  <div class="icon_box_icon"><img src="../../assets/images/icon_4.svg" alt=""></div>
+  <div class="icon_box_title">Dental Care</div>
+  </div>
+  <div class="icon_box_text">You can help prevent or minimize many oral health problems by regular preventive steps and regular visits to dental health professionals.</div>
+  </div>
+  </div>
+  
+  <div class="col-xl-4 col-lg-6">
+  <div class="icon_box">
+  <div class="icon_box_title_container d-flex flex-row align-items-center justify-content-start">
+  <div class="icon_box_icon"><img src="../../assets/images/icon_5.svg" alt=""></div>
+  <div class="icon_box_title">Surgery</div>
+  </div>
+  <div class="icon_box_text">Surgery is a medical specialty that uses operative manual and instrumental techniques on a patient to investigate or treat a pathological condition</div>
+  </div>
+  </div>
+  
+  <div class="col-xl-4 col-lg-6">
+  <div class="icon_box">
+  <div class="icon_box_title_container d-flex flex-row align-items-center justify-content-start">
+  <div class="icon_box_icon"><img src="../../assets/images/icon_6.svg" alt=""></div>
+  <div class="icon_box_title">Neurology</div>
+  </div>
+  <div class="icon_box_text">Neurology is the branch of medicine concerned with the study and treatment of disorders of the nervous system.</div>
+  </div>
+  </div>
+  </div>
+  
+  </div>
+  </div>
+
+
+
 
 <app-footer></app-footer>

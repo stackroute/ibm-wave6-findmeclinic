@@ -15,6 +15,9 @@ export class DoctorprofileComponent implements OnInit {
  doctor: any = null;
  doctorData = new Doctor();
  address: any = {};
+ pronoun: string;
+ self:string;
+ preposition: string;
  constructor(private share: DoctorprofileService, private router: Router,
              private doctorProfile: DoctorprofileService, private route1: ActivatedRoute) {
  }
@@ -31,6 +34,7 @@ export class DoctorprofileComponent implements OnInit {
      this.doctorData.gender = data.gender;
      this.doctorData.qualification=data.qualification;
      this.doctorData.phone=data.phone;
+     this.doctorData.profileImage=data.profileImage;
      this.doctorData.medicalLicense = data.medicalLicense;
      this.doctorData.practiceStartedDate = data.practiceStartedDate.substring(0, 10);
      this.doctorData.specialization = data.specialization;
@@ -42,6 +46,22 @@ export class DoctorprofileComponent implements OnInit {
      this.address.area = data.address.area;
      this.address.pinCode = data.address.pinCode;
      this.doctorData.address = this.address;
+
+     if(data.gender==='male' || data.gender==='Male'){
+        this.pronoun="He";
+        this.self="himself"
+     }
+     else{
+       this.pronoun="She";
+       this.self="herself"
+     }
+
+  if(data.specialization==='opthalmologist' || data.specialization=='orthopedic' || data.specialization=='Opthalmologist' || data.specialization=='Orthopedic'){
+    this.preposition="an";
+  }
+  else{
+    this.preposition="a";
+  }
      // console.log(this.doctorData);
    });
  }

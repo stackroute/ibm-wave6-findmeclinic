@@ -22,7 +22,7 @@
                   <p>
                       <mat-form-field style="width:400px;" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input  type="text" formControlName="NameCtrl" matInput placeholder="Name" required minlength="4">       
+                        <input  type="text" formControlName="NameCtrl" matInput placeholder="Name" required >       
                       </mat-form-field>
                     <!-- </p>
                     <mat-chip-list matNativeControl formControlName="GenderCtrl">
@@ -60,20 +60,20 @@
                                   <mat-form-field style="width:400px" appearance="outline">
                                     <mat-label>Password</mat-label>
                                     <input pw-show-hide  type="text" matInput placeholder="Enter password"
-                        [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="PasswordCtrl" required  minlength="8" maxlength="16">
+                        [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="PasswordCtrl" required  minlength="8">
                       </mat-form-field>      
                       </p>
                       <hr style="margin-top: 0%">
                      <p>
                           <mat-form-field style="width:400px" appearance="outline">
                             <mat-label>Qualification</mat-label>
-                            <input type="text" matInput [(ngModel)]="qualification" formControlName="QualificationCtrl" placeholder="Qualification" required maxlength="16">    
+                            <input type="text" matInput [(ngModel)]="qualification" formControlName="QualificationCtrl" placeholder="Qualification" required>    
                           </mat-form-field>   
                         </p>
                        <p>
                             <mat-form-field style="width:400px" appearance="outline">
                               <mat-label>Medical license</mat-label>
-                              <input  type="text" matInput [(ngModel)]="medicalLicense" formControlName="MedicalLicenseCtrl" placeholder="Medical License" required maxlength="16">    
+                              <input  type="text" matInput [(ngModel)]="medicalLicense" formControlName="MedicalLicenseCtrl" placeholder="Medical License" required >    
                             </mat-form-field>       
                             </p>
                            <p>
@@ -190,7 +190,7 @@
                   <p>
                       <mat-form-field style="width:400px" appearance="outline">
                         <mat-label>Clinic Name</mat-label>
-                        <input  type="text" [(ngModel)]="clinicName" formControlName="ClinicNameCtrl" matInput placeholder="Clinic name" required minlength="3">
+                        <input  type="text" [(ngModel)]="clinicName" formControlName="ClinicNameCtrl" matInput placeholder="Clinic name" required>
                       </mat-form-field>
                     </p>
                     <p>
@@ -213,19 +213,19 @@
                         <p>
                             <mat-form-field style="width:400px" appearance="outline">
                               <mat-label>City</mat-label>
-                              <input type="text" [(ngModel)]="city" formControlName="CityCtrl" matInput placeholder="City" required maxlength="16">
+                              <input type="text" [(ngModel)]="city" formControlName="CityCtrl" matInput placeholder="City" required>
                             </mat-form-field>
                           </p>
                           <p>
                               <mat-form-field style="width:400px" appearance="outline">
                                 <mat-label>Flat No</mat-label>
-                                <input type="text" [(ngModel)]="flatNo" formControlName="FlatNoCtrl" matInput placeholder="Flat No" required maxlength="30">
+                                <input type="text" [(ngModel)]="flatNo" formControlName="FlatNoCtrl" matInput placeholder="Flat No" required>
                               </mat-form-field>
                             </p>
                             <p>
                                 <mat-form-field style="width:400px" appearance="outline">
                                   <mat-label>Area</mat-label>
-                                  <input type="text" [(ngModel)]="area" formControlName="AreaCtrl" matInput placeholder="Area" required maxlength="50">
+                                  <input type="text" [(ngModel)]="area" formControlName="AreaCtrl" matInput placeholder="Area" required >
                                 </mat-form-field>
                               </p>
                               <p>
