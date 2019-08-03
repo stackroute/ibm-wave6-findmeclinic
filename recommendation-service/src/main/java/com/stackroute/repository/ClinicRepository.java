@@ -11,11 +11,11 @@ import java.util.List;
 public interface ClinicRepository extends Neo4jRepository<Clinic, String> {
 
     @Query("MATCH (c:Clinic)<-[:works_at]-(d:DoctorDTO)-[r:located_in]-(a:Address) WHERE a.area={area} RETURN c" +
-            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate")
+            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate LIMIT 4")
     List<Clinic> getClinicsByArea(String area);
 
     @Query("MATCH (c:Clinic)<-[:works_at]-(d:DoctorDTO)-[r:located_in]-(a:Address) WHERE a.city={city} RETURN c" +
-            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate")
+            " ORDER BY d.noOfAppointments DESC,d.practiceStartedDate LIMIT 4")
     List<Clinic> getClinicsByCity(String city);
 
     @Query("MATCH (a:Address)<-[:located_in]-(d:DoctorDTO)-[:works_at]->(c:Clinic) WHERE a.area={area} RETURN c " +
