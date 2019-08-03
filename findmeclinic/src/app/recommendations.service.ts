@@ -14,7 +14,7 @@ export class RecommendationsService {
     })
   };
   getTopDoctors(city: string) {
-    return this.http.get("http://13.234.236.221:8088/rest/neo4j/doctors-by-bity/" + city, this.httpOptions);
+    return this.http.get("http://13.234.236.221:8088/rest/neo4j/doctors-by-city/" + city, this.httpOptions);
   }
   getTopClinics(city: string) {
     return this.http.get("http://13.234.236.221:8088/rest/neo4j/clinics-by-city/" + city, this.httpOptions);
