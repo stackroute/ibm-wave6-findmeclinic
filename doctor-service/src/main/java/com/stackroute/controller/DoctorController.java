@@ -1,6 +1,7 @@
 package com.stackroute.controller;
 
 import com.stackroute.domain.Doctor;
+import com.stackroute.domain.DoctorAppointment;
 import com.stackroute.domain.Slot;
 import com.stackroute.exception.DoctorAlreadyExistsException;
 import com.stackroute.exception.DoctorNotFoundException;
@@ -107,7 +108,7 @@ public class DoctorController {
         return new ResponseEntity<>(doctorService.findDoctorByLocationAndSpecialization(area, specialization), HttpStatus.OK);
     }
     @GetMapping("doctor-appointments/{emailId}")
-    public ResponseEntity<?> getAllAppointments(@PathVariable String emailId){
+    public ResponseEntity<List<DoctorAppointment>> getAllAppointments(@PathVariable String emailId){
         return new ResponseEntity<>(doctorService.getAllAppointments(emailId),HttpStatus.OK);
     }
 
