@@ -102,7 +102,7 @@ public class RecommendationController {
     }
 
     @PostMapping("graph/{emailId}/{pinCode}")
-    public ResponseEntity<?> createRelationBetweenDoctorDTOAndAddress(@PathVariable String emailId, @PathVariable String pinCode) {
+    public ResponseEntity<?> createRelationBetweenDoctorDTOAndAddress(@PathVariable String emailId, @PathVariable Long pinCode) {
 
         return new ResponseEntity<>(doctorService.createRelationBetweenDoctorDTOAndAddress(emailId, pinCode), HttpStatus.CREATED);
     }
