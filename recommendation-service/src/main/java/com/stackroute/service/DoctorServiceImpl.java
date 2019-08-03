@@ -56,20 +56,22 @@ public class DoctorServiceImpl implements DoctorService {
         doctorDTO = createRelationBetweenDoctorDTOAndSpecialization(doctorDTO.getEmailId(), specialization.getSpecialization());
         return doctorDTO;
     }
+
     @CacheEvict(allEntries = true)
     @Override
     public String delete(String emailId) {
         doctorRepository.deleteNode(emailId);
         return "Deleted Successfully";
     }
+
     @CacheEvict(allEntries = true)
     @Override
     public DoctorDTO update(Doctor doctor) {
 
         Address address = addressService.save(doctor.getAddress());
         Clinic clinic = clinicService.save(new Clinic(doctor.getClinicName(), doctor.getClinicImage()));
-        Optional optional=doctorRepository.findById(doctor.getEmailId());
-        if (optional.isPresent()){
+        Optional optional = doctorRepository.findById(doctor.getEmailId());
+        if (optional.isPresent()) {
             DoctorDTO doctorDTO = (DoctorDTO) optional.get();
             doctorDTO = doctorRepository.deleteRelationShipBetweenDoctorDTOAndClinic(doctorDTO.getEmailId());
             doctorDTO = doctorRepository.deleteRelationShipBetweenDoctorDTOAndAddress(doctorDTO.getEmailId());
@@ -89,30 +91,31 @@ public class DoctorServiceImpl implements DoctorService {
             doctorDTO = doctorRepository.createRelationBetweenDoctorDTOAndAddress(doctorDTO.getEmailId(), address.getPinCode());
 
             return doctorDTO;
-        }else{
+        } else {
             return null;
         }
 
 
     }
-    @Cacheable(value="doctor1")
+
+    @Cacheable(value = "doctor1")
     @Override
     public List<DoctorDTO> getAll() {
         return doctorRepository.getAll();
     }
 
-    @Cacheable(value="doctor1")
+    @Cacheable(value = "doctor1")
     @Override
     public DoctorDTO getDoctorByEmailId(String emailId) {
-        Optional optional=doctorRepository.findById(emailId);
-        if (optional.isPresent()){
+        Optional optional = doctorRepository.findById(emailId);
+        if (optional.isPresent()) {
             return (DoctorDTO) optional.get();
         }
         return null;
     }
 
     @Override
-    public DoctorDTO createRelationBetweenDoctorDTOAndAddress(String emailId, String pinCode) {
+    public DoctorDTO createRelationBetweenDoctorDTOAndAddress(String emailId, Long pinCode) {
         return doctorRepository.createRelationBetweenDoctorDTOAndAddress(emailId, pinCode);
     }
 
@@ -161,17 +164,17 @@ public class DoctorServiceImpl implements DoctorService {
         update(doctor);
     }
 
-    @KafkaListener(topics = "appointmentDetails", groupId = "Group_Json7",containerFactory = "kafkaListenerContainerFactory7")
+    @KafkaListener(topics = "appointmentDetails", groupId = "Group_Json7", containerFactory = "kafkaListenerContainerFactory7")
     public void consumeJson(@Payload BookAppointment bookAppointment) {
-        Optional optional=doctorRepository.findById(bookAppointment.getDoctor().getEmailId());
+        Optional optional = doctorRepository.findById(bookAppointment.getDoctor().getEmailId());
         if (optional.isPresent()) {
             updateAppointments((DoctorDTO) optional.get());
         }
     }
 
     public DoctorDTO updateAppointments(DoctorDTO doctorDTO) {
-        Optional optional=doctorRepository.findById(doctorDTO.getEmailId());
-        if (optional.isPresent()){
+        Optional optional = doctorRepository.findById(doctorDTO.getEmailId());
+        if (optional.isPresent()) {
             doctorDTO.setNoOfAppointments(doctorDTO.getNoOfAppointments() + 1);
             doctorRepository.save(doctorDTO);
         }

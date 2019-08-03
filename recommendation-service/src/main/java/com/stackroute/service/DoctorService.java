@@ -19,7 +19,7 @@ public interface DoctorService {
 
     DoctorDTO getDoctorByEmailId(String emailId);
 
-    DoctorDTO createRelationBetweenDoctorDTOAndAddress(String emailId, String pinCode);
+    DoctorDTO createRelationBetweenDoctorDTOAndAddress(String emailId, Long pinCode);
 
     DoctorDTO createRelationBetweenDoctorDTOAndClinic(String emailId, String clinicName);
 

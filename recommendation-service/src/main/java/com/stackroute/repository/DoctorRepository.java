@@ -12,7 +12,7 @@ import java.util.List;
 public interface DoctorRepository extends Neo4jRepository<DoctorDTO, String> {
 
     @Query("MATCH (d:DoctorDTO),(a:Address) WHERE d.emailId={emailId} AND a.pinCode={pinCode} CREATE (d)-[r:located_in]->(a) RETURN d")
-    DoctorDTO createRelationBetweenDoctorDTOAndAddress(String emailId, String pinCode);
+    DoctorDTO createRelationBetweenDoctorDTOAndAddress(String emailId, Long pinCode);
 
     @Query("MATCH (d:DoctorDTO),(s:Specialization) WHERE d.emailId={emailId} AND s.specialization={specialization} "+
             "CREATE (d)-[r:specialized_in]->(s) RETURN d")
