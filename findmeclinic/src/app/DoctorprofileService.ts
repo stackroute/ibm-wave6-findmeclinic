@@ -14,11 +14,11 @@ httpOptions = {
   })
 };
 
-getDoctorDetails(emailId:String){
+getDoctorDetails(emailId:string){
   return this.http.get("http://13.234.236.221:8082/api/v1/doctors1/"+emailId,this.httpOptions);
  }
 //  updatePatientDetails(doctor:Doctor){
 //   doctor.role="doctor";
-//   return this.http.put<Doctor>("http://localhost:8080/api/v1/patient",patient,this.httpOptions);
+//   return this.http.put<Doctor>("http://13.234.236.221:8080/api/v1/patient",patient,this.httpOptions);
 //  }
 }

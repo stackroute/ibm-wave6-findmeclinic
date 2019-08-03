@@ -25,7 +25,7 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("savedoctors")
+    @PostMapping("save-doctors")
     public ResponseEntity<?> saveDoctors(@RequestBody Doctor[] doctor) {
         List<Doctor> doctorList=new ArrayList<>();
         try {
@@ -64,7 +64,6 @@ public class DoctorController {
     @PutMapping("doctor/{emailId}")
     public ResponseEntity<?> updateDoctorDetails(@RequestBody Doctor doctor) {
 
-        ResponseEntity responseEntity;
         try{
             return new ResponseEntity<>(doctorService.update(doctor),HttpStatus.OK);
         } catch (DoctorNotFoundException e) {
@@ -76,14 +75,10 @@ public class DoctorController {
 
     @PutMapping("doctor1/{emailId}")
     public ResponseEntity<Doctor> updateSlots(@RequestBody Slot slot,@PathVariable String emailId) {
-
-
-        ResponseEntity responseEntity;
-
             return new ResponseEntity<>(doctorService.updateSlot(slot,emailId),HttpStatus.OK);
     }
 
-    @GetMapping("doctors1/{emailId}")
+    @GetMapping("doctor-by-email/{emailId}")
     public ResponseEntity<?> getDoctorByEmailId(@PathVariable String emailId){
 
         return new ResponseEntity<>(doctorService.getDoctorByEmailId(emailId),HttpStatus.OK);
@@ -94,7 +89,7 @@ public class DoctorController {
     @GetMapping("doctors")
     public ResponseEntity<?> getAll(){
 
-        return new ResponseEntity<List<Doctor>>(doctorService.getAll(),HttpStatus.OK);
+        return new ResponseEntity<>(doctorService.getAll(),HttpStatus.OK);
     }
 
     @GetMapping("doctors/{area}")
@@ -111,7 +106,7 @@ public class DoctorController {
     public ResponseEntity<List<Doctor>> findDoctorByLocationAndSpecialization(@PathVariable String area,@PathVariable String specialization){
         return new ResponseEntity<>(doctorService.findDoctorByLocationAndSpecialization(area, specialization), HttpStatus.OK);
     }
-    @GetMapping("doctors2/{emailId}")
+    @GetMapping("doctor-appointments/{emailId}")
     public ResponseEntity<?> getAllAppointments(@PathVariable String emailId){
         return new ResponseEntity<>(doctorService.getAllAppointments(emailId),HttpStatus.OK);
     }

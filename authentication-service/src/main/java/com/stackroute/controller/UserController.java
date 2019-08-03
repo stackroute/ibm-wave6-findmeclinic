@@ -29,7 +29,7 @@ public class UserController {
 
     @ApiOperation(value = "Accept user into repository and generating token")
     @PostMapping("/user")
-    public ResponseEntity<?> login(@RequestBody User user1) throws UserNameOrPasswordEmptyException, UserNotFoundException, PasswordNotMatchException {
+    public ResponseEntity<?> login(@RequestBody User user1) throws UserNameOrPasswordEmptyException, PasswordNotMatchException {
 
 
         String username=user1.getEmailId();

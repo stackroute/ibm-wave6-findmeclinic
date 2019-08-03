@@ -90,14 +90,8 @@ findInvalidControls() {
   {
     
     return this.registration.savePatient(this.patient).subscribe(data =>{
-      if(localStorage.hasOwnProperty('url')){
-        sessionStorage.setItem('username',this.patient.emailId);
-        window.location.href=localStorage.getItem('url');
-      }
-      else{
      this.router.navigateByUrl('/login');
       }
-       }
      );
   }
   else

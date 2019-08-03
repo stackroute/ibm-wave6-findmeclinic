@@ -8,34 +8,31 @@ import { Doctor } from './doctor';
 })
 export class PatientdashboardService {
 
-
-  emailId:String;
-  doctor=new Doctor();
+  emailId: string;
+  doctor = new Doctor();
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-
     })
   };
 
-getAllAppointments(emailId:string)
-{
-  return this.http.get("http://13.234.236.221:8080/api/v1/patients1/"+emailId,this.httpOptions);
-}
+  getAllAppointments(emailId: string) {
+    return this.http.get("http://13.234.236.221:8080/api/v1/patient-appointments/" + emailId, this.httpOptions);
+  }
 
-getPatientDetails(emailId:String){
-    
-  return this.http.get("http://13.234.236.221:8080/api/v1/patients/"+emailId,this.httpOptions);
-}
+  getPatientDetails(emailId: string) {
 
-getDoctorDetails(emailId:String){
-    
-  return this.http.get("http://13.234.236.221:8082/api/v1/doctors1/"+emailId,this.httpOptions);
-}
+    return this.http.get("http://13.234.236.221:8080/api/v1/patients/" + emailId, this.httpOptions);
+  }
 
-updatePatientDetails(patient:Patient){
-  patient.role="patient";
-  return this.http.put<Patient>("http://13.234.236.221:8080/api/v1/patient",patient,this.httpOptions);
-}
+  getDoctorDetails(emailId: string) {
+
+    return this.http.get("http://13.234.236.221:8082/api/v1/doctor-by-email/" + emailId, this.httpOptions);
+  }
+
+  updatePatientDetails(patient: Patient) {
+    patient.role = "patient";
+    return this.http.put<Patient>("http://13.234.236.221:8080/api/v1/patient", patient, this.httpOptions);
+  }
 }

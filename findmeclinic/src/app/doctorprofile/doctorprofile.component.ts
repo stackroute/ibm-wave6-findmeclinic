@@ -38,7 +38,7 @@ export class DoctorprofileComponent implements OnInit {
      console.log(data.clinicName);
      this.address.state = data.address.state;
      this.address.city = data.address.city;
-     this.address.address = data.address.address;
+     this.address.flatNo = data.address.flatNo;
      this.address.area = data.address.area;
      this.address.pinCode = data.address.pinCode;
      this.doctorData.address = this.address;

@@ -30,7 +30,7 @@ public class RecommendationController {
         this.specializationService = specializationService;
     }
 
-    @PutMapping("patientupdate")
+    @PutMapping("patient-update")
     public ResponseEntity<?> update(@RequestBody Patient patient) {
         return new ResponseEntity<>(patientService.update(patient), HttpStatus.OK);
     }
@@ -59,7 +59,7 @@ public class RecommendationController {
     }
 
 
-    @PostMapping("doctorsave")
+    @PostMapping("doctor-save")
     public ResponseEntity<?> saveDoctor(@RequestBody Doctor doctor) {
 
         return new ResponseEntity<>(doctorService.save(doctor), HttpStatus.CREATED);
@@ -85,7 +85,7 @@ public class RecommendationController {
         return new ResponseEntity<>(specializationService.save(specialization.getSpecialization()), HttpStatus.CREATED);
     }
 
-    @PutMapping("doctorupdate/{emailId}")
+    @PutMapping("doctor-update/{emailId}")
     public ResponseEntity<?> updateDoctor(@RequestBody Doctor doctor) {
         return new ResponseEntity<>(doctorService.update(doctor), HttpStatus.CREATED);
     }
@@ -96,7 +96,7 @@ public class RecommendationController {
     }
 
 
-    @DeleteMapping("doctordelete/{emailId}")
+    @DeleteMapping("doctor-delete/{emailId}")
     public ResponseEntity<?> delete(@PathVariable String emailId) {
         return new ResponseEntity<>(doctorService.delete(emailId), HttpStatus.OK);
     }
@@ -108,42 +108,42 @@ public class RecommendationController {
     }
 
 
-    @GetMapping("doctorsByCity/{city}")
+    @GetMapping("doctors-by-city/{city}")
     ResponseEntity<?> getDoctorsByCity(@PathVariable String city) {
         return new ResponseEntity<>(doctorService.getDoctorsByCity(city), HttpStatus.OK);
     }
 
-    @GetMapping("doctorsByArea/{area}")
+    @GetMapping("doctors-by-area/{area}")
     ResponseEntity<?> getDoctorsByArea(@PathVariable String area) {
         return new ResponseEntity<>(doctorService.getDoctorsByArea(area), HttpStatus.OK);
     }
 
-    @GetMapping("doctorsByAreaAndSpe/{area}/{specialization}")
+    @GetMapping("doctors-by-area-and-spe/{area}/{specialization}")
     ResponseEntity<?> getDoctorsByLocationAndSpecialization(@PathVariable String area, @PathVariable String specialization) {
         return new ResponseEntity<>(doctorService.getDoctorsByLocationAndSpecialization(area, specialization), HttpStatus.OK);
     }
 
-    @GetMapping("doctorsForPatient/{emailId}")
+    @GetMapping("doctors-for-patient/{emailId}")
     ResponseEntity<?> getDoctorsByLocationAndSpecializationForPatient(@PathVariable String emailId) {
         return new ResponseEntity<>(doctorService.getDoctorsByLocationAndSpecializationForPatient(emailId), HttpStatus.OK);
     }
 
-    @GetMapping("clinicsByArea/{area}")
+    @GetMapping("clinicsbyarea/{area}")
     ResponseEntity<?> getClinicsByArea(@PathVariable String area) {
         return new ResponseEntity<>(clinicService.getClinicsByArea(area), HttpStatus.OK);
     }
 
-    @GetMapping("clinicsByCity/{city}")
+    @GetMapping("clinics-by-city/{city}")
     ResponseEntity<?> getClinicsByCity(@PathVariable String city) {
         return new ResponseEntity<>(clinicService.getClinicsByCity(city), HttpStatus.OK);
     }
 
-    @GetMapping("clinicsByAreaAndSpe/{area}/{specialization}")
+    @GetMapping("clinics-by-area-and-specialization/{area}/{specialization}")
     ResponseEntity<?> getClinicsByLocationAndSpecialization(@PathVariable String area, @PathVariable String specialization) {
         return new ResponseEntity<>(clinicService.getClinicsByLocationAndSpecialization(area, specialization), HttpStatus.OK);
     }
 
-    @GetMapping("clinicsForPatient/{emailId}")
+    @GetMapping("clinics-for-patient/{emailId}")
     ResponseEntity<?> getClinicsByLocationAndSpecializationForPatient(@PathVariable String emailId) {
         return new ResponseEntity<>(clinicService.getClinicsByLocationAndSpecializationForPatient(emailId), HttpStatus.OK);
     }

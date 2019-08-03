@@ -17,9 +17,8 @@ export class DoctorregistrationService {
   }
   constructor(private _http: HttpClient) { }
 
-
   saveDoctor(doctor: Doctor) {
-    doctor.role="doctor";
+    doctor.role = "doctor";
     return this._http.post<Doctor>(this._url, doctor, this.httpOptions);
   }
 

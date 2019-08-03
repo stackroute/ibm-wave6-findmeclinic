@@ -30,7 +30,7 @@ public class PatientServiceImpl implements PatientService{
         this.patientRepository = patientRepository;
     }
     @Autowired
-    KafkaTemplate<String,Patient > kafkaTemplate;
+    KafkaTemplate<String,Patient> kafkaTemplate;
 
     private static String topic= "patientcredentials";
 
@@ -67,8 +67,8 @@ public class PatientServiceImpl implements PatientService{
        else {
            throw new PatientNotFoundException("Patient Not Found");
        }
-
     }
+
     @CacheEvict(allEntries = true)
     @Override
     public Patient deletePatientById(String emailId) throws PatientNotFoundException {

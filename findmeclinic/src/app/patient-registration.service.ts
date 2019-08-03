@@ -7,15 +7,15 @@ import { Patient } from './Patient';
 })
 export class PatientRegistrationService {
 
-  constructor(private http:HttpClient) { }
- httpOptions={
-   headers:new HttpHeaders({
-     'Content-type':'application/json'
-   })
- }
+  constructor(private http: HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json'
+    })
+  }
 
-   savePatient(patient:Patient){
-     patient.role="patient";
-     return this.http.post<Patient>("http://13.234.236.221:8080/api/v1/patient",patient,this.httpOptions);
-   }
+  savePatient(patient: Patient) {
+    patient.role = "patient";
+    return this.http.post<Patient>("http://13.234.236.221:8080/api/v1/patient", patient, this.httpOptions);
+  }
 }

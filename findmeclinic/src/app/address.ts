@@ -1,7 +1,7 @@
-export class Address{
-    state:String;
-    city:String;
-    address:String;
-    area:String;
-    pinCode:String;
+export class Address {
+    state: string;
+    city: string;
+    address: string;
+    area: string;
+    pinCode: number;
 }

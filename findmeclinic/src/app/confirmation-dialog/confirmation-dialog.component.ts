@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SchedulerService } from '../scheduler.service';
+import { Route, Router } from '@angular/router';
 
 export interface DialogData {
   
@@ -22,20 +23,27 @@ export class ConfirmationDialogComponent implements OnInit {
   evening:string[];
   appointmentDate1:string;
   emailId:string;
+  patientName:string;
+  doctorName:string;
+  specialization:string;
+  city:string;
+  area:string;
+  clinicName:string;
 
-  constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>)
+  constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>,private router:Router,private dialog:MatDialog)
   {
     
   }
  
 
   ngOnInit() {
-    localStorage.removeItem('url');
-    sessionStorage.removeItem('patientName');
-    sessionStorage.removeItem('dateOfBirth');
-    sessionStorage.removeItem('gender');
-    sessionStorage.removeItem('mobile');
-    sessionStorage.removeItem('email');
+    this.city=sessionStorage.getItem('city');
+    console.log(this.city);
+    this.area=sessionStorage.getItem('area');
+    this.clinicName=sessionStorage.getItem('clinicName');
+    this.specialization=sessionStorage.getItem('specialization');
+    this.doctorName=sessionStorage.getItem('doctorName');
+    this.patientName=  sessionStorage.getItem('patientName');
     this.emailId=sessionStorage.getItem('username');
    this.confirm();
    
@@ -121,5 +129,22 @@ confirm()
   console.log(this.evening);
 
 
+}
+clear()
+{
+  sessionStorage.removeItem('emailId');
+  sessionStorage.removeItem('clinicName');
+  sessionStorage.removeItem('area');
+  sessionStorage.removeItem('city');
+  sessionStorage.removeItem('specialization');
+  sessionStorage.removeItem('doctorName');
+  sessionStorage.removeItem('patientName');
+  sessionStorage.removeItem('dateOfBirth');
+  sessionStorage.removeItem('gender');
+  sessionStorage.removeItem('mobile');
+  sessionStorage.removeItem('email');
+  const dialogRef = this.dialog.closeAll();
+  this.router.navigateByUrl('/patientdashboard/'+this.emailId);
+  
 }
 }

@@ -1,17 +1,23 @@
 
 
-<div mat-dialog-actions style="margin-left: 20%; color: #0b9cb9;">
+<div mat-dialog-actions style="margin-left: 20%; color: #0b9cb9;text-align: justify">
   <font size="4"> <div>Hii {{name}}</div></font>
     <br>                
     
 </div>
 <br>
-<div mat-dialog-actions style="margin-left: 20%; color: #0b9cb9;">
+<div mat-dialog-actions style="margin-left: 20%; color: #0b9cb9;text-align: justify">
     <font size="4"> <div>Please login to book an appointment</div></font>
     <br>                
     
 </div>
 
 <br>
-<div style="text-align: center"><a href="http://localhost:4200/login">Login</a></div>
+<div mat-dialog-actions style="margin-left: 20%; color: #0b9cb9;text-align: justify">
+  <label>Enter password to continue</label>
+  <input type="password" #password/>
+  <br>                
+  
+</div>
+<div ><button style="text-align: center" (click)="confirm(password.value)">Confirm</button></div>
 

@@ -50,16 +50,8 @@ export class LoginComponent implements OnInit {
   
       if(this.details.aud=="patient")
       {
-    
-        if(localStorage.hasOwnProperty('url')){
-        
-          window.location.href=localStorage.getItem('url');
-        }
-        else{
-     
         this.router.navigateByUrl('/patientdashboard/'+username);
         }
-      }
       if(this.details.aud=="doctor")
       {
         this.router.navigateByUrl('/doctordashboard/'+username);

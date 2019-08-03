@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Scheduler } from './scheduler';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SchedulerService {
 
-
-
-
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -18,13 +14,11 @@ export class SchedulerService {
     })
   };
 
-
-
-  getSlots(emailId:String){
-    return this.http.get("http://13.234.236.221:8086/api/v1/slots/"+emailId, this.httpOptions);
+  getSlots(emailId: string) {
+    return this.http.get("http://13.234.236.221:8086/api/v1/slots/" + emailId, this.httpOptions);
   }
 
-  putSlots(emailId:string,key:string,value:number){
-    return this.http.put("http://13.234.236.221:8086/api/v1/slots/"+emailId+"/"+key+"/"+value, this.httpOptions);
+  putSlots(emailId: string, key: string, value: number) {
+    return this.http.put("http://13.234.236.221:8086/api/v1/slots/" + emailId + "/" + key + "/" + value, this.httpOptions);
   }
 }

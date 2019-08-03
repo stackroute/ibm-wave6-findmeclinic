@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1")
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 public class PatientContoller {
 
 
@@ -26,60 +26,49 @@ public class PatientContoller {
     }
 
     @PostMapping("patient")
-    public ResponseEntity<?> savePatient(@RequestBody Patient patient){
+    public ResponseEntity<?> savePatient(@RequestBody Patient patient) {
         try {
             Patient savedPatient = patientService.savePatient(patient);
             return new ResponseEntity<Patient>(savedPatient, HttpStatus.CREATED);
-        }
-        catch(PatientAlreadyExistsException p)
-        {
+        } catch (PatientAlreadyExistsException p) {
             return new ResponseEntity<String>("Patient Already Exists", HttpStatus.CONFLICT);
         }
     }
 
     @GetMapping("patients")
-    public ResponseEntity<?> getAllPatients(){
-        return new ResponseEntity<List<Patient>>(patientService.getPatients(),HttpStatus.OK);
+    public ResponseEntity<?> getAllPatients() {
+        return new ResponseEntity<>(patientService.getPatients(), HttpStatus.OK);
     }
 
     @GetMapping("patients/{emailId}")
-    public ResponseEntity<?> getPatientByEmailId(@PathVariable String emailId){
+    public ResponseEntity<?> getPatientByEmailId(@PathVariable String emailId) {
         try {
             return new ResponseEntity<Patient>(patientService.getPatientByEmailId(emailId), HttpStatus.OK);
-        }
-        catch (PatientNotFoundException p)
-        {
-            return new ResponseEntity<String>("Patient Not Found",HttpStatus.NOT_FOUND);
+        } catch (PatientNotFoundException p) {
+            return new ResponseEntity<String>("Patient Not Found", HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("patient/{emailId}")
-    public ResponseEntity<?> deletePatient(@PathVariable String emailId){
+    public ResponseEntity<?> deletePatient(@PathVariable String emailId) {
         try {
             return new ResponseEntity<Patient>(patientService.deletePatientById(emailId), HttpStatus.OK);
-        }
-        catch(PatientNotFoundException p)
-        {
+        } catch (PatientNotFoundException p) {
             return new ResponseEntity<String>("Patient Not Found", HttpStatus.NOT_FOUND);
         }
     }
 
     @PutMapping("patient")
-    public ResponseEntity<?> updatePatient(@RequestBody Patient patient)  {
-        return new ResponseEntity<Patient>(patientService.updatePatient(patient),HttpStatus.OK);
+    public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient) {
+        return new ResponseEntity<>(patientService.updatePatient(patient), HttpStatus.OK);
     }
 
-    @GetMapping("patients1/{emailId}")
-    public ResponseEntity<?> getAllAppointments(@PathVariable String emailId){
+    @GetMapping("patient-appointments/{emailId}")
+    public ResponseEntity<?> getAllAppointments(@PathVariable String emailId) {
         try {
-            return new ResponseEntity<List<PatientAppointment>>(patientService.getAllAppointments(emailId), HttpStatus.OK);
-        }
-        catch (Exception e)
-        {
-            return new ResponseEntity<String>("No appointments Found",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(patientService.getAllAppointments(emailId), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<String>("No appointments Found", HttpStatus.NOT_FOUND);
         }
     }
-
-
-
 }

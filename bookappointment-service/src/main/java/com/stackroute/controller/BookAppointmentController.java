@@ -25,7 +25,7 @@ public class BookAppointmentController {
     public ResponseEntity<BookAppointment> saveAppointment(@RequestBody BookAppointment bookAppointment) {
 
             BookAppointment bookAppointment1 = bookAppointmentService.saveAppointment(bookAppointment);
-            return new ResponseEntity<BookAppointment>(bookAppointment1, HttpStatus.CREATED);
+            return new ResponseEntity<>(bookAppointment1, HttpStatus.CREATED);
     }
 
 }

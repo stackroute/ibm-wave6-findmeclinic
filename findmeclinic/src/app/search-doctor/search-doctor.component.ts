@@ -217,7 +217,7 @@ routingto(emailId:string)
   // this.doctor.name=response1.name;
   // this.doctor.clinicName=response1.clinicName;
   // this.doctor.emailId=response1.emailId;
-  // this.address.address=response1.address.address;
+  // this.address.flatNo=response1.address.flatNo;
   // this.address.area=response1.address.area; 
   // this.doctor.address = this.address;  
 
@@ -226,8 +226,10 @@ routingto(emailId:string)
         "name": response1.name,
         "clinicName": response1.clinicName,
         "emailId":response1.emailId,
-        "address":response1.address.address,
+        "address":response1.address.flatNo,
         "area":response1.address.area,
+        "city":response1.address.city,
+        "specialization":response1.specialization,
         "todaym":this.slotData1.slots.todaym,
         "todaya":this.slotData1.slots.todaya,
         "todaye":this.slotData1.slots.todaye,

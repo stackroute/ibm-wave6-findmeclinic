@@ -1,5 +1,5 @@
 export class Scheduler
 {
-    emailId:String;
-    slots:Map<String,number>;
+    emailId:string;
+    slots:Map<string,number>;
 }

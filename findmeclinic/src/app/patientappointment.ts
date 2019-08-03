@@ -4,6 +4,6 @@ export class PatientAppointment{
 
     doctor:Doctor;
     appointmentDate:Date;
-    slot:String;
+    slot:string;
 
 }

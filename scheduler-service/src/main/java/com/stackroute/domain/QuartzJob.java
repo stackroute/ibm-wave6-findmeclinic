@@ -15,11 +15,14 @@ import java.util.Map;
 
 @Component
 @DisallowConcurrentExecution
-public class QuartzJob  extends QuartzJobBean  {
+public class QuartzJob extends QuartzJobBean {
+
+    private SchedulerServiceImpl schedulerService;
 
     @Autowired
-      private SchedulerServiceImpl schedulerService;
-
+    public QuartzJob(SchedulerServiceImpl schedulerService) {
+        this.schedulerService = schedulerService;
+    }
 
     @Override
     public void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
@@ -48,11 +51,9 @@ public class QuartzJob  extends QuartzJobBean  {
                 map1.clear();
 
             }
-        }
-        catch (Exception e)
-        {
-          //Do Nothing
+        } catch (Exception e) {
+            //Do Nothing
         }
     }
-    }
+}
 

@@ -14,7 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class BookAppointment {
 
-
     private String id;
     private Doctor doctor;
     private Patient patient;
@@ -23,5 +22,6 @@ public class BookAppointment {
     private String slot;
     private String key;
     private String appointmentTime;
+
 }
 

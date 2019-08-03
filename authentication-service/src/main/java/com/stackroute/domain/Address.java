@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
         private String state;
         private String city;
-        private String address;
+        private String flatNo;
         private String area;
-        private String pinCode;
+        private Long pinCode;
  }

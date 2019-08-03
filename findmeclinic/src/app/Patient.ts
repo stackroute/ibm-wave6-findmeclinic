@@ -1,11 +1,11 @@
-export class Patient{
+export class Patient {
 
-    name:string;
-    dateOfBirth:string;
-    gender:string;
-    phone:string;
-    emailId:string;
-    password:String;
-    role:string
+    name: string;
+    dateOfBirth: string;
+    gender: string;
+    phone: string;
+    emailId: string;
+    password: string;
+    role: string
 
 }

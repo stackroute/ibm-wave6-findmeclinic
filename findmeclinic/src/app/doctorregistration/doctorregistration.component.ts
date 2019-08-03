@@ -173,7 +173,7 @@ saveSpecialization()
   //  this.address.mobile = this.thirdFormGroup.controls.MobileCtrl.value;
   this.doctor.phone = this.thirdFormGroup.controls.MobileCtrl.value;
    this.address.city = this.thirdFormGroup.controls.CityCtrl.value;
-   this.address.address = this.thirdFormGroup.controls.FlatNoCtrl.value;
+   this.address.flatNo = this.thirdFormGroup.controls.FlatNoCtrl.value;
    this.address.area = this.thirdFormGroup.controls.AreaCtrl.value;
    this.address.pinCode = this.thirdFormGroup.controls.PincodeCtrl.value;
    this.doctor.clinicImage = this.mediaName;

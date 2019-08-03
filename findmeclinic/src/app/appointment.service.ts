@@ -8,21 +8,19 @@ import { Patient } from './Patient';
 })
 export class AppointmentService {
 
-  patient:Patient;
-  constructor(private http:HttpClient) { }
-  httpOptions={
-    headers:new HttpHeaders({
-      'Content-type':'application/json'
+  patient: Patient;
+  constructor(private http: HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json'
     })
   }
-    checkPatient(emailId:String)
-    {
-      return this.http.get<Patient>("http://13.234.236.221:8080/api/v1/patients/"+emailId,this.httpOptions);
-    }
+  checkPatient(emailId: string) {
+    return this.http.get<Patient>("http://13.234.236.221:8080/api/v1/patients/" + emailId, this.httpOptions);
+  }
 
+  saveAppointment(bookAppointment: BookAppointment) {
 
-    saveAppointment(bookAppointment:BookAppointment){
-      
-      return this.http.post<BookAppointment>("http://13.234.236.221:8084/api/v1/appointment",bookAppointment,this.httpOptions);
-    }
+    return this.http.post<BookAppointment>("http://13.234.236.221:8084/api/v1/appointment", bookAppointment, this.httpOptions);
+  }
 }

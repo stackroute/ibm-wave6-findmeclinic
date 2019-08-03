@@ -2,21 +2,21 @@ import { Address } from './address';
 import { DoctorAppointment } from './doctorappointment';
 
 export class Doctor {
-  name:String;
-  role:String;
-  gender:String;
-  medicalLicense:String;
-  profileImage:String;
-  practiceStartedDate:String
-  emailId:String;
-  password:String; 
-    qualification:String
-    specialization:String;
-    clinicName:String;
-    address:Address;
-    phone:string;
-    doctorAppointment:DoctorAppointment;
-    clinicImage:string;
+  name: string;
+  role: string;
+  gender: string;
+  medicalLicense: string;
+  profileImage: string;
+  practiceStartedDate: string
+  emailId: string;
+  password: string;
+  qualification: string
+  specialization: string;
+  clinicName: string;
+  address: Address;
+  phone: string;
+  doctorAppointment: DoctorAppointment;
+  clinicImage: string;
 
 
-  }
+}

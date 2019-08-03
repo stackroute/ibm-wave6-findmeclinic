@@ -25,6 +25,8 @@ export class ConfirmbookingComponent implements OnInit {
     emailId:string;
     address1:string;
     area:string;
+    city:string;
+    specialization:string;
     // appointmentDate:Date;
     appointmentId:number;
     slot:string;
@@ -51,6 +53,8 @@ export class ConfirmbookingComponent implements OnInit {
             this.emailId = params["emailId"];
             this.address1 = params["address"];
             this.area = params["area"];
+            this.specialization=params["specialization"];
+            this.city=params["city"];
             //this.appointmentDate=params["appointmentDate"];
             this.slot=params["slot"];
             this.appointmentId=params["appointmentId"];
@@ -90,6 +94,7 @@ export class ConfirmbookingComponent implements OnInit {
        this.patient.phone=this.registerForm.controls.phone.value;
        this.patient.emailId=this.registerForm.controls.email.value;
        this.patient.dateOfBirth=this.registerForm.controls.date.value;
+       this.patient.gender=this.registerForm.controls.gender.value;
       console.log(this.patient);
       
        
@@ -118,9 +123,11 @@ export class ConfirmbookingComponent implements OnInit {
           this.doctor.name=this.name;
           this.doctor.clinicName=this.clinicName;
           this.doctor.emailId=this.emailId;
-          this.address.address=this.address1;
+          this.address.flatNo=this.address1;
           this.address.area=this.area;
+          this.address.city=this.city;
           this.doctor.address = this.address;
+          this.doctor.specialization=this.specialization;
           this.bookAppointment.doctor=this.doctor;
           this.bookAppointment.slot=this.slot;
           this.bookAppointment.appointmentId=this.appointmentId;
@@ -129,8 +136,14 @@ export class ConfirmbookingComponent implements OnInit {
           this.bookAppointment.id=this.id;
           sessionStorage.setItem('appointmentid',this.appointmentId+"");
           sessionStorage.setItem('key',this.key);
-          var url=location.href;
-          localStorage.setItem('url',url);
+        //  var url=location.href;
+         // localStorage.setItem('url',url);
+         sessionStorage.setItem('emailid',this.doctor.emailId);
+         sessionStorage.setItem('doctorName',this.doctor.name);
+         sessionStorage.setItem('specializtion',this.specialization);
+         sessionStorage.setItem('clinicName',this.doctor.clinicName);
+         sessionStorage.setItem('area',this.address.area);
+         sessionStorage.setItem('city',this.address.city);
           sessionStorage.setItem('patientName',this.patient.name);
           sessionStorage.setItem('dateOfBirth',this.patient.dateOfBirth);
           sessionStorage.setItem('gender',this.patient.gender);
@@ -210,11 +223,25 @@ export class ConfirmbookingComponent implements OnInit {
           const dialogRef = this.dialog.open(LoginDialogComponent, {
             width: '350px',
           
-            disableClose: true,
+          //  disableClose: true,
            
           });
       
           dialogRef.afterClosed().subscribe(result => {
+            if(sessionStorage.getItem('status1')=="true")
+            {
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+    
+      disableClose: true,
+     
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+            }
             console.log('The dialog was closed');
           });
           
@@ -227,11 +254,21 @@ export class ConfirmbookingComponent implements OnInit {
           const dialogRef = this.dialog.open(RegistartionDialogComponent, {
             width: '350px',
           
-            disableClose: true,
+            //disableClose: true,
            
           });
       
           dialogRef.afterClosed().subscribe(result => {
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+              width: '350px',
+            
+              disableClose: true,
+             
+            });
+        
+            dialogRef.afterClosed().subscribe(result => {
+              console.log('The dialog was closed');
+            });
             console.log('The dialog was closed');
           });
 

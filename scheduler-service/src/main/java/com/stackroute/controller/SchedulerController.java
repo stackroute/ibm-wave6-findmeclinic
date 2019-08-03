@@ -18,8 +18,12 @@ import java.util.Map;
 @CrossOrigin(value="*")
 public class SchedulerController{
 
-    @Autowired
     private SchedulerService schedulerService;
+
+    @Autowired
+    public SchedulerController(SchedulerService schedulerService) {
+        this.schedulerService = schedulerService;
+    }
 
     @GetMapping("slots")
     public ResponseEntity<List<Scheduler>> getAll(){

@@ -14,9 +14,9 @@ public class Address {
 
     private String state;
     private String city;
-    private String address;
+    private String flatNo;
     private String area;
     @Id
-    private String pinCode;
+    private Long pinCode;
 
 }
