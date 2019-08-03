@@ -41,7 +41,6 @@ constructor(private breakpointObserver: BreakpointObserver,private router:Router
 // }
 ngOnInit()
 {
-  this.doctorPro();
   this.appointments.getAllAppointments(sessionStorage.getItem('username')).subscribe((data:any)=>
   {
     
@@ -67,6 +66,8 @@ ngOnInit()
      console.log(upcomingRecordsData);
     this.upcomingAppointmentData=upcomingRecordsData;
   });
+  this.doctorPro();
+
 }
 doctorPro() {
   const emailId = sessionStorage.getItem('username');

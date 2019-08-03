@@ -80,7 +80,7 @@ public class DoctorController {
     }
 
     @GetMapping("doctor-by-email/{emailId}")
-    public ResponseEntity<?> getDoctorByEmailId(@PathVariable String emailId){
+    public ResponseEntity<Doctor> getDoctorByEmailId(@PathVariable String emailId){
 
         return new ResponseEntity<>(doctorService.getDoctorByEmailId(emailId),HttpStatus.OK);
     }
@@ -88,13 +88,13 @@ public class DoctorController {
 
 
     @GetMapping("doctors")
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<List<Doctor>> getAll(){
 
         return new ResponseEntity<>(doctorService.getAll(),HttpStatus.OK);
     }
 
     @GetMapping("doctors/{area}")
-    public ResponseEntity<?> findDoctorByLocation(@PathVariable String area){
+    public ResponseEntity<List<Doctor>> findDoctorByLocation(@PathVariable String area){
         return new ResponseEntity<>(doctorService.findDoctorByLocation(area), HttpStatus.OK);
     }
 
