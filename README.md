@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/stackroute/ibm-wave6-findmeclinic.svg?branch=master)](https://travis-ci.org/stackroute/ibm-wave6-findmeclinic)
+[![Build Status](https://travis-ci.org/stackroute/ibm-wave6-findmeclinic.svg?branch=v1.0.2)](https://travis-ci.org/stackroute/ibm-wave6-findmeclinic)
 [![codecov](https://codecov.io/gh/stackroute/ibm-wave6-findmeclinic/branch/master/graph/badge.svg)](https://codecov.io/gh/stackroute/ibm-wave6-findmeclinic)
 ![](https://img.shields.io/codecov/c/github/stackroute/ibm-wave6-findmeclinic/master.svg?style=flat)
 
