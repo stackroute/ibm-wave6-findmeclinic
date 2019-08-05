@@ -1,10 +1,8 @@
 
-<br>
-<div class="wrapper">
-<div class="container">
+<div class="container" style="margin-top: -8%">
     <mat-toolbar class="toolbar">
             <mat-chip-list>
-                    <mat-chip>Hi! {{patientData.name}}</mat-chip>
+                    <mat-chip>{{patientData.name}}</mat-chip>
                     </mat-chip-list>  
     </mat-toolbar>
     <mat-card class="cards">
@@ -86,7 +84,7 @@
             </form>
     </mat-card>
             </div>
-        </div>
+        
 <!--new-->
 <br/>
        <div class="container">
@@ -98,7 +96,7 @@
             <mat-card>
                     <div *ngFor="let appointmentDetails of upcomingAppointmentData">
                   <mat-accordion class="myPanel" style="margin-top:10%">
-  <mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel [expanded]="false">
     <mat-expansion-panel-header>
       <mat-panel-title  class="title">
             <mat-chip-list>
@@ -139,7 +137,7 @@
                 <mat-card>
                         <div *ngFor="let appointmentDetails1 of previousAppointmentData">
                         <mat-accordion class="myPanel">
-                                <mat-expansion-panel [expanded]="true">
+                                <mat-expansion-panel [expanded]="false">
                                   <mat-expansion-panel-header>
                                     <mat-panel-title class="title">
                                         <mat-chip-list>
@@ -176,5 +174,7 @@
           </div>
         </div>
        </div>
+       
+
   
 

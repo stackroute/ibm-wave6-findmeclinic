@@ -1,23 +1,16 @@
-
-<div mat-dialog-actions style="margin-left: 20%; color: #0b9cb9;text-align: justify">
-  <font size="4"> <div>Hii {{name}}</div></font>
-    <br>                
-    
-</div>
-<br>
-<div mat-dialog-actions style="margin-left: 20%; color: #0b9cb9;text-align: justify">
-    <font size="4"> <div>Please register to book an appointment</div></font>
-    <br>                
-    
-</div>
-
-<br>
-<div mat-dialog-actions style="margin-left: 20%; color: #0b9cb9;text-align: justify">
-  <label>Enter password to continue</label>
-  <input type="password" #password/>
-  <br>                
-  
-</div>
-<div ><button style="text-align: center" (click)="confirm(password.value)">Confirm</button></div>
-
-
+<div mat-dialog-actions style="margin-left: 32% ; color: #0b9cb9;text-align: justify">
+    <font size="5"> <div>Hii {{name}}</div></font>
+      <br>
+   </div>
+   <br>
+   <div mat-dialog-actions style="margin-left: 18%; color: #0b9cb9;text-align: justify">
+      <font size="4"> <div>Please register to book an appointment</div></font>
+      <br>
+   </div>
+   <div mat-dialog-actions style="margin-left: 18%; color:tomato;text-align: justify">
+    <label><blink>Enter password to continue</blink></label>
+    <input type="password" #password/>
+    <br> <br>
+   </div>
+   <br>
+   <div class="btn btn-info btn-sm" (click)="confirm(password.value)" style="margin-left: 35%">Confirm</div>

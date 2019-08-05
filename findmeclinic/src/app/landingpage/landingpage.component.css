@@ -164,9 +164,7 @@ margin-left: -5px;
 border-radius: 50%;
 }
 
-.single-team img {
-width: 100%;
-}
+
 .single-team {
 position: relative;
 }
@@ -890,6 +888,75 @@ button{
   padding-left: 15px;
   padding-right: 15px;
 }
+.choose {
+  
+  display: flex;
+ 
+  width: 100%;
+  float: left;
+ 
+  background: linear-gradient(#2fd5f8);
+ 
+}
+.choose .half {
+  width: 50%;
+  display: inline;
+}
+.img-bg, .img-user {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+
+.features-wrap {
+  padding: 4em;
+}
+.js .animate-box {
+  opacity: 0;
+}
+.colorlib-heading {
+  margin-bottom: 5em;
+}
+.fadeInUp {
+  
+  animation-name: fadeInUp;
+}
+.animated-fast {
+ 
+  animation-duration: .5s;
+
+  animation-fill-mode: both;
+}
+.features .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+.features .icon i {
+  font-size: 40px;
+  color: #fff;
+}
+.features .desc {
+  padding-left: 60px;
+}
+.js .animate-box {
+  opacity: 0;
+}
+
+.features {
+  position: relative;
+  margin-bottom: 60px;
+}
+              
+              
+              
+
  
  
               

@@ -15,7 +15,7 @@ export class Doctor {
   clinicName: string;
   address: Address;
   phone: string;
-  doctorAppointment: DoctorAppointment[];
+  doctorAppointment: DoctorAppointment;
   clinicImage: string;
 
 

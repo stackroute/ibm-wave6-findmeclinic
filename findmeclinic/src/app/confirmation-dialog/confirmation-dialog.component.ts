@@ -30,6 +30,7 @@ export class ConfirmationDialogComponent implements OnInit {
   area:string;
   clinicName:string;
 
+
   constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>,private router:Router,private dialog:MatDialog)
   {
     
@@ -37,6 +38,7 @@ export class ConfirmationDialogComponent implements OnInit {
  
 
   ngOnInit() {
+    
     this.city=sessionStorage.getItem('city');
     console.log(this.city);
     this.area=sessionStorage.getItem('area');
@@ -44,7 +46,8 @@ export class ConfirmationDialogComponent implements OnInit {
     this.specialization=sessionStorage.getItem('specialization');
     this.doctorName=sessionStorage.getItem('doctorName');
     this.patientName=  sessionStorage.getItem('patientName');
-    this.emailId=sessionStorage.getItem('username');
+    this.emailId=sessionStorage.getItem('email');
+    sessionStorage.setItem('username',this.emailId);
    this.confirm();
    
 
@@ -144,7 +147,7 @@ clear()
   sessionStorage.removeItem('mobile');
   sessionStorage.removeItem('email');
   const dialogRef = this.dialog.closeAll();
-  this.router.navigateByUrl('/patientdashboard/'+this.emailId);
+  this.router.navigateByUrl('/patientdashboard/'+sessionStorage.getItem('username'));
   
 }
 }

@@ -1,29 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+    <a href="http://13.234.236.221:4200/#" style="color:rgb(33, 173, 228)">
+      <div class="" style="margin-left:-77% ">  <img src="../../assets/images/logo (1).png" style="height: 60px;width: auto;" alt ="FindMeClinic"/></div>
+    </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <a mdbWavesEffect  style="padding-left: 85% ;font-size: 18px;font-weight:400;"  (click)="patientProfile()" class="nav-link waves-light" mdbWavesEffect>
+              <mdb-icon fas icon="user"></mdb-icon> <span class="caret"></span></a>
+       <div class="nav1"  >
+        <div class="color-block mx-auto mb-3 warm-flame-gradient z-depth-2">
+        <div class="btn btn-info btn-lg btn-logout" (click)="logout()">Logout</div>
+    </div>
+    </div>
+ </div>
+ </nav>
 
+  
 
-<mdb-navbar SideClass="navbar navbar-expand-lg fixed-top" [containerInside]="false" style="background:white">
-  <mdb-navbar-brand> <a href="#" class="navbar-brand ml-3" style="color:rgb(33, 173, 228)">
-    <img src="../../assets/images/logo (1).png" style="height: 60px;width: auto;margin-left: 40px" alt ="FindMeClinic"/>
- </a></mdb-navbar-brand>
-   <!-- Collapsible content -->
-   <links>
-     <!-- Links -->
-     <ul class="navbar-nav ml-auto">
-         <li class="nav-item active">
-             <a class="nav-link waves-light" style="font-size: 18px;font-weight:400;" (click)="patientAppointments()" mdbWavesEffect><i class="fa fa-users"></i>My Appointments<span class="sr-only">(current)</span></a>
-           </li>
-       <!-- Dropdown -->
-       <li class="nav-item dropdown" dropdown>
-         <a mdbWavesEffect type="button" style="font-size: 18px;font-weight:400;"  (click)="patientProfile()" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-           <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
-       </li>
-       <li class="nav-item active">
-        <a class="nav-link waves-light" style="font-size: 18px;font-weight:400;color:black;"  href="" mdbWavesEffect><i class="fa fa-sign-out"></i>Logout<span class="sr-only">(current)</span></a>
-      </li>
-     </ul>
-     <!-- Links -->
-   </links>
-   <!-- Collapsible content -->
- </mdb-navbar>
- <!--/.Navbar-->
+ 
+  <div class="container mt-40 mb-30" style="margin-top:7%">
+      
+      <br>
+      <div class="cards">
+      <div *ngFor="let doctorData of topDoctors">
+                 
+                    <div class="box21">
+                        <img  src="../../assets/images/{{doctorData.profileImage}}" style="height: 250px;width:250px" >
+                        <div class="box-content">
+                            <h4 class="title">{{doctorData.name}}</h4>
+                            <p class="description">{{doctorData.emailId}}</p>
+                            <a class="read-more" href="#">Book Appointment</a>
+                        </div>
+                    </div>
+              </div>
+        </div>
+       
+       
+     
+ 
+  
  <router-outlet></router-outlet>
  <br>

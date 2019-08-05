@@ -34,6 +34,7 @@ export class PatientprofileComponent implements OnInit {
  appointmentDate: string;
  appointmentDate1: string;
  data1: any;
+ emailId1:string;
 
 
 
@@ -44,8 +45,8 @@ export class PatientprofileComponent implements OnInit {
   ngOnInit() {
 
 
-  
-    this.appointments.getAllAppointments(sessionStorage.getItem('username')).subscribe((data: any) =>
+    this.emailId1=sessionStorage.getItem('username');
+    this.appointments.getAllAppointments(this.emailId1).subscribe((data: any) =>
     {
       
       
@@ -79,9 +80,9 @@ export class PatientprofileComponent implements OnInit {
  patientPro(){
 
   
-   const emailId = this.route1.snapshot.paramMap.get('email');
-   console.log('profile ' + emailId);
-   this.myProfile.getPatientDetails(emailId).subscribe((data: any) => {
+  
+  // console.log('profile ' + emailId);
+   this.myProfile.getPatientDetails(this.emailId1).subscribe((data: any) => {
  
      this.patientData.name = data.name;
      this.patientData.emailId = data.emailId;

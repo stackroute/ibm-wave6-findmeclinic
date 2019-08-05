@@ -17,6 +17,7 @@ export class PatientdashboardComponent implements OnInit {
    map(result => result.matches)
  );
  route: ActivatedRoute;
+  topDoctors: Object;
 
 constructor(private breakpointObserver: BreakpointObserver,private router:Router,private route1:ActivatedRoute,private recommendationService:RecommendationsService) {}
 
@@ -24,6 +25,7 @@ ngOnInit() {
   const email= this.route1.snapshot.paramMap.get('username');
   this.recommendationService.getTopDoctorsForPatient(email).subscribe(data=>{
     console.log(data);
+    this.topDoctors=data;
   });
 
   this.recommendationService.getTopClinicsForPatient(email).subscribe(data=>{
@@ -37,7 +39,14 @@ ngOnInit() {
  patientProfile(){
   const email= this.route1.snapshot.paramMap.get('username');
   console.log(email);
-  this.router.navigate(['patientProfile/'+email],{relativeTo:this.route}); }
+  this.router.navigate(['patientProfile/'+email],{relativeTo:this.route});
+ }
 
+ logout(){
+   sessionStorage.removeItem('username');
+   this.router.navigateByUrl('');
+ }
 
 }
+
+

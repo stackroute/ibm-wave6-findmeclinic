@@ -22,19 +22,6 @@ services:
       - 8083:8083
     expose:
       - 8083
-
-  configserver:
-    image: config-server:1.0.0
-    build: config-server/
-    restart: always
-    network_mode: host
-    depends_on:
-      - eurekaserver
-    ports:
-      - 8085:8085
-    expose:
-      - 8085
-
   findmeclinic:
     build:
       context: ./findmeclinic
@@ -47,6 +34,19 @@ services:
     restart: always
     environment:
       NG_CLI_ANYALYTICS: ci
+
+
+  configserver:
+    image: config-server:1.0.0
+    build: config-server/
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaserver
+    ports:
+      - 8085:8085
+    expose:
+      - 8085
 
   zookeeper:
     container_name: zookeeper

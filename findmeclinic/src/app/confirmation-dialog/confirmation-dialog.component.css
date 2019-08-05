@@ -1,5 +1,15 @@
 .yes {
     background: whitesmoke !important;
     width: 95px !important;
-    
-}
+ }
+ .btn:hover{
+    color: white;
+    background-color:green;
+    width: 100px;
+    }
+    .btn{
+    color: black;
+    background-color: white;
+    /* font: weight 400; */
+    width: 100px;
+    }

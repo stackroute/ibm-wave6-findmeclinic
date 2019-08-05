@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 
-@CacheConfig(cacheNames = {"doctor"})
 @Service
 public class DoctorServiceImpl implements DoctorService {
 
@@ -38,7 +37,6 @@ public class DoctorServiceImpl implements DoctorService {
 
 
 
-    @CacheEvict(allEntries = true)
     @Override
     public Doctor save(Doctor doctor) {
 
@@ -60,7 +58,7 @@ public class DoctorServiceImpl implements DoctorService {
             return null;
         }
     }
-    @CacheEvict(allEntries = true)
+
     @Override
     public String delete(String emailId) {
         Optional optional=doctorRepository.findById(emailId);
@@ -75,7 +73,7 @@ public class DoctorServiceImpl implements DoctorService {
             return DOCTOR_DOESN_T_EXISTS;
         }
     }
-    @CacheEvict(allEntries = true)
+
     @Override
     public String update(Doctor doctor) {
         Optional optional=doctorRepository.findById(doctor.getEmailId());
@@ -93,24 +91,26 @@ public class DoctorServiceImpl implements DoctorService {
         }    }
 
 
-    @Cacheable(value="doctor")
+
     @Override
     public Doctor getDoctorByEmailId(String emailId) {
+        Doctor doctor;
         Optional optional=doctorRepository.findById(emailId);
         if (optional.isPresent()){
-            return (Doctor) optional.get();
+            doctor=(Doctor)optional.get();
+            return doctor;
         }
         return null;
     }
 
 
-    @Cacheable(value="doctor")
+
     @Override
     public List<Doctor> getAll() {
         return doctorRepository.findAll();
     }
 
-    @CacheEvict(allEntries = true)
+
     @Override
     public Doctor updateSlot(Slot slot,String emailId) {
         Optional optional=doctorRepository.findById(emailId);
@@ -123,7 +123,7 @@ public class DoctorServiceImpl implements DoctorService {
         }
         return null;
     }
-    @Cacheable(value="doctor")
+
     @Override
     public List<Doctor> findDoctorBySpecialization(String specialization) {
         List<Doctor> doctors=doctorRepository.findAll();
@@ -135,7 +135,7 @@ public class DoctorServiceImpl implements DoctorService {
        });
         return doctorList;
     }
-    @Cacheable(value="doctor")
+
     @Override
     public List<Doctor> findDoctorByLocationAndSpecialization(String area, String specialization) {
         List<Doctor> doctors=doctorRepository.findAll();
@@ -147,7 +147,7 @@ public class DoctorServiceImpl implements DoctorService {
         });
         return doctorList;
     }
-    @Cacheable(value="doctor")
+
     @Override
     public List<Doctor> findDoctorByLocation(String area) {
         List<Doctor> doctors=doctorRepository.findAll();
@@ -158,7 +158,7 @@ public class DoctorServiceImpl implements DoctorService {
             }
         });
         return doctorList;    }
-    @CacheEvict(allEntries = true)
+
     @Override
     public void updateDoctorAppointments(DoctorAppointment doctorAppointment,String emailId) {
         Optional optional=doctorRepository.findById(emailId);
@@ -174,11 +174,13 @@ public class DoctorServiceImpl implements DoctorService {
           }
 
 
-    @Cacheable(value="doctor")
+
     @Override
     public List<DoctorAppointment> getAllAppointments(String emailId)
     {
         List<DoctorAppointment> doctorAppointmentList=new ArrayList<>();
+        System.out.println(doctorRepository.existsById(emailId));
+        System.out.println(doctorRepository.findById(emailId));
         Optional optional=doctorRepository.findById(emailId);
         if (optional.isPresent()){
             Doctor doctor= (Doctor) optional.get();

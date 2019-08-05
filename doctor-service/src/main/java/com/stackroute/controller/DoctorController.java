@@ -108,7 +108,7 @@ public class DoctorController {
         return new ResponseEntity<>(doctorService.findDoctorByLocationAndSpecialization(area, specialization), HttpStatus.OK);
     }
     @GetMapping("doctor-appointments/{emailId}")
-    public ResponseEntity<List<DoctorAppointment>> getAllAppointments(@PathVariable String emailId){
+    public ResponseEntity<?> getAllAppointments(@PathVariable String emailId){
         return new ResponseEntity<>(doctorService.getAllAppointments(emailId),HttpStatus.OK);
     }
 

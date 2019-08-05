@@ -45,6 +45,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { PatientreviewsComponent } from './patientreviews/patientreviews.component';
 import { DoctorprofileComponent } from './doctorprofile/doctorprofile.component';
 import { StartingPageComponent } from './starting-page/starting-page.component';
+import { AboutpageComponent } from './aboutpage/aboutpage.component';
 
 
 
@@ -74,6 +75,7 @@ const dashboardRoutes: Routes = [
   {path:'editPatient/:name/:emailId/:dateOfBirth/:gender/:phone',component:PatientEditProfileComponent},
   {path:'confirmBooking',component:ConfirmbookingComponent},
   {path:'doctordashboard/:username',component:DoctordashboardComponent},
+  {path:'about',component:AboutpageComponent}
 
   //{path:'popup',component:Popup1Component}
 
@@ -141,7 +143,8 @@ const appRoutes:Routes=[
     RegistartionDialogComponent,
     LoginDialogComponent,
     PatientreviewsComponent,
-    StartingPageComponent
+    StartingPageComponent,
+    AboutpageComponent
    
   
   ],

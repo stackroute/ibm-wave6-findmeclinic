@@ -1,5 +1,21 @@
 .yes {
     background: whitesmoke !important;
     width: 95px !important;
-    
-}
+ }
+ blink {
+    animation: blinker 1.3s linear infinite;
+   }
+  @keyframes blinker {
+    50% { opacity: 0; }
+   }
+   .btn:hover{
+    color: white;
+    background-color:#2fd5f8;
+    width: 100px;
+    }
+    .btn{
+    color: black;
+    background-color: white;
+    /* font: weight 400; */
+    width: 100px;
+    }

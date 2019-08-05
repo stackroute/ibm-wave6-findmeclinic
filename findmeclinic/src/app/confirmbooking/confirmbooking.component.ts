@@ -193,6 +193,7 @@ export class ConfirmbookingComponent implements OnInit {
           sessionStorage.setItem('gender',this.patient.gender);
           sessionStorage.setItem('mobile',this.patient.phone);
           sessionStorage.setItem('email',this.patient.emailId);
+          console.log(this.bookAppointment);
           
 
           this.appointment.checkPatient(this.bookAppointment.patient.emailId).subscribe(data=>
