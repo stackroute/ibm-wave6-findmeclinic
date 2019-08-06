@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators ,FormControl} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../Patient';
 import { BookAppointment } from '../bookappointment';
 import { Doctor } from '../doctor';
@@ -27,7 +27,6 @@ export class ConfirmbookingComponent implements OnInit {
     area:string;
     city:string;
     specialization:string;
-    // appointmentDate:Date;
     appointmentId:number;
     slot:string;
     id:string;
@@ -46,7 +45,7 @@ export class ConfirmbookingComponent implements OnInit {
     patientPhone:string;
    
 
-    constructor(private formBuilder: FormBuilder,private route:ActivatedRoute,private appointment:AppointmentService,public dialog: MatDialog,private schedulerService:SchedulerService) {
+    constructor(private formBuilder: FormBuilder,private router:Router,private route:ActivatedRoute,private appointment:AppointmentService,public dialog: MatDialog,private schedulerService:SchedulerService) {
         this.route.queryParams.subscribe(params => {
             this.name = params["name"];
             this.clinicName = params["clinicName"];
@@ -55,7 +54,6 @@ export class ConfirmbookingComponent implements OnInit {
             this.area = params["area"];
             this.specialization=params["specialization"];
             this.city=params["city"];
-            //this.appointmentDate=params["appointmentDate"];
             this.slot=params["slot"];
             this.appointmentId=params["appointmentId"];
             this.key=params["key"];
@@ -72,7 +70,6 @@ export class ConfirmbookingComponent implements OnInit {
   this.patientDateOfBirth=sessionStorage.getItem('dateOfBirth');
   this.patientEmail=sessionStorage.getItem('email');
   this.patientPhone=sessionStorage.getItem('mobile');  
-  console.log(this.patientName+this.patientDateOfBirth+this.patientEmail+this.patientPhone);   
  this.validation();
        
       
@@ -95,11 +92,9 @@ export class ConfirmbookingComponent implements OnInit {
        this.patient.emailId=this.registerForm.controls.email.value;
        this.patient.dateOfBirth=this.registerForm.controls.date.value;
        this.patient.gender=this.registerForm.controls.gender.value;
-      console.log(this.patient);
       
        
     }
-    // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
@@ -109,7 +104,6 @@ export class ConfirmbookingComponent implements OnInit {
 
    
     findInvalidControls() {
-        console.log("hii");
         const invalid = [];
         const controls = this.registerForm.controls;
         for (const name in controls) {
@@ -117,7 +111,6 @@ export class ConfirmbookingComponent implements OnInit {
                 invalid.push(name);
             }
         }
-        console.log(invalid);
         if(invalid.length==0)
         { 
           this.doctor.name=this.name;
@@ -180,8 +173,6 @@ export class ConfirmbookingComponent implements OnInit {
             
           sessionStorage.setItem('appointmentid',this.appointmentId+"");
           sessionStorage.setItem('key',this.key);
-        //  var url=location.href;
-         // localStorage.setItem('url',url);
          sessionStorage.setItem('emailid',this.doctor.emailId);
          sessionStorage.setItem('doctorName',this.doctor.name);
          sessionStorage.setItem('specializtion',this.specialization);
@@ -193,8 +184,6 @@ export class ConfirmbookingComponent implements OnInit {
           sessionStorage.setItem('gender',this.patient.gender);
           sessionStorage.setItem('mobile',this.patient.phone);
           sessionStorage.setItem('email',this.patient.emailId);
-          console.log(this.bookAppointment);
-          
 
           this.appointment.checkPatient(this.bookAppointment.patient.emailId).subscribe(data=>
           {
@@ -205,7 +194,7 @@ export class ConfirmbookingComponent implements OnInit {
               
           
               this.appointment.saveAppointment(this.bookAppointment).subscribe(data =>{
-              console.log(data);
+              
                    }
                  );
                  const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -216,16 +205,17 @@ export class ConfirmbookingComponent implements OnInit {
                 });
             
                 dialogRef.afterClosed().subscribe(result => {
-                  console.log('The dialog was closed');
+                
                 });
           }
         }
         
         else{
+          sessionStorage.setItem('name',this.bookAppointment.patient.name);
           const dialogRef = this.dialog.open(LoginDialogComponent, {
             width: '350px',
           
-          //  disableClose: true,
+          
            
           });
       
@@ -234,7 +224,7 @@ export class ConfirmbookingComponent implements OnInit {
             if(sessionStorage.getItem('status1')=="true")
             {
               this.appointment.saveAppointment(this.bookAppointment).subscribe(data =>{
-                console.log(data);
+                
                      });
 
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -245,10 +235,10 @@ export class ConfirmbookingComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      
     });
             }
-            console.log('The dialog was closed');
+           
           });
           
         }  
@@ -260,14 +250,12 @@ export class ConfirmbookingComponent implements OnInit {
           const dialogRef = this.dialog.open(RegistartionDialogComponent, {
             width: '350px',
           
-            //disableClose: true,
            
           });
        
       
           dialogRef.afterClosed().subscribe(result => {
             this.appointment.saveAppointment(this.bookAppointment).subscribe(data =>{
-              console.log(data);
                    });
             const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
               width: '350px',
@@ -277,9 +265,9 @@ export class ConfirmbookingComponent implements OnInit {
             });
         
             dialogRef.afterClosed().subscribe(result => {
-              console.log('The dialog was closed');
+             
             });
-            console.log('The dialog was closed');
+          
           });
 
         }
@@ -287,5 +275,8 @@ export class ConfirmbookingComponent implements OnInit {
           
          
       }
+    }
+    confirmSlot(){
+      this.router.navigateByUrl('confirmSlot');
     }
   }

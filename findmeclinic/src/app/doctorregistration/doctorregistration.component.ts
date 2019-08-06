@@ -144,7 +144,6 @@ private _filter1(value: string): string[] {
    this.doctor.qualification = this.firstFormGroup.controls.QualificationCtrl.value;
    this.doctor.medicalLicense = this.firstFormGroup.controls.MedicalLicenseCtrl.value;
    this.doctor.password = this.firstFormGroup.controls.PasswordCtrl.value;
-  //  this.doctor.profileImage = this.firstFormGroup.controls.ProfilePhotoCtrl.value;
   this.doctor.profileImage = this.mediaName;
 
  }
@@ -157,12 +156,10 @@ saveSpecialization()
 {
   if(this.secondFormGroup.controls.SpecializationCtrl.value===undefined){
     this.doctor.specialization=this.cardSpecializaion;
-    console.log(this.doctor.specialization);
   }
   else
   {
     this.doctor.specialization=this.secondFormGroup.controls.SpecializationCtrl.value;
-  console.log(this.doctor.specialization);
   }
 }
 
@@ -170,7 +167,6 @@ saveSpecialization()
  saveClinic() {
    this.doctor.clinicName=this.thirdFormGroup.controls.ClinicNameCtrl.value;
    this.address.state = this.thirdFormGroup.controls.StateCtrl.value;
-  //  this.address.mobile = this.thirdFormGroup.controls.MobileCtrl.value;
   this.doctor.phone = this.thirdFormGroup.controls.MobileCtrl.value;
    this.address.city = this.thirdFormGroup.controls.CityCtrl.value;
    this.address.flatNo = this.thirdFormGroup.controls.FlatNoCtrl.value;
@@ -178,10 +174,7 @@ saveSpecialization()
    this.address.pinCode = this.thirdFormGroup.controls.PincodeCtrl.value;
    this.doctor.clinicImage = this.mediaName;
    this.doctor.address = this.address;
-   console.log(this.doctor.phone);
-   console.log(this.doctor.address);
    return this.doctors.saveDoctor(this.doctor).subscribe(data => {
-     console.log(data);
    });
  }
  
@@ -189,7 +182,6 @@ saveSpecialization()
   this.selectedVideo=event.target.files;
   this.currentFileUpload = this.selectedVideo.item(0)
   this.mediaName=this.currentFileUpload.name;
-  console.log(this.mediaName);
  }
  
 }

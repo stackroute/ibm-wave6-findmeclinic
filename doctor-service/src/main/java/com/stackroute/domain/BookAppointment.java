@@ -12,7 +12,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookAppointment {
+public class BookAppointment
+{
 
     private String id;
     private Doctor doctor;

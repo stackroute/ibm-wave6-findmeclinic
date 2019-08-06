@@ -2,9 +2,8 @@ package com.stackroute.domain;
 
 
 import lombok.*;
-
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Data

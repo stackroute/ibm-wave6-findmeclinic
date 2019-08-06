@@ -9,7 +9,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PatientAppointment {
+public class PatientAppointment
+{
 
     private Integer appointmentId;
     private Doctor doctor;

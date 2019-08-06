@@ -13,7 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Doctor {
+public class Doctor
+{
 
     @Id
     private String emailId;

@@ -2,7 +2,6 @@ package com.stackroute.controller;
 
 import com.stackroute.domain.User;
 import com.stackroute.exception.PasswordNotMatchException;
-import com.stackroute.exception.UserNotFoundException;
 import com.stackroute.exception.UserNameOrPasswordEmptyException;
 import com.stackroute.jwt.SecurityTokenGenerator;
 import com.stackroute.service.UserService;
@@ -19,7 +18,8 @@ import java.util.*;
 @CrossOrigin(value = "*")
 @RequestMapping("api/v1")
 @RestController
-public class UserController {
+public class UserController
+{
     private UserService userService;
 
     @Autowired

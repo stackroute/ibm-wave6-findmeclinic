@@ -15,9 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1")
 @CrossOrigin(value = "*")
-public class PatientContoller {
-
-
+public class PatientContoller
+{
     private PatientService patientService;
 
     @Autowired
@@ -26,17 +25,20 @@ public class PatientContoller {
     }
 
     @PostMapping("patient")
-    public ResponseEntity<?> savePatient(@RequestBody Patient patient) {
+    public ResponseEntity<?> savePatient(@RequestBody Patient patient)
+    {
         try {
             Patient savedPatient = patientService.savePatient(patient);
             return new ResponseEntity<Patient>(savedPatient, HttpStatus.CREATED);
-        } catch (PatientAlreadyExistsException p) {
+        }
+        catch (PatientAlreadyExistsException p) {
             return new ResponseEntity<String>("Patient Already Exists", HttpStatus.CONFLICT);
         }
     }
 
     @GetMapping("patients")
-    public ResponseEntity<?> getAllPatients() {
+    public ResponseEntity<?> getAllPatients()
+    {
         return new ResponseEntity<>(patientService.getPatients(), HttpStatus.OK);
     }
 
@@ -44,7 +46,9 @@ public class PatientContoller {
     public ResponseEntity<?> getPatientByEmailId(@PathVariable String emailId) {
         try {
             return new ResponseEntity<Patient>(patientService.getPatientByEmailId(emailId), HttpStatus.OK);
-        } catch (PatientNotFoundException p) {
+        }
+        catch (PatientNotFoundException p)
+        {
             return new ResponseEntity<String>("Patient Not Found", HttpStatus.NOT_FOUND);
         }
     }

@@ -13,28 +13,35 @@ public class JwtFilter extends GenericFilter
 {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
-            throws IOException, ServletException {
+            throws IOException, ServletException
+    {
 
         final HttpServletRequest request = (HttpServletRequest) req;
         final HttpServletResponse response = (HttpServletResponse) res;
         final String authHeader = request.getHeader("authorization");
 
-        if ("OPTIONS".equals(request.getMethod())) {
+        if ("OPTIONS".equals(request.getMethod()))
+        {
             response.setStatus(HttpServletResponse.SC_OK);
-
             chain.doFilter(req, res);
-        } else {
+        }
+        else
+            {
 
-            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            if (authHeader == null || !authHeader.startsWith("Bearer "))
+            {
                 throw new ServletException("Missing or invalid Authorization header");
             }
 
             final String token = authHeader.substring(7);
 
-            try {
+            try
+            {
                 final Claims claims = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody();
                 request.setAttribute("claims", claims);
-            } catch (final SignatureException e) {
+            }
+            catch (final SignatureException e)
+            {
                 throw new ServletException("Invalid token");
             }
 

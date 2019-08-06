@@ -14,7 +14,8 @@ import java.io.IOException;
 
 @Configuration
 
-public class CorsConfiguration implements Filter {
+public class CorsConfiguration implements Filter
+{
 
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {

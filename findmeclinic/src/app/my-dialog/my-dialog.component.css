@@ -15,12 +15,9 @@ h5{
 .close{
   display:flex;
   justify-content: center;
-  /* text-align: center; */
 }
 
-/* .cross{
-  float: right;
-} */
+
 
 mat-chip {
   display: inline-block;

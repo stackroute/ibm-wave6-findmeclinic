@@ -19,19 +19,11 @@ export class PopupComponent  implements OnInit  {
   constructor(private dialog:MatDialog,public popupService: PopupService, public router: Router) { }
 
   ngOnInit() {
-    // $(document).ready(function() {
-    //   if(sessionStorage.getItem('popState') != 'shown'){
-    //       $("#popup").fadeIn();
-    //       sessionStorage.setItem('popState','shown')
-    //   }
-    //    });
   }
   public hyderabad() {
     this.places =["Madinaguda","Miyapur", "Gachibowli","Ameerpet","SR Nagar","L.B Nagar","Kukatpalli"];
     this.popupService.places = this.places;
-    // this.popupService.places1=this.places;
     this.popupService.city="Hyderabad";
-    // this.popupService.city1="Hyderabad";
     const dialogRef = this.dialog.closeAll();
     this.popupService.check =false;
   }

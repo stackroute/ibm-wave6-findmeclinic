@@ -16,7 +16,8 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
-public class ConsumerConfiguration {
+public class ConsumerConfiguration
+{
 
     @Bean
     public ConsumerFactory<String, BookAppointment> consumerFactory() {

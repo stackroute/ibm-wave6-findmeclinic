@@ -20,15 +20,7 @@ export class MyDialogComponent implements OnInit {
    this.data.closeAll();
  }
  searchSpecialization(x) {
-  //  TODO: calll that serive method here
-//    this.displayData.getAllDoctorsBySpecialization(x);
-  console.log(x," specialization in dialog box");
   this.displayData.getAllDoctorsBySpecializationAndArea(x);
    this.data.closeAll();
-
-//  this.router.navigate(['/searchView'],
-//  {queryParams: {specialization:x}
-//  })
-
  }
 }

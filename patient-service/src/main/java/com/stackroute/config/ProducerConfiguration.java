@@ -13,7 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class ProducerConfiguration {
+public class ProducerConfiguration
+{
 
     @Bean
     public ProducerFactory<String, Patient> patientProducerFactory()

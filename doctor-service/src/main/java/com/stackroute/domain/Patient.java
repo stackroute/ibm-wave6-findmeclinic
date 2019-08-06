@@ -12,7 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Patient {
+public class Patient
+{
 
     private String name;
     private Date dateOfBirth;

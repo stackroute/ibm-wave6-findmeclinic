@@ -19,7 +19,6 @@ export class ViewDoctorComponent implements OnInit {
  doctor : any = null;
  slotData:any;
  slotData1:any;
- // myVar: any = null;
  constructor(private share: SharedService,
    private doctorservice: SearchDoctorService,private schedulerService:SchedulerService,private router:Router,private myprofile:PatientdashboardService) {
 
@@ -28,15 +27,11 @@ export class ViewDoctorComponent implements OnInit {
 
  ngOnInit() {
    this.share.doctorDetail$.subscribe(data => {
-     console.log(data, "this is data form the observable!!")
      this.doctor = data;
 
 
    })
  }
-
-
-//experience calculation
 getExp = function(str) {
  var today = new Date();
  var startDate = new Date(str);
@@ -61,16 +56,6 @@ routingto(emailId:string)
   this.myprofile.getDoctorDetails(emailId).subscribe(data =>{
     var response=JSON.stringify(data);
     var response1=JSON.parse(response);
-   
-
-
-    
-  // this.doctor.name=response1.name;
-  // this.doctor.clinicName=response1.clinicName;
-  // this.doctor.emailId=response1.emailId;
-  // this.address.flatNo=response1.address.flatNo;
-  // this.address.area=response1.address.area; 
-  // this.doctor.address = this.address;  
 
   let navigationExtras: NavigationExtras = {
     queryParams: {
@@ -89,16 +74,8 @@ routingto(emailId:string)
         "overmorrowa":this.slotData1.slots.overmorrowa,
         "overmorrowe":this.slotData1.slots.overmorrowe
       
-    },
-    // skipLocationChange:true,
-   //replaceUrl:true,
-  //  queryParamsHandling:"merge"
-   
-   
-   
+    }, 
 };
-console.log(navigationExtras);
-
 this.router.navigate(['/appointmentSlot'],navigationExtras);  
   }
     );  

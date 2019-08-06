@@ -1,7 +1,9 @@
-<div id="fullscreen_bg" class="fullscreen_bg">
+<app-navbar></app-navbar>
+<div id="fullscreen_bg" class="fullscreen_bg" style="margin-top:5%">
 <!--new code-->
 <div class="container">
     <mat-card>
+                <!-- <a (click)="searchDoctor()" style="color: #1d90a7;" class="fas previous">&#xf060;</a> -->
         <h4>Select a time slot to book an appointment</h4>
 
         <div style="padding-left: 28%;padding-top: 4%;text-align: center" class="row">
@@ -62,21 +64,21 @@
                                                 <h5>Morning</h5>
                                         </div>
                                         <div class="col">
-                                                <button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button value="Today(10-1)"  [disabled]="status1" (click)="clickMe4('tomorrow','morning')" >10:00AM-01:00AM</button>
+                                                <button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button value="Today(10-1)"  [disabled]="status4" (click)="clickMe4('tomorrow','morning')" >10:00AM-01:00AM</button>
                                         </div>
                                     </div>
                                     <hr>
                                     <div style="margin-left: -18%" class="row">
                                             <div class="col"><i class="fas fa-cloud"></i></div>
                                                     <div style="margin-left:-20%" class="col"> <h5>Afternoon</h5></div>
-                                                            <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(2-5)" [disabled]="status2" (click)="clickMe5('tomorrow','afternoon')">02:00PM-05:00PM</button>
+                                                            <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(2-5)" [disabled]="status5" (click)="clickMe5('tomorrow','afternoon')">02:00PM-05:00PM</button>
                                                             </div>
                                     </div>
                                     <hr>
                                     <div style="margin-left: -18%" class="row">
                                             <div class="col"><i class="far fa-moon"></i></div>
                                             <div style="margin-left:-20%" class="col"><h5>Evening</h5></div>
-                                            <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(6-9)"   [disabled]="status3" (click)="clickMe6('tomorrow','evening')">06:00PM-09:00PM</button>                                          
+                                            <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(6-9)"   [disabled]="status6" (click)="clickMe6('tomorrow','evening')">06:00PM-09:00PM</button>                                          
                                             </div>
                                             </div>    
                             
@@ -101,21 +103,21 @@
                                                         <h5>Morning</h5>
                                                 </div>
                                                 <div class="col">
-                                                        <button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button value="Today(10-1)"  [disabled]="status1" (click)="clickMe7('overmorrow','morning')" >10:00AM-01:00AM</button>
+                                                        <button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button value="Today(10-1)"  [disabled]="status7" (click)="clickMe7('overmorrow','morning')" >10:00AM-01:00AM</button>
                                                 </div>
                                             </div>
                                             <hr>
                                             <div style="margin-left: -18%" class="row">
                                                     <div class="col"><i class="fas fa-cloud"></i></div>
                                                             <div style="margin-left:-20%" class="col"> <h5>Afternoon</h5></div>
-                                                                    <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(2-5)" [disabled]="status2" (click)="clickMe8('overmorrow','afternoon')">02:00PM-05:00PM</button>
+                                                                    <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(2-5)" [disabled]="status8" (click)="clickMe8('overmorrow','afternoon')">02:00PM-05:00PM</button>
                                                                     </div>
                                             </div>
                                             <hr>
                                             <div style="margin-left: -18%" class="row">
                                                     <div class="col"><i class="far fa-moon"></i></div>
                                                     <div style="margin-left:-20%" class="col"><h5>Evening</h5></div>
-                                                    <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(6-9)"   [disabled]="status3" (click)="clickMe9('overmorrow','evening')">06:00PM-09:00PM</button>                                          
+                                                    <div class="col"><button  role="button" class="btn btn-info btn-lg btn-slot" mat-raised-button  value="Today(6-9)"   [disabled]="status9" (click)="clickMe9('overmorrow','evening')">06:00PM-09:00PM</button>                                          
                                                     </div>
                                                     </div>    
                                 

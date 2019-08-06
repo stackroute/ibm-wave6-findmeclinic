@@ -1,20 +1,25 @@
-#popup {
-  margin-bottom: 20px;
-  height: 10px;
-}
 
-h3{
+#popup {
+ margin-bottom: 20px;
+ height: 10px;
+}
+h2{
 text-align: center;
 margin-bottom: 10px;
 }
-
 .btn:hover{
-  color: white;
-  background-color:#2fd5f8;
-  width: 100px;
+ color: white;
+ background-color:#2fd5f8;
+ width: 155px;
+ }
+ .btn{
+ color: black;
+ background-color: white;
+ width: 155px;
+ }
+  blink {
+   animation: blinker 1.3s linear infinite;
   }
-  .btn{
-  color: black;
-  background-color: white;
-  width: 100px;
+ @keyframes blinker {
+   50% { opacity: 0; }
   }

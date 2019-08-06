@@ -18,9 +18,6 @@ export class PatientregistrationComponent implements OnInit {
   status=false;
   gender="";
 
-//   minDate = new Date(1990, 0, 1);
-//  maxDate =  new Date(2019, 7, 31);
-
  patient:Patient=new Patient();
   patientData: any;
   patientName:string;
@@ -64,20 +61,15 @@ export class PatientregistrationComponent implements OnInit {
    this.patient.dateOfBirth=date;
    this.patient.password=password;
    this.patient.gender=this.gender;
-
-   console.log(this.patient);
-
  }
 get f() { return this.registerForm.controls; }
 
 onSubmit() {
-  console.log("Hii");
     this.submitted = true;
     this.findInvalidControls();
- //  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+ 
 }
 findInvalidControls() {
-  console.log("hii");
   const invalid = [];
   const controls = this.registerForm.controls;
   for (const name in controls) {
@@ -85,7 +77,6 @@ findInvalidControls() {
           invalid.push(name);
       }
   }
-  console.log(invalid);
   if(invalid.length==0)
   {
     

@@ -37,6 +37,5 @@ btn-primary{
 }
 
 .jumbotron{
-    background: url("../../assets/images/36.jpg") repeat center top / cover;
-
+    background:rgb(171, 217, 235);
 }

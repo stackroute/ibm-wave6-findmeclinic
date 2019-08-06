@@ -1,14 +1,7 @@
-/* @media (min-width: 768px) {
- 
-
-/* .container-narrow > hr {
-  margin: 30px 0;
-} */
 
 body{
-  height:100vh;
   margin-top:2%;
-  background: url("../../assets/images/36.jpg") repeat center top / cover; 
+  background:rgb(171, 217, 235);
   background-position:120% 100%;
   background-size:cover;
   
@@ -34,17 +27,10 @@ body{
  
 }
 .container{
-    /* margin-top:10%; */
     margin-top:10%;
     margin-bottom: 20px;
     font-size: 14px;
     flex-direction: column;
-  
-   
-    /* display: flex;
- justify-content: center;
- flex-direction: column; */
-    
   }
  
 h5{
@@ -76,12 +62,6 @@ h5{
    margin: 0 auto; 
    float: none;
    border: 2px solid #e5e5e5; 
-   /* background-color: beige; */
-   /* border: 2px solid gray; */
-   /* box-shadow: #2fd5f8;
-   box-shadow: 20px; */
- 
-   /* text-align: center; */
    animation-name: fadeIn;
   
   
@@ -105,14 +85,6 @@ h5{
     color: #fff;
     float: right;
   }
-  
-/* 
-@media(max-width: 700px) {
- div {
-   background-color: black;
- }
-} */
-
 .hrCards{
   width: 900px;
   align-content:center;
@@ -122,17 +94,9 @@ h5{
   padding-top: 40px;
   text-align: center;
   display: inline;
- 
-  /* vertical-align: middle; */
+
 }
 
-
-
-/* td{
-  padding-left: 30px;
-  width: 100px;
-  padding: 10px;
-} */
 img{
   border-radius: 50%;
 }

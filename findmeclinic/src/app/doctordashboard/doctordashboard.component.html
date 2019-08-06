@@ -18,6 +18,8 @@
 </div>
 </nav>
 <div class="wrapper" style="margin-top:6%;"><br>
+
+  
     <div class="container emp-profile" >
     <div class="hey">
         <mat-toolbar class="toolbar">Profile</mat-toolbar>
@@ -51,19 +53,20 @@
                                             local_hospital
                                             </i>License Number is &nbsp;{{doctorData.medicalLicense}}</p>
 
-                                            <p>Dr. {{doctorData.name}} is {{preposition}} 
+                                            <p style="text-align: justify">Dr. {{doctorData.name}} is {{preposition}} 
                                                 {{doctorData.specialization}} at {{doctorData.clinicName}} Clinic in the city of {{doctorData.address.city}}. {{pronoun}} has been practicing medicine since {{doctorData.practiceStartedDate}}. {{pronoun}} keeps {{self}} abreast with the latest advances and technologies available and has also presented numerous papers at national and international forums. </p>
 
                           <div class="row">
-                            <div class="col-md-6">
-                                <label>Clinic Address:
-                                </label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{doctorData.clinicName}} Clinic, {{doctorData.address.flatNo}} {{doctorData.address.area}}</p>
-                              <p >{{doctorData.address.city}}, {{doctorData.address.state}} - {{doctorData.address.pinCode}}</p>
-                             
-                            </div>
+                            <div class="col-sm-6">
+                               <p><i class="material-icons">
+                                  location_on
+                                  </i>{{doctorData.clinicName}} Clinic, {{doctorData.address.flatNo}} {{doctorData.address.area}}</p>
+                                  <p  style="padding-left:21px">{{doctorData.address.city}}, {{doctorData.address.state}} - {{doctorData.address.pinCode}}</p>
+                              
+                            
+                                </div>
+                                  
+                         
                         </div>
            
                   

@@ -21,10 +21,8 @@ import java.util.Date;
 
 @Service
 @CacheConfig(cacheNames = {"appointment"})
-public class BookAppointmentServiceImpl  implements BookAppointmentService{
-
-
-
+public class BookAppointmentServiceImpl  implements BookAppointmentService
+{
     private BookAppointmentRepository bookAppointmentRepository;
 
     @Autowired

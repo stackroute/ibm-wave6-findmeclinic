@@ -1,44 +1,57 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-    <a href="http://13.234.236.221:4200/#" style="color:rgb(33, 173, 228)">
-      <div class="" style="margin-left:-77% ">  <img src="../../assets/images/logo (1).png" style="height: 60px;width: auto;" alt ="FindMeClinic"/></div>
-    </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-            <a mdbWavesEffect  style="padding-left: 85% ;font-size: 18px;font-weight:400;"  (click)="patientProfile()" class="nav-link waves-light" mdbWavesEffect>
-              <mdb-icon fas icon="user"></mdb-icon> <span class="caret"></span></a>
-       <div class="nav1"  >
-        <div class="color-block mx-auto mb-3 warm-flame-gradient z-depth-2">
-        <div class="btn btn-info btn-lg btn-logout" (click)="logout()">Logout</div>
-    </div>
-    </div>
- </div>
- </nav>
-
-  
-
- 
-  <div class="container mt-40 mb-30" style="margin-top:7%">
-      
-      <br>
-      <div class="cards">
-      <div *ngFor="let doctorData of topDoctors">
-                 
-                    <div class="box21">
-                        <img  src="../../assets/images/{{doctorData.profileImage}}" style="height: 250px;width:250px" >
-                        <div class="box-content">
-                            <h4 class="title">{{doctorData.name}}</h4>
-                            <p class="description">{{doctorData.emailId}}</p>
-                            <a class="read-more" href="#">Book Appointment</a>
-                        </div>
-                    </div>
-              </div>
+        <div class="container">
+        <a href="http://13.234.236.221:4200/#" style="color:rgb(33, 173, 228)">
+          <div class="" style="margin-left:-77% ">  <img src="../../assets/images/logo (1).png" style="height: 60px;width: auto;" alt ="FindMeClinic"/></div>
+        </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="nav1" style="margin-right: -82%" >
+                    <div class="color-block mx-auto mb-3 warm-flame-gradient z-depth-2">
+            <div  (click)="patientProfile()"><mdb-icon fas icon="user"></mdb-icon> <span class="caret"></span></div>
+            </div>
+            </div>
+           <div class="nav1" style="margin-right: -16%" >
+            <div class="color-block mx-auto mb-3 warm-flame-gradient z-depth-2">
+            <div class="btn btn-info btn-lg btn-login" (click)="logout()">Logout</div>
         </div>
-       
-       
-     
- 
-  
+        </div>
+     </div>
+     </nav>
+   
+<body>
+<section style="background: url(/assets/images/18.jpg);margin-top:4%" class="team-area pt-100 pb-100" id="clinics">
+        <div class="row">
+               
+         
+        <div class="container" style="margin-top: -2%;height: 100%;">
+         
+          <div *ngFor="let doctorData of topDoctors">
+            <div class="cards">
+                    <div class="card-content">
+                            <div class="card-img">
+              <div class="single-team">
+                <img class="imageClass" src="../../assets/images/{{doctorData.profileImage}}" style="width: 260px;height: 225px" alt=""/>
+                <div class="card-desc">
+                        <h3>{{doctorData.name}}</h3>
+                        <mat-chip-list aria-label="Fish selection">
+                        <mat-chip style="margin-left: 9%"><i class="material-icons">
+                          email
+                          </i> {{doctorData.emailId}}</mat-chip></mat-chip-list>
+                        <mat-chip-list> <mat-chip style="margin-left: 20%"><i class="material-icons" >
+                          mobile_screen_share
+                          </i>{{doctorData.phone}}</mat-chip></mat-chip-list><br>
+                            <a  class="btn btn-info btn-lg btn-login" (click)="routingto(doctorData.emailId)">Book Appointment</a>
+            </div>
+            </div>
+            </div>
+              </div>
+              <br/>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+
  <router-outlet></router-outlet>
- <br>
+ </body>

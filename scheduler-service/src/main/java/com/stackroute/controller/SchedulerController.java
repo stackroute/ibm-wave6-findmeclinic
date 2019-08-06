@@ -40,8 +40,14 @@ public class SchedulerController{
         return new ResponseEntity<>(schedulerService.save(scheduler),HttpStatus.CREATED);
     }
     @PutMapping("slots/{emailId}/{key}/{value}")
-    public ResponseEntity<Scheduler> putSlots(@PathVariable String emailId,@PathVariable String key,@PathVariable Integer value){
-        return new ResponseEntity<>(schedulerService.putSlots(emailId,key,value),HttpStatus.OK);
+    public ResponseEntity<?> putSlots(@PathVariable String emailId,@PathVariable String key,@PathVariable Integer value){
+        try {
+            return new ResponseEntity<Scheduler>(schedulerService.putSlots(emailId, key, value), HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity<String>("Doctor Not Found", HttpStatus.NOT_FOUND);
+        }
     }
 
 

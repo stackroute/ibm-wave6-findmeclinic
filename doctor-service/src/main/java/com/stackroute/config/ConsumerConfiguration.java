@@ -16,7 +16,8 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
-public class ConsumerConfiguration {
+public class ConsumerConfiguration
+{
 
     private static final String CONFIG_ADDRESS ="127.0.0.1:9092";
     @Bean

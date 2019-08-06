@@ -1,9 +1,74 @@
 <app-navbar></app-navbar>
-<div class="wrapper">
-<div class="container">
-
+<div class="wrapper" style="margin-top:6%;"><br>
+<!-- <div class="container"> -->
+    <div class="container emp-profile" >
+        <div class="hey">
+            <mat-toolbar class="toolbar">Profile</mat-toolbar>
+            <mat-card class="cards">  
+    
+                <div class="row">
+                    <div class="col-3" div="first">
+                       
+                        <img class="imageClass" src="../../assets/images/{{doctor.profileImage}}" />
+                        <br>
+                     <div class="chips">
+                        <mat-chip-list aria-label="Fish selection">
+                                <mat-chip><i class="material-icons">
+                                        email
+                                        </i>{{doctor.emailId}}</mat-chip>
+                                    <mat-chip><i class="material-icons" >
+                                            mobile_screen_share
+                                            </i>{{doctor.phone}}</mat-chip>
+                                  </mat-chip-list>
+                                </div>
+                    </div>
+                   
+                    <div  id="second" class="col">
+                        <h4>Dr. {{doctor.name}}</h4>
+                          <br>
+                                  <p><i class="material-icons" style="color: green">
+                                        verified_user
+                                        </i> Medical License Verified &nbsp; &nbsp;
+    
+                                        <i class="material-icons" style="color: red">
+                                                local_hospital
+                                                </i>License Number is &nbsp;{{doctor.medicalLicense}}</p>
+    
+                                                <p style="text-align: justify">Dr. {{doctor.name}} is {{preposition}} 
+                                                    {{doctor.specialization}} at {{doctor.clinicName}} Clinic in the city of {{doctor.address.city}}. {{pronoun}} has been practicing medicine since {{doctor.practiceStartedDate}}. {{pronoun}} keeps {{self}} abreast with the latest advances and technologies available and has also presented numerous papers at national and international forums. </p>
+    
+                              <div class="row">
+                                <div class="col-sm-6">
+                                   <p><i class="material-icons">
+                                      location_on
+                                      </i>{{doctor.clinicName}} Clinic, {{doctor.address.flatNo}} {{doctor.address.area}}</p>
+                                      <p  style="padding-left:21px">{{doctor.address.city}}, {{doctor.address.state}} - {{doctor.address.pinCode}}</p>
+                                  
+                                
+                                    </div>
+                                   
+                             
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="margin-left: 40%">
+                                    <mat-card-actions class="button"  >
+                                        <button mat-raised-button (click)="routingto(doctor.emailId)" >Book Appointment</button>
+                                      </mat-card-actions>
+                                </div>
+                                      
+                            </div>
+                              
+               
+                      
+                </div>  
+    
+            </div> 
+        </mat-card> 
+    </div>
+    
+    </div>
   
-  <mat-toolbar class="toolbar">Profile</mat-toolbar>
+  <!-- <mat-toolbar class="toolbar">Profile</mat-toolbar>
         <mat-card class="cards">  
           <div class="row">
               <div class="col-3">
@@ -17,19 +82,10 @@
                   </mat-chip-list>
                   <br>
                   <p>Dr. {{doctor.name}} has been practicing medicine for over {{getExp(doctor.practiceStartedDate  | date: 'yyyy/MM/dd')}}.</p>
-                  <!-- <p>He is a {{doctor.specialization}} working in the {{doctor.clinicName}} located at {{doctor.address.area}}.</p> -->
                   <p>Specialization : &nbsp;{{doctor.specialization}}</p>
                   <p>Clinic Name &nbsp;&nbsp;&nbsp;:&nbsp; {{doctor.clinicName}} Clinic</p>
                   <p>Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{doctor.address.flatNo}} {{doctor.address.area}}, {{doctor.address.city}}, {{doctor.address.state}}</p>
-                 
-               
-               
 
-                <!-- <p>{{doctor.phone}}</p> -->
-                
-                <!-- <p>{{doctor.qualification}}</p> -->
-              
-      
               </div>
               <div id="end-col" class="col-3">
                   <p><i class="material-icons">
@@ -51,7 +107,6 @@
                       <hr>
                       
                       <br>
-                    <!-- <p>{{getExp(doctor.practiceStartedDate  | date: 'yyyy/MM/dd')}} Of Overall Experience</p> -->
                     <p>
               
                       <mat-card-actions class="button"  >
@@ -64,9 +119,9 @@
             
           </div>
          
-        </mat-card>
+        </mat-card> -->
 
-</div> 
+<!-- </div>  -->
 </div>
 
 

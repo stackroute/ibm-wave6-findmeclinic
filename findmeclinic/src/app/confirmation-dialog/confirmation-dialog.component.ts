@@ -126,12 +126,6 @@ confirm()
 
 
   }
-  console.log(this.appointmentTime);
-  console.log(this.morning);
-  console.log(this.afternoon);
-  console.log(this.evening);
-
-
 }
 clear()
 {

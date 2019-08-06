@@ -3,8 +3,6 @@
 <div class="container">
     <br>
     <br>
-  <!--my code.....................................................................................    -->
-
   <div class="row">
       <div class="col-6" >
         <mat-toolbar>
@@ -16,25 +14,13 @@
             <mat-accordion class="myPanel" style="margin-top:10%">
                 <mat-expansion-panel >
                   <mat-expansion-panel-header>
-                    <!-- <mat-panel-title class="title">
-                      Upcoming Appontment Details
-                    </mat-panel-title> -->
                     <mat-panel-title >
                       {{upcomingDetails.patient.name}} will visit on {{upcomingDetails.appointmentDate}} &nbsp;<i class="material-icons">
                         calendar_today
                         </i>
                     </mat-panel-title>
-                    <!-- <p>{{upcomingDetails.patient.name}}</p>
-                    <br>
-                    <p>{{upcomingDetails.appointmentDate}}</p> -->
                   </mat-expansion-panel-header>
-             
-             
-                  <!-- <mat-card class="cardList"> -->
-  <!--            
-                    <div *ngFor="let upcomingDetails of upcomingAppointmentData"> -->
-                      <!-- <mat-card class="upcomingDataCard">
-                        <mat-card-content> -->
+
                           <div class="row">
              
                             <div class="col">
@@ -56,23 +42,12 @@
                              <p>{{upcomingDetails.patient.phone}}</p>
                             </div>
                           </div>
-                        <!-- </mat-card-content>
-                      </mat-card><br> -->
-                    <!-- </div> -->
-             
-             
-                  <!-- </mat-card> -->
-                       
                 </mat-expansion-panel>
               </mat-accordion>
               
             </div>
         </mat-card>
       </div>
-  
-  
-  
-      <!--next appointment-->
       <div class="col-6" >
         <mat-toolbar>
           Previous Appointments
@@ -89,11 +64,6 @@
                     </mat-panel-title>
                     
                   </mat-expansion-panel-header>
-                  <!-- <mat-card class="cardList"> -->
-             
-                    <!-- <div *ngFor=" let previousDetails of previousAppointmentData"> -->
-                      <!-- <mat-card class="previousDataCard">
-                        <mat-card-content> -->
                           <div class="row">
              
                             <div class="col">
@@ -115,15 +85,6 @@
                              <p>{{previousDetails.patient.phone}}</p>
                             </div>
                           </div>
-                        <!-- </mat-card-content>
-                      </mat-card> -->
-                      
-                    <!-- </div> -->
-             
-             
-                  <!-- </mat-card> -->
-             
-             
                 </mat-expansion-panel>
               </mat-accordion>
             

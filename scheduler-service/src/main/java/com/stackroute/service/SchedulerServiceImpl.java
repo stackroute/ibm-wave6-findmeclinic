@@ -1,6 +1,7 @@
 package com.stackroute.service;
 
 import com.stackroute.domain.Scheduler;
+import com.stackroute.exceptions.DoctorNotFoundException;
 import com.stackroute.repository.ScheduleRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class SchedulerServiceImpl implements SchedulerService {
     }
 
     @Override
-    public Scheduler putSlots(String emailId, String key, Integer value) {
+    public Scheduler putSlots(String emailId, String key, Integer value) throws  DoctorNotFoundException{
 
         Optional optional = scheduleRepository.findById(emailId);
         Scheduler scheduler = new Scheduler();
@@ -66,6 +67,10 @@ public class SchedulerServiceImpl implements SchedulerService {
             map.put(key, value);
             scheduler.setSlots(map);
             scheduleRepository.save(scheduler);
+        }
+        else
+        {
+            throw new DoctorNotFoundException("Doctor does not exists");
         }
         return scheduler;
     }

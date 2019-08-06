@@ -66,7 +66,7 @@ get f() { return this.registerForm.controls; }
 onSubmit() {
     this.submitted = true;
     this.findInvalidControls();
- //  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+
 }
 findInvalidControls() {
 

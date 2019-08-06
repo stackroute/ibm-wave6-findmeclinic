@@ -26,7 +26,6 @@ export class DoctorprofileComponent implements OnInit {
  }
  doctorPro() {
    const emailId = this.route1.snapshot.paramMap.get('email');
-   console.log("profile " + emailId);
    this.doctorProfile.getDoctorDetails(emailId).subscribe((data: any) => {
      console.log(data);
      this.doctorData.name = data.name;
@@ -62,7 +61,7 @@ export class DoctorprofileComponent implements OnInit {
   else{
     this.preposition="a";
   }
-     // console.log(this.doctorData);
+    
    });
  }
  editDoctorProfile() {
@@ -77,10 +76,8 @@ export class DoctorprofileComponent implements OnInit {
    const profileImage = this.doctorData.profileImage;
    const state =this.address.state;
    const city= this.address.city;
-   //this.address.area = data.address.area;
    const pincode=this.address.pinCode;
    this.doctorData.address = this.address;
-   // console.log(this.doctorData);
    this.router.navigateByUrl('/editDoctor/' + name + '/' + emailId + '/' + specialization + '/' + gender);
  }
 }

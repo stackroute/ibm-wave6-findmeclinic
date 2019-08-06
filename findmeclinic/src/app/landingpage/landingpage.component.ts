@@ -33,18 +33,16 @@ export class LandingpageComponent implements OnInit {
   public location = '';
   topDoctors: any;
   topClinics: any[];
-  //event handler for the select element's change event
   constructor(private dialog: MatDialog, public popupService: PopupService, private myprofile: PatientdashboardService,
     private route: ActivatedRoute, private router: Router, private schedulerService: SchedulerService, private recommendatioService: RecommendationsService) {
   }
   ngOnInit() {
     this.dialogRef = this.dialog.open(PopupComponent, {
-      width: '680px',
-      //  height: '250px',
+      width: '1190px',
+      height:'470px',
       disableClose: true,
     });
     this.start();
-    // this.next();
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -78,7 +76,6 @@ export class LandingpageComponent implements OnInit {
       })
   }
   selectChangeHandler(event: any) {
-    //update the ui
     this.selectedArea = event.target.value;
   }
   search() {
@@ -93,9 +90,7 @@ export class LandingpageComponent implements OnInit {
   }
   getTopClinics() {
     this.recommendatioService.getTopClinics(this.city).subscribe(data => {
-      console.log(data);
       this.topClinics = JSON.parse(JSON.stringify(data));
-      console.log("recommended clinics-->" + this.topClinics);
     })
   }
 }

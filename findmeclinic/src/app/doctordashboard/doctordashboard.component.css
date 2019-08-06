@@ -14,7 +14,7 @@
     color: #fff;
     height: 40px;
     padding-bottom: 38px;
-    /* margin-top:15px; */
+   
   }
   .btn-login:hover{
     color: black;
@@ -25,10 +25,8 @@
    
       
       mat-expansion-panel {
-        /* width: 90%; */
-        margin:auto;
+       margin:auto;
         margin-top:3%;
-        /* background:    rgb(238, 236, 238); */
         background: url("../../assets/images/22.jpg") no-repeat center top / cover;
       }
 
@@ -52,8 +50,6 @@
       
         .upcomingDataCard{
             
-            /* max-width: 500px; */
-           
            width:120%;
             background: url("../../assets/images/21.jpg") no-repeat center top / cover;
         }
@@ -82,30 +78,28 @@
            margin-top:2%;
       
         }
-        /* Column Gap */
+      
         .cardList > * {
           box-sizing: border-box;
         }
         .cardList > *:not(:last-child) {
           margin-right: 34px;
-        }
-        /* Item sizing */
+        }  
         .cardListItem {
           flex: 0 1 calc(33.3% - 32px);
         }
-        /* medium size viewport */
+       
       
       @media screen and (max-width: 959px) {
-          /* Column Gap */
           .cardList > *:not(:last-child) {
             margin-right: 32px;
           }
-          /* Item sizing */
+         
           .cardListItem {
             flex: 0 1 calc(50% - 32px);
           }
         }
-        /* small size viewport */
+        
       
       @media screen and (max-width: 599px) {
           .cardList {
@@ -149,12 +143,15 @@
             vertical-align: -6px;
           }
           .wrapper{
-            height:100vh;
-            background: url("../../assets/images/22.jpg") no-repeat center top / cover;
+            /* height:100vh; */
+            background:rgb(171, 217, 235);
             background-position:120% 100%;
             background-size:cover;
            }
-          
+          img{
+            height:200px;
+            
+          }
           
           
       

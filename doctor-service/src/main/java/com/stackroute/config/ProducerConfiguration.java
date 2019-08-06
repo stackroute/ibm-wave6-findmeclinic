@@ -14,7 +14,8 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 
 
 @Configuration
-public class ProducerConfiguration {
+public class ProducerConfiguration
+{
 
     @Bean
     public ProducerFactory<String, Doctor> doctorProducerFactory()
