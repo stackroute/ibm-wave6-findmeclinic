@@ -44,6 +44,7 @@ public class DoctorServiceImpl implements DoctorService {
         doctorDTO.setProfileImage(doctor.getProfileImage());
         doctorDTO.setQualification(doctor.getQualification());
         doctorDTO.setPracticeStartedDate(doctor.getPracticeStartedDate());
+        doctorDTO.setSpecialization(doctor.getSpecialization());
         doctorDTO.setNoOfAppointments(doctor.getDoctorAppointmentList().size());
         doctorDTO = doctorRepository.save(doctorDTO);
 
@@ -82,6 +83,7 @@ public class DoctorServiceImpl implements DoctorService {
             doctorDTO.setPhone(doctor.getPhone());
             doctorDTO.setProfileImage(doctor.getProfileImage());
             doctorDTO.setQualification(doctor.getQualification());
+            doctorDTO.setSpecialization(doctor.getSpecialization());
             doctorDTO.setPracticeStartedDate(doctor.getPracticeStartedDate());
             doctorDTO.setNoOfAppointments(doctor.getDoctorAppointmentList().size());
 

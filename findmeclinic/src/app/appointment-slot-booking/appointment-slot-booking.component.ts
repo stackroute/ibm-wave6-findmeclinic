@@ -20,6 +20,7 @@ export class AppointmentSlotBookingComponent implements OnInit {
   address: string;
   area: string;
   date: Date;
+  specialization:string;
   slot: string;
   day: string;
   city:string;
@@ -49,6 +50,7 @@ export class AppointmentSlotBookingComponent implements OnInit {
       this.address = params["address"];
       this.area = params["area"];
       this.city=params["city"];
+      this.specialization=params["specialization"];
       this.todaym = params["todaym"];
       this.todaya = params["todaya"];
       this.todaye = params["todaye"];
@@ -181,6 +183,7 @@ export class AppointmentSlotBookingComponent implements OnInit {
         "address": this.address,
         "area": this.area,
         "city":this.city,
+        "specialization":this.specialization,
         "slot": this.slot,
         "key":this.key,
         "appointmentId":this.value,
