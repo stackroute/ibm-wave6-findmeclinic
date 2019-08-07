@@ -22,4 +22,5 @@ public class DoctorDTO {
     private String qualification;
     private Date practiceStartedDate;
     private int noOfAppointments;
+    private String specialization;
 }
