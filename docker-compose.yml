@@ -58,6 +58,7 @@ services:
       - 2181
     network_mode: "host"
     hostname: localhost
+    restart: always
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000000000
@@ -72,6 +73,7 @@ services:
       - 9092
     network_mode: "host"
     hostname: localhost
+    restart: always
     depends_on:
       - zookeeper
     environment:
@@ -84,6 +86,7 @@ services:
     build: patient-service/
     image: patientservice
     network_mode: host
+    restart: always
     depends_on:
       [mongo,kafka,eurekaserver,zuulgateway]
     ports:
@@ -95,6 +98,7 @@ services:
     build: scheduler-service/
     image: schedulerservice
     network_mode: host
+    restart: always
     ports:
       - 8086:8086
     depends_on:
@@ -106,6 +110,7 @@ services:
     build: authentication-service/
     image: authenticationservice
     network_mode: host
+    restart: always
     depends_on:
       [mysqldb,kafka,eurekaserver,zuulgateway]
     ports:
@@ -118,6 +123,7 @@ services:
     build: bookappointment-service/
     image: bookappointmentservice
     network_mode: host
+    restart: always
     depends_on:
       [mongo,kafka,eurekaserver,zuulgateway]
     ports:
@@ -161,6 +167,7 @@ services:
     build: doctor-service/
     image: doctorservice
     network_mode: host
+    restart: always
     depends_on:
       [mongo,kafka,eurekaserver,zuulgateway]
     ports:
