@@ -50,6 +50,10 @@ export class SearchClinicComponent implements OnInit {
        let duplicates = []
        this.doctors = data.map((e, i, arr) => {
          e.listOfDoctors = []
+         e.listOfSpecializations=[]
+         e.listOfImages=[]
+         e.listofQualification=[]
+         e.listOfemail=[]
          if (listOfClinic.indexOf(e.clinicName) === -1) {
             listOfClinic.push(e.clinicName)
              e.listOfDoctors.push(e.name)
@@ -63,7 +67,11 @@ export class SearchClinicComponent implements OnInit {
        this.doctors = this.doctors.map((e, i) => {
          duplicates.map((j, k) => {
            if(e.clinicName ===  j.clinicName) {
-              e.listOfDoctors.push(j.name)
+             
+              e.listOfDoctors.push({name: j.name, specialization: j.specialization, profileImage: j.profileImage,
+                qualification: j.qualification, emailId: j.emailId 
+              })
+              
            }
           })
           return e

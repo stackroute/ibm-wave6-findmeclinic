@@ -40,6 +40,7 @@ export class PatientprofileComponent implements OnInit {
 
 
   patientData = new Patient();
+  emailId: string;
   constructor(private myProfile: PatientdashboardService, private appointments: PatientdashboardService, private router: Router, private route1: ActivatedRoute) { }
  
   ngOnInit() {
@@ -132,6 +133,9 @@ editPatientProfile(){
    
  
    this.router.navigateByUrl('/editPatient/' + name + '/' + emailId + '/' + dateOfBirth + '/' + gender + '/' + phone);
+ }
+ recommendations(){
+   this.router.navigateByUrl('patientdashboard/'+sessionStorage.getItem('username'));
  }
  
 }

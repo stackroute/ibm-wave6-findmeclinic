@@ -1,8 +1,8 @@
-<p>view-clinic works!</p>
 <app-navbar></app-navbar>
-<div class="wrapper" style="margin-top:6%;"><br>
+<body>
+<!-- <div class="wrapper" style="margin-top:6%;"><br> -->
 <!-- <div class="container"> -->
-    <div class="container emp-profile" >
+    <div class="container emp-profile" style="margin-top:9%;">
         <div class="hey">
             <mat-toolbar class="toolbar">Profile</mat-toolbar>
             <mat-card class="cards">  
@@ -49,6 +49,16 @@
                              
                             </div>
                             <div class="row">
+                                <div class="col-sm-12">
+                                  
+                                  
+                          <p style="padding-left: 1%">{{doctor.listOfDoctors.length}} Doctors</p>
+                            
+                               
+                                </div>
+                              </div>
+                            
+                            <div class="row">
                                 <div class="col-md-12" style="margin-left: 40%">
                                     <mat-card-actions class="button"  >
                                         <button mat-raised-button (click)="routingto(doctor.emailId)" >Book Appointment</button>
@@ -56,72 +66,61 @@
                                 </div>
                                       
                             </div>
-                              
-               
-                      
+             
                 </div>  
     
             </div> 
         </mat-card> 
     </div>
-    
+   <hr>
+    <div  *ngFor="let item of doctor.listOfDoctors; let i = index" [attr.data-index]="i" >
+      <mat-card class="cards">  
+         <div class="row">
+             <div class="col-3">
+                 <img class="imageClass" src="../../assets/images/{{item.profileImage}}" style="height: 200px;width: 200px" />
+             </div>
+             <div class="col">
+              <h5>Dr. {{item.name}}</h5> 
+               <br>
+                
+                 <div class="details">
+                 <p >Qualification &nbsp;&nbsp;&nbsp;: &nbsp; &nbsp; &nbsp; {{item.qualification}}</p>
+                 <p >Specialization : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.specialization}}</p>
+                  <p >Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.emailId}}</p>
+                 </div>
+                
+                 
+             </div>
+              <div id="end-col" class="col-4">
+              
+              
+               <p class="buttons" style="padding-top: 40%">
+                   
+                  <mat-card-actions  class="button"  >
+                      <button mat-raised-button  (click) = "passDetails(doctor)"  >View Profile</button>
+                      <button mat-raised-button (click)="routingto(doctor.emailId)" >Quick Book</button>
+                     
+                    
+                    </mat-card-actions>
+                  
+              </p>
+               
+              </div>  
+             
+         </div> 
+       </mat-card>
+       
+       <hr class="hrCards">
+     </div>
     </div>
   
-  <!-- <mat-toolbar class="toolbar">Profile</mat-toolbar>
-        <mat-card class="cards">  
-          <div class="row">
-              <div class="col-3">
-                  <img class="imageClass" src="../../assets/images/{{doctor.profileImage}}" />
-              </div>
-              <div class="col">
-                  
-                  <h5>Dr. {{doctor.name}}</h5>
-                  <mat-chip-list aria-label="Fish selection">
-                    <mat-chip>{{doctor.qualification}}</mat-chip>
-                  </mat-chip-list>
-                  <br>
-                  <p>Dr. {{doctor.name}} has been practicing medicine for over {{getExp(doctor.practiceStartedDate  | date: 'yyyy/MM/dd')}}.</p>
-                  <p>Specialization : &nbsp;{{doctor.specialization}}</p>
-                  <p>Clinic Name &nbsp;&nbsp;&nbsp;:&nbsp; {{doctor.clinicName}} Clinic</p>
-                  <p>Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{doctor.address.flatNo}} {{doctor.address.area}}, {{doctor.address.city}}, {{doctor.address.state}}</p>
+  
 
-              </div>
-              <div id="end-col" class="col-3">
-                  <p><i class="material-icons">
-                      person
-                      </i>Gender: {{doctor.gender}}</p>
-                <p><i class="material-icons">
-                    verified_user
-                    </i> Medical License Verified </p>
-                   <p> <i class="material-icons">
-                      local_hospital
-                      </i>License Number: &nbsp;{{doctor.medicalLicense}}</p>
-                      <p><i class="material-icons">
-                        email
-                        </i>{{doctor.emailId}}</p>
-                        <p> <i class="material-icons">
-                          mobile_screen_share
-                          </i>{{doctor.phone}}
-                        </p>
-                      <hr>
-                      
-                      <br>
-                    <p>
-              
-                      <mat-card-actions class="button"  >
-                        <button mat-raised-button (click)="routingto(doctor.emailId)" >Book Appointment</button>
-                      </mat-card-actions>
-                
-                  </p>
 
-              </div>
-            
-          </div>
-         
-        </mat-card> -->
 
-<!-- </div>  -->
-</div>
+
+</body>
+
 
 
 

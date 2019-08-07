@@ -7,12 +7,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="nav1" style="margin-right: -82%" >
-                <div class="color-block mx-auto mb-3 warm-flame-gradient z-depth-2">
+                <div class="color-warm">
         <div  (click)="patientProfile()"><mdb-icon fas icon="user"></mdb-icon> <span class="caret"></span></div>
         </div>
         </div>
        <div class="nav1" style="margin-right: -16%" >
-        <div class="color-block mx-auto mb-3 warm-flame-gradient z-depth-2">
+        <div class="color-warm">
         <div class="btn btn-info btn-lg btn-login" (click)="logout()">Logout</div>
     </div>
     </div>
@@ -40,9 +40,9 @@
           <ng-template #product let-product let-i="index">
             <div class="topDoctors">
               <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card" id="card2" style="width:260px;">
+                <div class="card" id="card2" style="width:260px;height:350px">
                   <div class="img-box">
-                    <img id="carimg" src="../../assets/images/{{product.profileImage}}" class="img-responsive img-fluid"
+                    <img id="carimg" src="../../assets/images/{{product.profileImage}}"  class="img-responsive img-fluid"
                        (click)="imageclick(product)">
                   </div>
                   <div class="card-block">
@@ -52,7 +52,7 @@
                     </div>
                      <h6 class="item-price"> {{product.emailId}}</h6>
                      <h6 class="info"> {{product.phone}}</h6>
-                     <a  class="btn btn-info btn-lg btn-login" (click)="routingto(doctorData.emailId)">Book Appointment</a>
+                     <a  class="btn btn-info btn-lg btn-login" (click)="routingto(product.emailId)">Book Appointment</a>
                </div>
              </div>
            </div>

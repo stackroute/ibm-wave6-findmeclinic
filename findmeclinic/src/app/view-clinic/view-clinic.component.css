@@ -27,7 +27,7 @@
       mat-expansion-panel {
        margin:auto;
         margin-top:3%;
-        background: url("../../assets/images/22.jpg") no-repeat center top / cover;
+        background: url("../../assets/images/22.jpg");
       }
 
       .mat-toolbar-single-row{
@@ -142,8 +142,8 @@
            i{
             vertical-align: -6px;
           }
-          .wrapper{
-             height:100vh; 
+          body{
+             /* height:100vh;  */
             background:rgb(171, 217, 235);
             background-position:120% 100%;
             background-size:cover;
