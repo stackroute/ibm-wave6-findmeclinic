@@ -59,7 +59,6 @@ console.log('area ',location.area);
 sessionStorage.setItem('key', location.area);
     this.doctorservice.getAllDoctorsByArea(sessionStorage.getItem('key')).subscribe((data:any) => {
       if(location.area!==undefined || location.area!==null){
-      console.log(data, ' by area doctors');
       this.doctors  =  data;
   }
 }

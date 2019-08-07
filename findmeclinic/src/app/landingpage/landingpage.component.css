@@ -1,3 +1,205 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.s01 form {
+  width: 100%;
+  max-width: 1290px;
+}
+
+.s01 form fieldset {
+  font-size: 55px;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 60px;
+}
+
+.s01 form .inner-form {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 80px;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+      
+}
+
+.s01 form .inner-form .input-field {
+  margin-right: 0;
+  height: 50px;
+ 
+}
+
+.s01 form .inner-form .input-field input {
+  height: 100%;
+  background: #fff;
+ 
+  border: 0;
+  display: block;
+  width: 100%;
+  padding: 10px 32px;
+  font-size: 20px;
+}
+
+.s01 form .inner-form .input-field input.placeholder {
+  color: #9a9a9a;
+  font-size: 20px;
+}
+
+.s01 form .inner-form .input-field input:-moz-placeholder {
+  color: #9a9a9a;
+  font-size: 20px;
+}
+
+.s01 form .inner-form .input-field input::-webkit-input-placeholder {
+  color: #9a9a9a;
+  font-size: 20px;
+}
+
+.s01 form .inner-form .input-field input:hover, .s01 form .inner-form .input-field input:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+.s01 form .inner-form .input-field.first-wrap {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+}
+
+.s01 form .inner-form .input-field.second-wrap {
+  width: 32.77%;
+  min-width: 180px;
+}
+
+.s01 form .inner-form .input-field.third-wrap {
+  width: 180px;
+  margin-right: 0;
+}
+
+.s01 form .inner-form .input-field.third-wrap .btn-search {
+  height: 100%;
+  width: 100%;
+  background: #2fd5f8;
+  white-space: nowrap;
+  border-radius: .5px;
+  font-size: 20px;
+  color: #fff;
+  transition: all .2s ease-out, color .2s ease-out;
+  border: 0;
+  cursor: pointer;
+}
+
+.s01 form .inner-form .input-field.third-wrap .btn-search:hover {
+  background: #2fd5f8;
+}
+
+@media screen and (max-width: 992px) {
+  .s01 form legend {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .s01 form .inner-form {
+    padding: 30px 35px;
+  }
+  .s01 form .inner-form .input-field {
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .s01 form legend {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+  .s01 form .inner-form {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding: 20px;
+  }
+  .s01 form .inner-form .input-field {
+    margin-right: 0;
+  }
+  .s01 form .inner-form .input-field input {
+    padding: 5px 15px;
+    font-size: 16px;
+  }
+  .s01 form .inner-form .input-field.first-wrap {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .s01 form .inner-form .input-field.second-wrap {
+    width: calc(50% - 20px);
+    min-width: auto;
+  }
+  .s01 form .inner-form .input-field.third-wrap {
+    width: calc(50% - 10px);
+  }
+  .s01 form .inner-form .input-field.third-wrap .btn-search {
+    font-size: 16px;
+  }
+}
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-before: 0;
+  -webkit-padding-start: 0;
+  -webkit-padding-end: 0;
+  -webkit-padding-after: 0;
+  border: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .row.heading h2 {
   color: #fff;
   font-size: 52.52px;
@@ -139,7 +341,7 @@ font-size: 40px;
 position: relative;
 padding-bottom: 20px;
 margin-bottom: 20px;
-font-weight: 600;
+ /* font-weight: 400;  */
 }
 .section-title h4:before {
 position: absolute;
@@ -201,18 +403,13 @@ bottom: 0;
 overflow: hidden;
 }
 
-.carousel
-{
-  background: url("../../assets/images/medical-tourism.jpg") no-repeat center top / cover;  
-  height: 600px;
-  width:auto
-}
+
 
 .btn1 {
 background-color: #2196F3;
 color: white;
 padding: 16px;
-font-size: 16px;
+font-size: 14px;
 border: none;
 outline: none;
 }
@@ -596,10 +793,10 @@ img {
               } 
               .btn1 {
                 padding: 16px;
-                font-size: 16px;
-                border: none;
+                font-size: 14px;
+               border-radius: 25px;
                 outline: none;
-                margin-right: 5px;
+                margin-right: 8px;
                 }
 
                 .navbar-brand{
@@ -894,10 +1091,7 @@ button{
   background: linear-gradient(#2fd5f8);
  
 }
-.choose .half {
-  width: 50%;
-  display: inline;
-}
+
 .img-bg, .img-user {
   background-size: cover;
   background-position: center center;

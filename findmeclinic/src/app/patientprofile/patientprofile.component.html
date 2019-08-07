@@ -1,197 +1,140 @@
+<app-patient-nav></app-patient-nav>
 
-<div class="container" style="margin-top: -15%">
-    <mat-toolbar class="toolbar">
-            <mat-chip-list>
-                    <mat-chip>{{patientData.name}}</mat-chip>
-                    </mat-chip-list>  
+<body>
+  <div class="container" style="margin-top: 4%">
+    <mat-toolbar class="toolbar">Profile
+
     </mat-toolbar>
-    <mat-card class="cards">
-            <form method="post">
-                <div class="row">
-                        <div class="col-md-3">
-                                 <img src="../../assets/images/{{let1}}" alt="user" style="width:70%;height: 70%;margin-left: 20%">
-                                 <div class="chips">
-                                  <mat-chip-list  >
-                                          <mat-chip style="margin-left: 20%"><i class="material-icons">
-                                                  email
-                                                  </i>{{patientData.emailId}}</mat-chip>
-                                  </mat-chip-list>
-                                  <mat-chip-list >
-                                              <mat-chip style="margin-left: 30%"><i class="material-icons" >
-                                                      mobile_screen_share
-                                                      </i>{{patientData.phone}}</mat-chip>
-                                            </mat-chip-list>
-                                          </div>
-                                </div>
-                                <div class="col-md-6" style="margin-top: 4%;margin-left:5%">
-                                        <div class="tab-content profile-tab" id="myTabContent">
-                                            <div style="margin-top: -8%" class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                                    <div class="row" style="padding-left: 23%">   
-                                                            
-                                              
-                                                    </div>
-
-                                                <div class="row">
-
-<div class="profileDisplay">
-<p style="word-spacing: 2px;text-align: justify; font-size: 20px; padding-top: 10%;margin-right: 14%">
-     Hi am <strong>{{patientData.name}}</strong>! Wish me on <strong> {{month}} {{day}}</strong>. Hand-picked deals for healthier me are welcomed 
-     at <a style="color: black" href=mailto> <strong>{{patientData.emailId}}</strong></a>. 
-  </p>
-</div> 
-
-                                                    <!-- <div class="col-md-6">
-                                                        <label>Email</label>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <p style="color:#1d90a7;">{{patientData.emailId}}</p>
-                                                    </div> -->
-                                                </div>
-                                                
-                                                <!-- <div class="row">
-                                                    <div class="col-md-6">
-                                                        <label>Phone</label>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <p style="color:#1d90a7;">{{patientData.phone}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <label>Date of Birth
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <p style="color:#1d90a7;">{{patientData.dateOfBirth}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <label>Gender
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                     <p style="color:#1d90a7">{{patientData.gender}}</p>
-                                                    </div>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                        <div class="col" >
-                                <button  class="btn  float-left btn-info btn-md btn-register" (click)="editPatientProfile()"><i class="fa fa-edit"></i>Edit Profile</button>
-                </div>
-                </div>
-                    
-            </form>
-    </mat-card>
-            </div>
-        
-<!--new-->
-<br/>
-       <div class="container">
+    <mat-card class="cards" style="height:300px">
+      <form method="post">
         <div class="row">
-          <div class="col-6" >
-                <mat-toolbar class="toolbar">
-                        Upcoming Appontment Details
-                      </mat-toolbar>
-            <mat-card>
-                    <div *ngFor="let appointmentDetails of upcomingAppointmentData">
-                  <mat-accordion class="myPanel" style="margin-top:10%">
-  <mat-expansion-panel [expanded]="false">
-    <mat-expansion-panel-header>
-      <mat-panel-title  class="title">
-            <mat-chip-list>
-                <mat-chip>{{appointmentDetails.appointmentId}}</mat-chip>
-                    <mat-chip>{{appointmentDetails.appointmentDate}}</mat-chip>
-                    </mat-chip-list>  
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-            <!-- <div class="row">
-              <div class="col">
-                <p>Appointment Id</p>
-                <p>Doctor's Name</p>
-                <p>Clinic's Name</p>
-                <p>Appointment Date</p>
-                <p>Appointment Time</p>
-                <p>Address</p>
-              </div>
-              <div class="col">
-                <p>{{appointmentDetails.appointmentId}}</p>
-                <p>{{appointmentDetails.doctor.name}}</p>
-                <p>{{appointmentDetails.doctor.clinicName}}</p>
-                <p>{{appointmentDetails.appointmentDate}}</p>
-                <p>{{appointmentDetails.appointmentTime}}</p>
-                <p>{{appointmentDetails.doctor.address.address}}</p>
-              </div>
-             </div> -->
-             <div class="" style="color: #000708;word-spacing: 2px;text-align: justify"><p>Dear {{patientData.name}}, your appointment has been confirmed 
-                with Dr.{{appointmentDetails.doctor.name}} on {{appointmentDetails.appointmentDate}} at {{appointmentDetails.appointmentTime}}.
-                Your appointment ID is {{appointmentDetails.appointmentId}}.Visit {{appointmentDetails.doctor.clinicName}}
-                clinic located in {{appointmentDetails.doctor.address.flatNo}},{{appointmentDetails.doctor.address.area}},{{appointmentDetails.doctor.address.city}}.
-                
-             </p>
-              </div>
-   
-  </mat-expansion-panel>
-</mat-accordion>
-<br/>
-</div>
-            </mat-card>
+          <div class="col-md-3">
+            <img src="../../assets/images/{{let1}}" alt="user" style="width:100%;height: 90%;margin-left: -2%">
+            <div class="chips">
+              <mat-chip-list>
+                <mat-chip style="margin-left: -2%"><i class="material-icons">
+                    email
+                  </i>{{patientData.emailId}}</mat-chip>
+              </mat-chip-list>
+              <mat-chip-list>
+                <mat-chip style="margin-left: -2"><i class="material-icons">
+                    mobile_screen_share
+                  </i>{{patientData.phone}}</mat-chip>
+              </mat-chip-list>
+            </div>
           </div>
-          <div class="col-6" >
-                <mat-toolbar class="toolbar">
-                     Previous Appointment Details
-                      </mat-toolbar>
-                <mat-card>
-                        <div *ngFor="let appointmentDetails1 of previousAppointmentData">
-                        <mat-accordion class="myPanel">
-                                <mat-expansion-panel [expanded]="false">
-                                  <mat-expansion-panel-header>
-                                    <mat-panel-title class="title">
-                                        <mat-chip-list>
-                                          <mat-chip>{{appointmentDetails1.appointmentId}}</mat-chip>
-                                            <mat-chip>{{appointmentDetails1.appointmentDate}}</mat-chip>
-                                            </mat-chip-list>
-                                    </mat-panel-title>
-                                  </mat-expansion-panel-header>
-                                          <!-- <div class="row">
-                              
-                                            <div class="col">
-                                              <p>Appointment Id</p>
-                                              <p>Doctor's Name</p>
-                                              <p>Clinic's Name</p>
-                                              <p>Appointment Date </p>
-                                              <p>Appointment Time</p>
-                                              <p>Address</p>
-                                            </div>
-                                            <div class="col">
-                                              <p>{{appointmentDetails1.appointmentId}}</p>
-                                              <p>{{appointmentDetails1.doctor.name}}</p>
-                                              <p>{{appointmentDetails1.doctor.clinicName}}</p>
-                                              <p>{{appointmentDetails1.appointmentDate}}</p>
-                                              <p>{{appointmentDetails1.appointmentTime}}</p>
-                                              <p>{{appointmentDetails1.doctor.address.address}}</p>
-                              
-                                            </div>
-                                        </div> -->
-                                        <div class="" style="color: #000708;word-spacing: 2px;text-align: justify"><p>Dear {{patientData.name}}, your appointment has been confirmed 
-                                            with Dr.{{appointmentDetails1.doctor.name}} on {{appointmentDetails1.appointmentDate}} at {{appointmentDetails1.appointmentTime}}.
-                                            Your appointment ID is {{appointmentDetails1.appointmentId}}.Visit {{appointmentDetails1.doctor.clinicName}}
-                                            clinic located in {{appointmentDetails1.doctor.address.flatNo}},{{appointmentDetails1.doctor.address.area}},{{appointmentDetails1.doctor.address.city}}.
-                                            
-                                         </p>
-                                          </div>
-                                </mat-expansion-panel>
-                              </mat-accordion>
-                              <br/>
-                            </div>
-            </mat-card>
+          <div class="col-md-6" style="margin-top: 4%;margin-left:5%">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div style="margin-top: -8%" class="tab-pane fade show active" id="home" role="tabpanel"
+                aria-labelledby="home-tab">
+                <div class="row" style="padding-left: 23%">
+
+
+                </div>
+
+                <div class="row">
+
+                  <div class="profileDisplay">
+                    <p
+                      style="word-spacing: 2px;text-align: justify; font-size: 17px; padding-top: 10%;margin-right: 14%">
+                      Hi am <strong>{{patientData.name}}</strong>! Wish me on <strong> {{month}} {{day}}</strong>.
+                      Hand-picked deals for healthier me are welcomed
+                      at <a style="color: black" href=mailto> <strong>{{patientData.emailId}}</strong></a>.
+                    </p>
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <button class="btn  float-left btn-info btn-md btn-register" (click)="editPatientProfile()"><i
+                class="fa fa-edit"></i>Edit Profile</button>
           </div>
         </div>
-       </div>
-      
+
        
 
-  
+      </form>
+     
+    </mat-card>
 
+  </div>
+
+
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <mat-toolbar class="toolbar">
+          Upcoming Appontment Details
+        </mat-toolbar>
+        <mat-card>
+          <div *ngFor="let appointmentDetails of upcomingAppointmentData">
+            <mat-accordion class="myPanel" style="margin-top:10%">
+              <mat-expansion-panel [expanded]="false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="title">
+                    <mat-chip-list>
+                      <mat-chip>{{appointmentDetails.appointmentId}}</mat-chip>
+                      <mat-chip>{{appointmentDetails.appointmentDate}}</mat-chip>
+                    </mat-chip-list>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="" style="color: #000708;word-spacing: 2px;text-align: justify">
+                  <p>Dear {{patientData.name}}, your appointment has been confirmed
+                    with Dr.{{appointmentDetails.doctor.name}} on {{appointmentDetails.appointmentDate}} at
+                    {{appointmentDetails.appointmentTime}}.
+                    Your appointment ID is {{appointmentDetails.appointmentId}}.Visit
+                    {{appointmentDetails.doctor.clinicName}}
+                    clinic located in
+                    {{appointmentDetails.doctor.address.flatNo}},{{appointmentDetails.doctor.address.area}},{{appointmentDetails.doctor.address.city}}.
+
+                  </p>
+                </div>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+            <br />
+          </div>
+        </mat-card>
+      </div>
+      <div class="col-6">
+        <mat-toolbar class="toolbar">
+          Previous Appointment Details
+        </mat-toolbar>
+        <mat-card>
+          <div *ngFor="let appointmentDetails1 of previousAppointmentData">
+            <mat-accordion class="myPanel">
+              <mat-expansion-panel [expanded]="false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="title">
+                    <mat-chip-list>
+                      <mat-chip>{{appointmentDetails1.appointmentId}}</mat-chip>
+                      <mat-chip>{{appointmentDetails1.appointmentDate}}</mat-chip>
+                    </mat-chip-list>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="" style="color: #000708;word-spacing: 2px;text-align: justify">
+                  <p>Dear {{patientData.name}}, Thank you for using FindMeClinic.
+                    Hope your appointment with Dr.{{appointmentDetails1.doctor.name}}
+                    on {{appointmentDetails1.appointmentDate}} at {{appointmentDetails1.appointmentTime}} was good.
+
+
+
+                  </p>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <br />
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</body>

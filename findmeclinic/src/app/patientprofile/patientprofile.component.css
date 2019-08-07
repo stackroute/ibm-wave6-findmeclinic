@@ -58,4 +58,33 @@ label{
  .mat-chip{
       background-color:azure;
  }
+ .navbar-brand{
+  font-family:'Pacifico';
+  font-size:20px;
+}
+nav{
+  background:white;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  position: fixed;
+  padding-top:20px;
+}
+.btn-login {
+  background: #2fd5f8;
+  color: #fff;
+  height: 40px;
+  padding-bottom: 38px;
+  
+}
+.btn-login:hover{
+  color: black;
+  background-color: white;
+  font-weight: 400
+  }
+  body{
+    height:100vh; 
+   background:rgb(171, 217, 235);
+   background-position:120% 100%;
+   background-size:cover;
+  }
  

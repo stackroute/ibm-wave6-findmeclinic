@@ -75,6 +75,12 @@ export class LandingpageComponent implements OnInit {
         queryParams: { area: this.selectedArea }
       })
   }
+  clinicDetails() {
+    this.router.navigate(['/searchClinic'],
+      {
+        queryParams: { area: this.selectedArea }
+      })
+  }
   selectChangeHandler(event: any) {
     this.selectedArea = event.target.value;
   }
@@ -93,5 +99,6 @@ export class LandingpageComponent implements OnInit {
       this.topClinics = JSON.parse(JSON.stringify(data));
     })
   }
+ 
 }
 

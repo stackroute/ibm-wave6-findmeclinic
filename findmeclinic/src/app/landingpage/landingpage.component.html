@@ -1,58 +1,140 @@
 <app-navbar></app-navbar>
 <br><br><br>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="carousel">
-  <div class="container" style="margin-left: 650px">
-    <div class="d-flex justify-content-center h-80">
-      <div class="card text-white" style="margin-top:150px;background-color:rgba(7, 7, 7, 0.5)">
-        <div class="card-header" style="color: #2fd5f8">
-          <div class="data" style="margin-left: 18%">
-            <h3>Find NearBy Doctors</h3>
-          </div>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="container">
-              <div class="row heading heading-icon" style="margin-left: 70px">
-                <div style="color: #2fd5f8;margin-left: 39px">
-                  <h4>Select Location</h4>
-                </div>
-                <div style="margin-left: 38px">
-                  <form>
-                    <!-- <mat-form-field> -->
-                    <input class="search-area" type="text" placeholder="Search an area"
-                           [(ngModel)]="location" [matAutocomplete]="auto" [formControl]="myControl">
-                    <mat-autocomplete #auto="matAutocomplete">
-                      <!-- autoActiveFirstOption -->
-                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option"
-                                  (click)="search()">
-                        {{option}}
-                      </mat-option>
-                    </mat-autocomplete>
-                    <!-- </mat-form-field> -->
-                  </form>
-                </div>
-              </div>
-            </div><br>
-            <div class="" style="width:100%;background:white">
-              <button class="btn btn1" (click)="doctorDetails()">Doctor</button>
-              <button class="btn btn1">Clinic</button>
-              <button class="btn btn1">Pharmacy</button>
-              <button class="btn btn1">Labs</button>
-            </div>
-          </form>
-        </div>
-      </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+
+<mdb-carousel [isControls]="false" class="carousel slide" [animation]="'slide'">
+  <mdb-carousel-item>
+    <div class="view">
+      <img src="/assets/images/bgg8.jpg" alt="slider1">
+      <div class="mask rgba-indigo-light waves-light" mdbWavesEffect></div>
     </div>
-  </div>
-</div>
+
+    <div class="carousel-caption">
+        <div class="s01">
+  
+        <form style="text-align: center;margin-bottom: 15%" >
+            <fieldset>
+           Find Nearby Doctors
+            </fieldset>
+                                <!-- <mat-form-field> -->
+                                    <div class="inner-form" style="margin-left: 20%;width: 60%;">
+                                        <div class="input-field first-wrap">
+                                  <input class="search-area" type="text" placeholder="Search an area"
+                                  [(ngModel)]="location" [matAutocomplete]="auto" [formControl]="myControl">
+                           <mat-autocomplete #auto="matAutocomplete">
+                             <!-- autoActiveFirstOption -->
+                             <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="search()">
+                               {{option}}
+                             </mat-option>
+                           </mat-autocomplete>
+                           </div>
+                          
+                           <!-- </mat-form-field> -->
+           
+                           
+            </div>
+            <br/>
+            <button class="btn btn1" (click)="doctorDetails()">Doctor</button>
+            <button class="btn btn1" (click)="clinicDetails()">Clinic</button>
+            <button class="btn btn1">Pharmacy</button>
+            <button class="btn btn1">Labs</button>
+           
+          
+          
+          </form>
+          </div>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view">
+        <img src="/assets/images/bgg2.jpg" alt="slider2">
+      <div class="mask rgba-purple-slight waves-light" mdbWavesEffect></div>
+    </div>
+
+    <div class="carousel-caption">
+        <div class="s01">
+  
+            <form style="text-align: center;margin-bottom: 15%" >
+                <fieldset>
+               Find Nearby Doctors
+                </fieldset>
+                                    <!-- <mat-form-field> -->
+                                        <div class="inner-form" style="margin-left: 20%;width: 60%;">
+                                            <div class="input-field first-wrap">
+                                      <input class="search-area" type="text" placeholder="Search an area"
+                                      [(ngModel)]="location" [matAutocomplete]="auto" [formControl]="myControl">
+                               <mat-autocomplete #auto="matAutocomplete">
+                                 <!-- autoActiveFirstOption -->
+                                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="search()">
+                                   {{option}}
+                                 </mat-option>
+                               </mat-autocomplete>
+                               </div>
+                              
+                               <!-- </mat-form-field> -->
+               
+                  
+                </div>
+                <br/>
+                <button class="btn btn1" (click)="doctorDetails()">Doctor</button>
+                <button class="btn btn1" (click)="clinicdetails()">Clinic</button>
+                <button class="btn btn1">Pharmacy</button>
+                <button class="btn btn1">Labs</button>
+              </form>
+              </div>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view">
+        <img src="/assets/images/bgg18.jpg" alt="slider3">
+      <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+    </div>
+
+    <div class="carousel-caption">
+        <div class="s01">
+  
+            <form style="text-align: center;margin-bottom: 15%" >
+                <fieldset>
+               Find Nearby Doctors
+                </fieldset>
+                                    <!-- <mat-form-field> -->
+                                        <div class="inner-form" style="margin-left: 20%;width: 60%;">
+                                            <div class="input-field first-wrap">
+                                      <input class="search-area" type="text" placeholder="Search an area"
+                                      [(ngModel)]="location" [matAutocomplete]="auto" [formControl]="myControl">
+                               <mat-autocomplete #auto="matAutocomplete">
+                                 <!-- autoActiveFirstOption -->
+                                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="search()">
+                                   {{option}}
+                                 </mat-option>
+                               </mat-autocomplete>
+                               </div>
+                              
+                               <!-- </mat-form-field> -->
+               
+                  
+                </div>
+                <br/>
+                <button class="btn btn1" (click)="doctorDetails()">Doctor</button>
+                <button class="btn btn1" (click)="clinicDetails()">Clinic</button>
+                <button class="btn btn1">Pharmacy</button>
+                <button class="btn btn1">Labs</button>
+              </form>
+              </div>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>
+
+
+
 <section class="team-area pt-100 pb-100" id="clinics">
   <div class="container">
     <div class="row">
       <div class="col-xl-8 mx-auto text-center">
-        <div class="section-title" style="text-align: center;margin-top: -10%">
+        <div class="section-title" style="text-align: center;margin-top: -10%;">
           <h4>Top Doctors </h4>
         </div>
       </div>

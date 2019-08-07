@@ -27,7 +27,7 @@ body{
  
 }
 .container{
-    margin-top:10%;
+    margin-top:8%;
     margin-bottom: 20px;
     font-size: 14px;
     flex-direction: column;
@@ -61,7 +61,6 @@ h5{
    height: 250px;
    margin: 0 auto; 
    float: none;
-   border: 2px solid #e5e5e5; 
    animation-name: fadeIn;
   
   

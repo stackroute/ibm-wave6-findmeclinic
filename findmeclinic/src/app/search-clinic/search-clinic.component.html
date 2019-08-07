@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<body>
+<div class="container" >    
+  <div  *ngFor="let doctor of doctors" >
+  <mat-card class="cards" style="height: 30%">  
+     <div class="row">
+         <div class="col-3">
+             <img class="imageClass" src="../../assets/images/{{doctor.clinicImage}}" />
+             
+         </div>
+         <div class="col">
+          <h4 style="color:rgb(74, 188, 233);margin-top:5%;margin-left:2px;">{{doctor.clinicName}}</h4> 
+          <div class="row">
+            <!-- <div class="col-3">
+              <p style="padding-left:4px;font-size:18px">Address:</p>
+            </div> -->
+            <div class="col-8">
+              <p style="font-size:18px">Multi-speciality Clinic</p>
+              <p>7-A,Block R-3,{{doctor.address.area}}</p>
+              <p> {{doctor.address.city}},{{doctor.address.pinCode}}.</p>
+            </div>
+          </div>
+        
+         
+          
+        
+           
+           <br>
+            
+             <!-- <div class="details">
+             <p>Qualification &nbsp;&nbsp;&nbsp;: &nbsp; &nbsp; &nbsp; {{doctor.qualification}}</p>
+             <p>Specialization : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{doctor.specialization}}</p>
+             <p>Clinic Name &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{doctor.clinicName}}</p>
+             <p>Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{doctor.emailId}}</p>
+             </div> -->
+            
+             
+         </div>
+          <div id="end-col" class="col-4">
+          
+            <p> <i class="material-icons">
+              mobile_screen_share
+              </i>{{doctor.phone}}
+            </p>
+            
+              <hr width="220 px" align="centre">
+              <br> 
+           <p class="buttons" style="margin-top:10%">
+               
+              <mat-card-actions  class="button"  >
+                  <button mat-raised-button (click)="routingto(doctor.emailId)" >Quick Book</button>
+                  <button mat-raised-button  (click) = "passDetails(doctor)"  >View Profile</button>
+                
+                </mat-card-actions>
+              
+          </p>
+           
+          </div>  
+         
+     </div> 
+   </mat-card>
+   
+   <hr class="hrCards">
+ </div>
+</div>
+
+</body>

@@ -41,6 +41,10 @@ import {MatChipsModule} from '@angular/material/chips';
 import { PatientreviewsComponent } from './patientreviews/patientreviews.component';
 import { DoctorprofileComponent } from './doctorprofile/doctorprofile.component';
 import { AboutpageComponent } from './aboutpage/aboutpage.component';
+import { PatientNavComponent } from './patient-nav/patient-nav.component';
+import { ViewClinicComponent } from './view-clinic/view-clinic.component';
+import { SearchClinicComponent } from './search-clinic/search-clinic.component';
+
 
 
 
@@ -64,7 +68,10 @@ const dashboardRoutes: Routes = [
   {path:'confirmBooking',component:ConfirmbookingComponent},
   {path:'doctordashboard/:username',component:DoctordashboardComponent},
   {path:'about',component:AboutpageComponent},
-  {path:'confirmSlot',component:ConfirmbookingComponent}
+  {path:'confirmSlot',component:ConfirmbookingComponent},
+  {path:'patientProfile/:email',component:PatientprofileComponent},
+  {path:'clinicView',component:ViewClinicComponent},
+  {path:'searchClinic',component:SearchClinicComponent}
 ];
 
 const appRoutes:Routes=[
@@ -75,15 +82,15 @@ const appRoutes:Routes=[
  
  },
 
-  {
-    path: '', component: PatientdashboardComponent, pathMatch: 'prefix',
-   children:[{path:'myAppointments',component:PatientappointmentsComponent},
-           {path:'patientProfile/:email',component:PatientprofileComponent}
+//   {
+//     path: '', component: PatientdashboardComponent, pathMatch: 'prefix',
+//    children:[{path:'myAppointments',component:PatientappointmentsComponent},
+//            {path:'patientProfile/:email',component:PatientprofileComponent}
 
 
- ]
+//  ]
 
-},
+// },
 
  
  ];
@@ -115,9 +122,11 @@ const appRoutes:Routes=[
     RegistartionDialogComponent,
     LoginDialogComponent,
     PatientreviewsComponent,
-    AboutpageComponent
+    AboutpageComponent,
+    PatientNavComponent,
+    ViewClinicComponent,
+    SearchClinicComponent
    
-  
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,127 @@
+<p>view-clinic works!</p>
+<app-navbar></app-navbar>
+<div class="wrapper" style="margin-top:6%;"><br>
+<!-- <div class="container"> -->
+    <div class="container emp-profile" >
+        <div class="hey">
+            <mat-toolbar class="toolbar">Profile</mat-toolbar>
+            <mat-card class="cards">  
+    
+                <div class="row">
+                    <div class="col-3" div="first">
+                       
+                        <img class="imageClass" src="../../assets/images/{{doctor.clinicImage}}" />
+                        <br>
+                     <div class="chips">
+                        <mat-chip-list aria-label="Fish selection">
+                                <!-- <mat-chip><i class="material-icons">
+                                        email
+                                        </i>{{doctor.emailId}}</mat-chip> -->
+                                    <mat-chip><i class="material-icons" >
+                                            mobile_screen_share
+                                            </i>{{doctor.phone}}</mat-chip>
+                                  </mat-chip-list>
+                                </div>
+                    </div>
+                   
+                    <div  id="second" class="col">
+                        <h4> {{doctor.clinicName}}</h4>
+                          <br>
+                                  <p><i class="material-icons" style="color: green">
+                                        verified_user
+                                        </i> Medical License Verified &nbsp; &nbsp;
+    
+                                        <i class="material-icons" style="color: red">
+                                                local_hospital
+                                                </i>License Number is &nbsp;{{doctor.medicalLicense}}</p>
+    
+                                               
+                              <div class="row">
+                                <div class="col-sm-12">
+                                   <p><i class="material-icons">
+                                      location_on
+                                      </i>{{doctor.clinicName}} Clinic, {{doctor.address.flatNo}} {{doctor.address.area}},
+                                      {{doctor.address.city}}, {{doctor.address.state}} - {{doctor.address.pinCode}}</p>
+                                  
+                                
+                                    </div>
+                                   
+                             
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="margin-left: 40%">
+                                    <mat-card-actions class="button"  >
+                                        <button mat-raised-button (click)="routingto(doctor.emailId)" >Book Appointment</button>
+                                      </mat-card-actions>
+                                </div>
+                                      
+                            </div>
+                              
+               
+                      
+                </div>  
+    
+            </div> 
+        </mat-card> 
+    </div>
+    
+    </div>
+  
+  <!-- <mat-toolbar class="toolbar">Profile</mat-toolbar>
+        <mat-card class="cards">  
+          <div class="row">
+              <div class="col-3">
+                  <img class="imageClass" src="../../assets/images/{{doctor.profileImage}}" />
+              </div>
+              <div class="col">
+                  
+                  <h5>Dr. {{doctor.name}}</h5>
+                  <mat-chip-list aria-label="Fish selection">
+                    <mat-chip>{{doctor.qualification}}</mat-chip>
+                  </mat-chip-list>
+                  <br>
+                  <p>Dr. {{doctor.name}} has been practicing medicine for over {{getExp(doctor.practiceStartedDate  | date: 'yyyy/MM/dd')}}.</p>
+                  <p>Specialization : &nbsp;{{doctor.specialization}}</p>
+                  <p>Clinic Name &nbsp;&nbsp;&nbsp;:&nbsp; {{doctor.clinicName}} Clinic</p>
+                  <p>Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{doctor.address.flatNo}} {{doctor.address.area}}, {{doctor.address.city}}, {{doctor.address.state}}</p>
+
+              </div>
+              <div id="end-col" class="col-3">
+                  <p><i class="material-icons">
+                      person
+                      </i>Gender: {{doctor.gender}}</p>
+                <p><i class="material-icons">
+                    verified_user
+                    </i> Medical License Verified </p>
+                   <p> <i class="material-icons">
+                      local_hospital
+                      </i>License Number: &nbsp;{{doctor.medicalLicense}}</p>
+                      <p><i class="material-icons">
+                        email
+                        </i>{{doctor.emailId}}</p>
+                        <p> <i class="material-icons">
+                          mobile_screen_share
+                          </i>{{doctor.phone}}
+                        </p>
+                      <hr>
+                      
+                      <br>
+                    <p>
+              
+                      <mat-card-actions class="button"  >
+                        <button mat-raised-button (click)="routingto(doctor.emailId)" >Book Appointment</button>
+                      </mat-card-actions>
+                
+                  </p>
+
+              </div>
+            
+          </div>
+         
+        </mat-card> -->
+
+<!-- </div>  -->
+</div>
+
+
+

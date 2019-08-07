@@ -43,7 +43,7 @@ export class PatientprofileComponent implements OnInit {
   constructor(private myProfile: PatientdashboardService, private appointments: PatientdashboardService, private router: Router, private route1: ActivatedRoute) { }
  
   ngOnInit() {
-
+      
 
     this.emailId1=sessionStorage.getItem('username');
     this.appointments.getAllAppointments(this.emailId1).subscribe((data: any) =>
@@ -91,10 +91,10 @@ export class PatientprofileComponent implements OnInit {
      this.patientData.phone = data.phone;
   
      if (this.patientData.gender === 'Female' || this.patientData.gender === 'female'){
-       this.let1 = 'female.png';
+       this.let1 = 'women.jpg';
 } 
 else{
-  this.let1 = '30.png';
+  this.let1 = 'boy.jpg';
 }
 
 
