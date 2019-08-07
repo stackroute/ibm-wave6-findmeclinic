@@ -228,7 +228,7 @@ export class ConfirmbookingComponent implements OnInit {
                      });
 
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '350px',
+      width: '400px',
     
       disableClose: true,
      

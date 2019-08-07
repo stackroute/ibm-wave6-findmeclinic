@@ -10,12 +10,12 @@ margin-bottom: 10px;
 .btn:hover{
  color: white;
  background-color:#2fd5f8;
- width: 155px;
+ width: 100px;
  }
  .btn{
  color: black;
  background-color: white;
- width: 155px;
+ width: 100px;
  }
   blink {
    animation: blinker 1.3s linear infinite;

@@ -43,20 +43,18 @@ export class SearchClinicComponent implements OnInit {
    const location=this.route.snapshot.queryParams;
 
  
- sessionStorage.setItem('key', location.area);
-     this.doctorservice.getAllDoctorsByArea(sessionStorage.getItem('key')).subscribe((data:any) => {
+
+     this.doctorservice.getAllDoctorsByArea(location.area).subscribe((data:any) => {
        if(location.area!==undefined || location.area!==null){
        let listOfClinic = []
        let duplicates = []
        this.doctors = data.map((e, i, arr) => {
          e.listOfDoctors = []
-         e.listOfSpecializations=[]
-         e.listOfImages=[]
-         e.listofQualification=[]
-         e.listOfemail=[]
          if (listOfClinic.indexOf(e.clinicName) === -1) {
             listOfClinic.push(e.clinicName)
-             e.listOfDoctors.push(e.name)
+             e.listOfDoctors.push({name: e.name, specialization: e.specialization, profileImage: e.profileImage,
+              qualification: e.qualification, emailId: e.emailId 
+            })
             return e
          }else {
            duplicates.push(e)
@@ -72,8 +70,9 @@ export class SearchClinicComponent implements OnInit {
                 qualification: j.qualification, emailId: j.emailId 
               })
               
-           }
+            }
           })
+          // console.log(e)
           return e
        })
        console.log(this.doctors, "this is the list of doctors !!!!")
@@ -90,6 +89,8 @@ export class SearchClinicComponent implements OnInit {
       //    if(e.clinicName === )
       //  })
    }
+   sessionStorage.setItem('key', location.area);
+  
  }
    )
  

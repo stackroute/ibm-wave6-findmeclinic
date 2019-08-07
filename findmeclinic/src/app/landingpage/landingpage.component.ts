@@ -38,8 +38,8 @@ export class LandingpageComponent implements OnInit {
   }
   ngOnInit() {
     this.dialogRef = this.dialog.open(PopupComponent, {
-      width: '1190px',
-      height:'470px',
+      width: '910px',
+      height:'398px',
       disableClose: true,
     });
     this.start();

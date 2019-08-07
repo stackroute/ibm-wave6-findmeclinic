@@ -56,10 +56,11 @@ export class SearchDoctorComponent implements OnInit {
 
 console.log('area ',location.area);
 
-sessionStorage.setItem('key', location.area);
-    this.doctorservice.getAllDoctorsByArea(sessionStorage.getItem('key')).subscribe((data:any) => {
+
+    this.doctorservice.getAllDoctorsByArea(location.area).subscribe((data:any) => {
       if(location.area!==undefined || location.area!==null){
       this.doctors  =  data;
+      sessionStorage.setItem('key', location.area);
   }
 }
   )

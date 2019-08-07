@@ -80,9 +80,16 @@ this.router.navigate(['/appointmentSlot'],navigationExtras);
   }
     );  
   
-
 }
 
+
+back()
+{
+  this.router.navigate(['/searchView'],
+  {
+    queryParams: { area: sessionStorage.getItem('key') }
+  })
+}
 
 
 }
