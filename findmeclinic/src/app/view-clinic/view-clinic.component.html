@@ -1,4 +1,20 @@
-<app-navbar></app-navbar>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+  <a href="http://localhost:4200/#" style="color:rgb(33, 173, 228)">
+    <div class="" style="margin-left:-77% ">  <img src="../../assets/images/logo (1).png" style="height: 60px;width: auto;" alt ="FindMeClinic"/></div>
+  </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+     <div class="nav1" style="margin-left: 87%" >
+      <div class="color-warm">
+      <div class="btn btn-info btn-lg btn-login" style="font-weight: 400" (click)="back()">Clinic</div>
+  </div>
+  </div>
+</div>
+</nav>
+
+
 <body>
 <!-- <div class="wrapper" style="margin-top:6%;"><br> -->
 <!-- <div class="container"> -->
@@ -62,7 +78,7 @@
                             <div class="row">
                                 <div class="col-md-12" style="margin-left: 40%">
                                     <mat-card-actions class="button"  >
-                                        <button mat-raised-button (click)="back()" >Back</button>
+                                
                                   
                                         <button mat-raised-button (click)="routingto(doctor.emailId)" >Book Appointment</button>
                                       </mat-card-actions>
@@ -95,12 +111,11 @@
               <div id="end-col" class="col-4">
               
               
-               <p class="buttons" style="padding-top: 40%">
+               <p class="buttons" style="padding-top: 40%;padding-left: 50%">
                    
                   <mat-card-actions  class="button"  >
                       <button mat-raised-button (click)="routingto(doctor.emailId)" >Quick Book</button>
-                      <button mat-raised-button  (click) = "passDetails(doctor)"  >View Profile</button>
-                    
+                     
                     </mat-card-actions>
                   
               </p>

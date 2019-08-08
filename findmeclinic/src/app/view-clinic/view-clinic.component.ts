@@ -84,8 +84,7 @@ export class ViewClinicComponent implements OnInit {
 
   this.router.navigate(['/searchClinic'],
   {
-    queryParams: { area: sessionStorage.getItem('key') }
-  })
+    queryParams: { area: sessionStorage.getItem('key') } })
 }
  
  
